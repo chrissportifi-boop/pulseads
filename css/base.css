@@ -105,7 +105,7 @@ p { margin: 0 0 1em; }
 p:last-child { margin-bottom: 0; }
 
 a { color: var(--accent-text, #FF8A70); text-underline-offset: 0.2em; text-decoration-thickness: 0.07em; }
-a:hover { text-decoration-thickness: 0.14em; }
+@media (hover: hover) { a:hover { text-decoration-thickness: 0.14em; } }
 
 img, svg, video { display: block; max-width: 100%; }
 img, video { height: auto; }
@@ -216,7 +216,7 @@ main:focus { outline: none; }
   background: linear-gradient(var(--coral), var(--coral)) left center / 0% 100% no-repeat, var(--cream);
   transition: background-size .45s cubic-bezier(.2, .7, .2, 1), color .25s;
 }
-.btn-light:hover { background-size: 100% 100%, auto; }
+@media (hover: hover) { .btn-light:hover { background-size: 100% 100%, auto; } }
 .btn-small { min-height: 2.75rem; padding: 0.5rem 1.1rem; font-size: var(--step--1); }
 .btn-arrow::after { content: "→"; transition: transform .25s; }
 
@@ -231,7 +231,7 @@ main:focus { outline: none; }
   text-underline-offset: 0.35em;
 }
 .link-arrow::after { content: "→"; transition: transform .25s; }
-.link-arrow:hover { text-decoration-color: var(--coral); }
+@media (hover: hover) { .link-arrow:hover { text-decoration-color: var(--coral); } }
 
 /* ---------- Cabecera (siempre oscura) ---------- */
 .site-header {
@@ -262,7 +262,7 @@ main:focus { outline: none; }
   font-size: var(--step--1);
   text-decoration: none;
 }
-.nav-list a:not(.btn):hover { color: #FF8A70; }
+@media (hover: hover) { .nav-list a:not(.btn):hover { color: #FF8A70; } }
 .nav-list .btn { margin-left: 0.75rem; }
 
 .nav-toggle {
@@ -315,6 +315,10 @@ main:focus { outline: none; }
 }
 
 /* ---------- Menú móvil a pantalla completa ---------- */
+@media (max-width: 63.99rem) {
+  html.menu-abierto { overflow: hidden; }          /* la página de detrás no se mueve */
+  .js .nav-list { overscroll-behavior: contain; }
+}
 @media (max-width: 63.99rem) {
   /* Menú abierto: ocupa toda la pantalla con letras grandes y finas */
   .js .nav-list {

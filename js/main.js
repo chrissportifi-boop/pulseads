@@ -113,7 +113,7 @@
 
       // Cabecera: se esconde al bajar y vuelve al subir (nunca si tiene el foco o el menú abierto)
       if (header) {
-        var hide = y > lastY && y > vh * 0.6 && !header.contains(document.activeElement);
+        var hide = y > lastY && y > vh * 0.6 && !header.contains(document.activeElement) && !document.querySelector('.nav-list.is-open');
         header.classList.toggle('is-hidden', hide);
       }
       lastY = y;
@@ -184,21 +184,22 @@
   }
 
   /* ---------- 0b. Botón flotante "Pide tu anuncio" (móvil) ----------
-     Visible tras la portada y oculto cuando se ve el formulario. Solo entra en el
+     Visible tras la portada y oculto cuando se ve el formulario o el pie. Solo entra en el
      orden de tabulación mientras está visible. */
   var floatCta = document.querySelector('.float-cta');
   var heroEl = document.getElementById('inicio');
   var contactEl = document.getElementById('contacto');
   if (floatCta && heroEl && contactEl && 'IntersectionObserver' in window) {
-    var pastHero = false, atContact = false;
+    var pastHero = false, atContact = false, atFooter = false;
     var updateCta = function () {
-      var show = pastHero && !atContact;
+      var show = pastHero && !atContact && !atFooter;
       floatCta.classList.toggle('is-shown', show);
       floatCta.tabIndex = show ? 0 : -1;
       if (show) floatCta.removeAttribute('aria-hidden'); else floatCta.setAttribute('aria-hidden', 'true');
     };
     new IntersectionObserver(function (e) { pastHero = !e[0].isIntersecting; updateCta(); }).observe(heroEl);
     new IntersectionObserver(function (e) { atContact = e[0].isIntersecting; updateCta(); }, { rootMargin: '0px 0px -30% 0px' }).observe(contactEl);
+    new IntersectionObserver(function (e) { atFooter = e[0].isIntersecting; updateCta(); }).observe(document.querySelector('.site-footer'));
     updateCta();
   }
 
@@ -210,6 +211,7 @@
   function setMenu(open) {
     toggle.setAttribute('aria-expanded', String(open));
     menu.classList.toggle('is-open', open);
+    root.classList.toggle('menu-abierto', open);
   }
 
   if (toggle && menu) {

@@ -225,7 +225,7 @@
     linear-gradient(currentColor, currentColor) center / 1.5px 0.85rem no-repeat;
 }
 .faq-item[open] summary::after { background: linear-gradient(currentColor, currentColor) center / 0.85rem 1.5px no-repeat; }
-.faq-item summary:hover { color: var(--accent-text); }
+@media (hover: hover) { .faq-item summary:hover { color: var(--accent-text); } }
 .faq-body { padding: 0 2.5rem 1.5rem 3rem; color: var(--muted); }
 
 /* ---------- Contacto ---------- */
@@ -294,7 +294,7 @@
 .footer-title { margin-bottom: 0.9rem; font-size: var(--step--1); font-weight: 400; color: var(--muted); }
 .footer-links { margin: 0; padding: 0; list-style: none; }
 .footer-links a { display: inline-flex; align-items: center; min-height: 2.25rem; color: var(--text); text-decoration: none; font-size: var(--step--1); }
-.footer-links a:hover { color: var(--accent-text); text-decoration: underline; }
+@media (hover: hover) { .footer-links a:hover { color: var(--accent-text); text-decoration: underline; } }
 .legal summary {
   display: inline-flex; align-items: center; min-height: 2.75rem;
   cursor: pointer; font-size: var(--step--1);
@@ -409,14 +409,16 @@
 @media (min-width: 48rem) {
   .sector { grid-template-columns: 1fr 1fr 2rem; }
   .sector::after { content: "→"; justify-self: end; color: var(--accent-text); opacity: 0; transition: opacity .3s, transform .5s cubic-bezier(.2, .7, .2, 1); transform: translateX(-.5rem); }
-  .sector:hover::after { opacity: 1; transform: none; }
+  @media (hover: hover) { .sector:hover::after { opacity: 1; transform: none; } }
 }
 
 /* ---------- Volver arriba ---------- */
 .to-top { display: inline-flex; align-items: center; gap: .4rem; min-height: 2.75rem; color: var(--text); text-decoration: none; }
 .to-top::after { content: "↑"; transition: transform .3s; }
-.to-top:hover { color: var(--accent-text); }
-.to-top:hover::after { transform: translateY(-3px); }
+@media (hover: hover) {
+  .to-top:hover { color: var(--accent-text); }
+  .to-top:hover::after { transform: translateY(-3px); }
+}
 
 /* ---------- Secciones como láminas apiladas ---------- */
 :root { --sheet: clamp(1.25rem, 3.5vw, 2.75rem); }

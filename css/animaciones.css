@@ -14,7 +14,7 @@
   .hero-wordmark { animation: subir 1.1s cubic-bezier(.2, .7, .2, 1) both; }
   .hero-waves { animation: aparecer 1.6s ease .2s both; }
 
-  .btn-arrow:hover::after, .link-arrow:hover::after { transform: translateX(4px); }
+  @media (hover: hover) { .btn-arrow:hover::after, .link-arrow:hover::after { transform: translateX(4px); } }
 }
 @keyframes subir { from { transform: translateY(18%); opacity: 0; } }
 @keyframes aparecer { from { opacity: 0; } }
@@ -110,13 +110,13 @@
 
   /* Micro-interacciones */
   .sector h3 { transition: transform .5s cubic-bezier(.2, .7, .2, 1), color .3s; }
-  .sector:hover h3 { transform: translateX(.6rem); color: var(--accent-text); }
+  @media (hover: hover) { .sector:hover h3 { transform: translateX(.6rem); color: var(--accent-text); } }
   .service-num { transition: color .3s; }
-  .service:hover .service-num { color: var(--coral); }
+  @media (hover: hover) { .service:hover .service-num { color: var(--coral); } }
   .frame { transition: background-position 1.4s cubic-bezier(.2, .7, .2, 1); background-position: 0 0, 0 0; }
-  .service:hover .frame { background-position: -26px 0, 0 0; }
+  @media (hover: hover) { .service:hover .frame { background-position: -26px 0, 0 0; } }
   .person .avatar { transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
-  .person:hover .avatar { transform: rotate(-8deg) scale(1.06); }
+  @media (hover: hover) { .person:hover .avatar { transform: rotate(-8deg) scale(1.06); } }
 }
 @keyframes letra { from { transform: translateY(40%) rotate(4deg); opacity: 0; } }
 @keyframes subirSuave { from { transform: translateY(18px); opacity: 0; } }
@@ -133,15 +133,19 @@
 
   /* Mini-anuncios vivos al pasar por el servicio */
   .mock-bar i { transition: width 1.6s cubic-bezier(.2, .7, .2, 1); }
-  .service:hover .mock-bar i { width: 88%; }
+  @media (hover: hover) { .service:hover .mock-bar i { width: 88%; } }
   .mock-title, .mock-chip, .mock-badge { transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
-  .service:hover .mock-title { transform: translateY(-2cqw); }
-  .service:hover .mock-chip, .service:hover .mock-badge { transform: scale(1.06); }
+  @media (hover: hover) {
+    .service:hover .mock-title { transform: translateY(-2cqw); }
+    .service:hover .mock-chip, .service:hover .mock-badge { transform: scale(1.06); }
+  }
   .mock-mini { transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
-  .service:hover .mock-mini:nth-child(1) { transform: translateY(-4cqw); }
-  .service:hover .mock-mini:nth-child(2) { transform: translateY(-4cqw); transition-delay: .06s; }
-  .service:hover .mock-mini:nth-child(3) { transform: translateY(-4cqw); transition-delay: .12s; }
-  .service:hover .mock-mini:nth-child(4) { transform: translateY(-4cqw); transition-delay: .18s; }
+  @media (hover: hover) {
+    .service:hover .mock-mini:nth-child(1) { transform: translateY(-4cqw); }
+    .service:hover .mock-mini:nth-child(2) { transform: translateY(-4cqw); transition-delay: .06s; }
+    .service:hover .mock-mini:nth-child(3) { transform: translateY(-4cqw); transition-delay: .12s; }
+    .service:hover .mock-mini:nth-child(4) { transform: translateY(-4cqw); transition-delay: .18s; }
+  }
 }
 
 /* ---------- Anuncios flotantes de la portada ---------- */
@@ -149,7 +153,9 @@
   .hero-cards { animation: tarjetas 1.4s cubic-bezier(.2, .7, .2, 1) .5s both; }
   .intro .hero-cards { animation-delay: 1.3s; }
   .hero-card-a, .hero-card-b { transition: transform .8s cubic-bezier(.2, .7, .2, 1); }
-  .hero:hover .hero-card-a { transform: rotate(-3deg) translateY(-6px); }
-  .hero:hover .hero-card-b { transform: rotate(9deg) translateY(4px); }
+  @media (hover: hover) {
+    .hero:hover .hero-card-a { transform: rotate(-3deg) translateY(-6px); }
+    .hero:hover .hero-card-b { transform: rotate(9deg) translateY(4px); }
+  }
 }
 @keyframes tarjetas { from { opacity: 0; transform: translateY(60px) rotate(4deg); } }
