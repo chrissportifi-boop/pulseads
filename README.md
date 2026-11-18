@@ -23,33 +23,36 @@ BRAND.md            → guía de marca
 
 ## Qué tenéis que personalizar
 Lo que queda por ajustar (en los archivos, lo pendiente lleva la marca `[Sustituir]`):
-1. **Formspree:** pegad el ID del formulario (ver la sección «Formulario» más abajo).
-2. **Vídeos:** copiad los `.mp4` a `videos/` y los pósters a `img/videos/`. En `data/videos.js` hay una plantilla comentada: rellenad `archivo`, `poster`, `formato` y `transcripcion`. Si `archivo` está vacío, sale un marcador de posición.
-3. **Subtítulos:** un `.vtt` por vídeo; tenéis la plantilla `videos/ejemplo-1.vtt` y un ejemplo completo en `videos/black-friday-relojeria.vtt`.
-4. **Email de contacto (si cambia):** en `index.html` (contacto y aviso legal) y en `js/main.js` (`CONTACT_EMAIL`).
-5. **Dirección de la web:** ya está puesta (`https://chrissportifi-boop.github.io/pulseads/`). Si algún día usáis un dominio propio, cambiadla en `index.html`, `sitemap.xml` y `robots.txt`.
-6. **Precios:** si algún día tenéis tarifas, cambiad la pregunta "¿Cuánto cuesta?".
+1. **Vídeos:** copiad los `.mp4` a `videos/` y los pósters a `img/videos/`. En `data/videos.js` hay una plantilla comentada: rellenad `archivo`, `poster`, `formato` y `transcripcion`. Si `archivo` está vacío, sale un marcador de posición.
+2. **Subtítulos:** un `.vtt` por vídeo; tenéis la plantilla `videos/ejemplo-1.vtt` y un ejemplo completo en `videos/black-friday-relojeria.vtt`.
+   Si cambiáis el vídeo destacado, actualizad también la versión sin JavaScript que hay dentro de `<noscript>` en `index.html`.
+3. **Email de contacto (si cambia):** en `index.html` (contacto y aviso legal) y en `js/main.js` (`CONTACT_EMAIL`).
+4. **Dirección de la web:** ya está puesta (`https://chrissportifi-boop.github.io/pulseads/`). Si algún día usáis un dominio propio, cambiadla en `index.html`, `sitemap.xml` y `robots.txt`.
+5. **Precios:** si algún día tenéis tarifas, cambiad la pregunta "¿Cuánto cuesta?".
 
 ## Si la web se ve descolocada tras un cambio
 Es la caché del navegador mezclando archivos nuevos y viejos: pulsad **Ctrl+F5**. Para evitarlo, cada vez que cambiéis `css/styles.css`, `js/main.js` o `data/videos.js`, subid el número `?v=` que aparece en `index.html` (por ejemplo, de `?v=20261118-2` a `?v=20261118-3`).
 
 ## Formulario
-Los mensajes del formulario se envían con **Formspree** (servicio gratuito) y llegan directamente a `ceigiggm@gmail.com`, sin que el visitante tenga que abrir su correo.
-Mientras no pongáis el ID de Formspree, el formulario sigue funcionando a la antigua: abre el programa de correo del visitante con el mensaje ya escrito.
+El formulario ya está **conectado a Formspree** (ID `xljbbava`): los mensajes llegan directamente a `ceigiggm@gmail.com` con el asunto «Nuevo encargo para PulseAds: (nombre del local)», y al pulsar Responder en Gmail se contesta al cliente.
 
-**Cómo conectarlo (5 minutos, una sola vez):**
-1. Entrad en [formspree.io](https://formspree.io) con la cuenta de `ceigiggm@gmail.com` (si no la tenéis, creadla gratis con ese correo y confirmad el email que os llega).
-2. Cread un formulario nuevo (botón de añadir formulario, *New Form*), ponedle de nombre «Contacto PulseAds» y comprobad que el correo de destino es `ceigiggm@gmail.com`.
-3. Formspree os enseña una dirección como `https://formspree.io/f/xyzabcde`. **El ID son las letras del final** (en el ejemplo, `xyzabcde`). Copiadlo.
-4. Abrid `js/main.js` con el Bloc de notas, buscad `FORMSPREE_ID = ''` y pegad el ID entre las comillas: `FORMSPREE_ID = 'xyzabcde';`. Guardad.
-5. (Recomendado) En `index.html`, buscad `action="https://formspree.io/f/"` y añadid el mismo ID al final: `action="https://formspree.io/f/xyzabcde"`. Así funciona también si alguien tiene JavaScript desactivado.
-6. Publicad la web y enviad un mensaje de prueba. Debería llegar a `ceigiggm@gmail.com` en un minuto (si no, mirad también la carpeta de spam de Gmail).
-
-**Si al enviar sale «No hemos podido enviar tu mensaje»:**
-- En Formspree, abrid el formulario → pestaña **Settings** → apartado **Spam protection** y **desactivad reCAPTCHA**. La página de reCAPTCHA que pone Formspree por defecto no funciona con formularios enviados en segundo plano como este. La web ya trae otra protección antispam (un campo trampa invisible) y Formspree filtra spam por su cuenta.
-- (Opcional) En **Settings** podéis usar **Restrict to Domain** y poner el dominio de la web (sin `https://`, p. ej. `pulseads.es`) para que solo se acepten mensajes enviados desde ella. Ojo: si la probáis desde otra dirección (vuestro ordenador, otro dominio), esos mensajes irán a la carpeta de spam de Formspree.
+- El ID está en `js/main.js` (`FORMSPREE_ID`) y al final del `action` del `<form>` en `index.html`. Si algún día creáis otro formulario, cambiadlo en los dos sitios.
+- Si alguna vez sale «No hemos podido enviar tu mensaje»: en Formspree → vuestro formulario → **Settings** → **Spam protection**, desactivad **reCAPTCHA** (no funciona con formularios enviados en segundo plano). La web ya trae su propio campo trampa antispam.
+- Recomendado: en **Settings → Restrict to Domain** poned `chrissportifi-boop.github.io` para aceptar solo mensajes enviados desde la web.
+- Si un mensaje no aparece, mirad la carpeta de spam de Gmail y marcadlo como «No es spam».
 
 **Límite del plan gratuito:** 50 envíos al mes (formularios ilimitados), según [formspree.io/plans](https://formspree.io/plans) en noviembre de 2026.
+
+## Diseño y animaciones
+Estilo editorial «estudio 2026»: portada oscura con el nombre gigante, secciones claras y oscuras alternas que se superponen como láminas, titulares grandes en letra fina y el rojo de la marca como acento.
+
+Animaciones (todo en `js/main.js`, apartado 0, y al final de `css/styles.css`):
+- Intro con cortina: solo la primera visita de cada sesión.
+- Nombre de la portada letra a letra, titulares palabra a palabra, frase del estudio que se «enciende» al bajar y números que cuentan.
+- Franjas de texto gigante y efecto de profundidad (parallax) ligados al scroll: no se mueven solos.
+- Cabecera que se esconde al bajar, barra de progreso, brillo que sigue al ratón y botón flotante «Pide tu anuncio» en móvil.
+
+Accesibilidad: si el visitante tiene activado «reducir movimiento» en su sistema, no se anima nada y todo se ve tal cual. Sin JavaScript, la web también se ve completa.
 
 ## Publicarla gratis
 **GitHub Pages**
@@ -62,7 +65,7 @@ Mientras no pongáis el ID de Formspree, el formulario sigue funcionando a la an
 2. Arrastrad esta carpeta. Os dará una dirección al momento.
 
 ## Calidad comprobada
-- Lighthouse (móvil y escritorio): 100 en Rendimiento, Accesibilidad, Buenas prácticas y SEO.
+- Lighthouse: escritorio 100 en las cuatro categorías; móvil 96 en Rendimiento (por la intro animada) y 100 en Accesibilidad, Buenas prácticas y SEO.
 - axe-core (WCAG 2.2 AA), en modo claro y oscuro, en móvil y escritorio: 0 errores.
 - HTML validado con html-validate: sin errores.
 - Navegación completa con teclado, sin scroll horizontal de 320 a 1920 px, modo oscuro automático y sin animaciones para quien elige reducir el movimiento.
