@@ -24,6 +24,7 @@
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var root = document.documentElement;
   var observeReveal = function (n) { n.classList.add('is-visible'); };
+  var navAnimada = false, saltoActivo = false;
 
   // Parte un texto en palabras (spans) sin cambiar lo que leen los lectores de pantalla
   function splitWords(node, wrapClass) {
@@ -117,7 +118,7 @@
 
       // Cabecera: se esconde al bajar y vuelve al subir (nunca si tiene el foco o el menú abierto)
       if (header) {
-        var hide = y > lastY && y > vh * 0.6 && !header.contains(document.activeElement) && !document.querySelector('.nav-list.is-open');
+        var hide = !saltoActivo && y > lastY && y > vh * 0.6 && !header.contains(document.activeElement) && !document.querySelector('.nav-list.is-open');
         header.classList.toggle('is-hidden', hide);
       }
       lastY = y;
@@ -177,6 +178,95 @@
       });
       heroSec.addEventListener('pointerenter', function () { heroSec.classList.add('has-glow'); });
       heroSec.addEventListener('pointerleave', function () { heroSec.classList.remove('has-glow'); });
+    }
+
+    /* Transición entre apartados: una cortina cubre la pantalla, la página salta sin que se
+       vea y la sección de destino aparece al levantarse. Dura algo más de un segundo. */
+    var cortina = document.querySelector('.nav-cortina');
+    var cortinaTexto = cortina && cortina.querySelector('.nav-cortina-texto span');
+    var NOMBRES = { inicio: 'Inicio', estudio: 'El estudio', ejemplos: 'Trabajos', servicios: 'Servicios', proceso: 'Método', precios: 'Precios', locales: 'Para quién', nosotros: 'Equipo', faq: 'Preguntas', contacto: 'Contacto' };
+    var ENTRA = 500, ESPERA = 150, SALE = 640;
+    navAnimada = !!cortina;
+
+    function posicionDe(sec) {
+      if (sec.id === 'inicio') return 0;
+      var extra = sec.classList.contains('section-tight-top') ? 24 : 0;
+      return Math.max(0, sec.getBoundingClientRect().top + window.scrollY - header.offsetHeight - extra);
+    }
+    function colocarEn(sec, modo) {
+      window.scrollTo({ top: posicionDe(sec), behavior: modo });
+      sec.setAttribute('tabindex', '-1');
+      sec.focus({ preventScroll: true });       // el teclado y los lectores de pantalla siguen desde aquí
+    }
+    // Vuelve a ocultar lo que se ve en el destino para que aparezca cuando se levanta la cortina
+    function prepararEntrada(sec) {
+      var vh = window.innerHeight;
+      var els = Array.prototype.filter.call(sec.querySelectorAll('.reveal, .reveal-clip, .words-reveal'), function (n) {
+        var r = n.getBoundingClientRect();
+        return r.top < vh && r.bottom > 0;
+      });
+      sec.classList.add('re-entrada');
+      els.forEach(function (n) { n.classList.remove('is-visible'); });
+      void sec.offsetWidth;
+      sec.classList.remove('re-entrada');
+      return els;
+    }
+    function mostrarEntrada(sec, els) {
+      els.forEach(function (n, i) {
+        n.style.transitionDelay = (i * 70) + 'ms';
+        n.classList.add('is-visible');
+        setTimeout(function () { n.style.transitionDelay = ''; }, 1800);
+      });
+      if (sec.id === 'inicio') {           // la portada repite la entrada del nombre
+        root.classList.remove('intro');
+        sec.querySelectorAll('.hero-wordmark .ch, .hero-in').forEach(function (n) {
+          n.style.animation = 'none';
+          void n.offsetWidth;
+          n.style.animation = '';
+        });
+      }
+    }
+    function irA(sec) {
+      if (saltoActivo) return;
+      var menuAbierto = !!document.querySelector('.nav-list.is-open');
+      var lejos = Math.abs(posicionDe(sec) - window.scrollY) > window.innerHeight * 0.9;
+      history.pushState(null, '', '#' + sec.id);
+
+      if (!lejos && !menuAbierto) {        // apartado cercano: desplazamiento suave, sin cortina
+        colocarEn(sec, 'smooth');
+        return;
+      }
+      saltoActivo = true;
+      header.classList.remove('is-hidden');
+      cortinaTexto.textContent = NOMBRES[sec.id] || '';
+      cortina.classList.add('entra');
+      setTimeout(function () {
+        if (menuAbierto) setMenu(false);
+        colocarEn(sec, 'instant');
+        lastY = window.scrollY;
+        var els = prepararEntrada(sec);
+        setTimeout(function () {
+          cortina.classList.remove('entra');
+          cortina.classList.add('sale');
+          setTimeout(function () { mostrarEntrada(sec, els); }, 170);
+          setTimeout(function () {
+            cortina.classList.remove('sale');
+            lastY = window.scrollY;
+            saltoActivo = false;
+          }, SALE);
+        }, ESPERA);
+      }, ENTRA);
+    }
+    if (cortina) {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href^="#"]');
+        if (!a || e.defaultPrevented || a.classList.contains('skip-link')) return;
+        if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        var sec = document.getElementById(a.getAttribute('href').slice(1));
+        if (!sec || sec.tagName !== 'SECTION') return;
+        e.preventDefault();
+        irA(sec);
+      });
     }
 
     function requestFrame() { if (!ticking) { ticking = true; requestAnimationFrame(onFrame); } }
@@ -241,7 +331,7 @@
     });
     // Al elegir una sección, se cierra el menú
     menu.addEventListener('click', function (e) {
-      if (e.target.closest('a') && mobileQuery.matches) setMenu(false);
+      if (e.target.closest('a') && mobileQuery.matches && !navAnimada) setMenu(false);
     });
     // Escape cierra el menú y devuelve el foco al botón
     document.addEventListener('keydown', function (e) {
@@ -255,6 +345,40 @@
       if (mobileQuery.matches && !e.currentTarget.contains(e.relatedTarget)) setMenu(false);
     });
     mobileQuery.addEventListener('change', function () { setMenu(false); });
+  }
+
+  /* ---------- 1b. Indicador del apartado actual en el menú ---------- */
+  var enlacesMenu = {};
+  document.querySelectorAll('.nav-list a[href^="#"]:not(.btn)').forEach(function (a) { enlacesMenu[a.getAttribute('href').slice(1)] = a; });
+  var marcaMenu = document.createElement('span');
+  marcaMenu.className = 'nav-marca';
+  marcaMenu.setAttribute('aria-hidden', 'true');
+  var navPrincipal = document.querySelector('.site-nav');
+  if (navPrincipal) navPrincipal.appendChild(marcaMenu);
+  var enlaceActivo = null;
+
+  function colocarMarca() {
+    if (!enlaceActivo || mobileQuery.matches) { marcaMenu.classList.remove('is-on'); return; }
+    var n = navPrincipal.getBoundingClientRect(), r = enlaceActivo.getBoundingClientRect();
+    marcaMenu.style.width = (r.width - 26) + 'px';
+    marcaMenu.style.transform = 'translateX(' + (r.left - n.left + 13) + 'px)';
+    marcaMenu.classList.add('is-on');
+  }
+  function marcarApartado(id) {
+    var nuevo = enlacesMenu[id] || null;
+    if (nuevo === enlaceActivo) return;
+    if (enlaceActivo) enlaceActivo.removeAttribute('aria-current');
+    if (nuevo) nuevo.setAttribute('aria-current', 'location');
+    enlaceActivo = nuevo;
+    colocarMarca();
+  }
+  if ('IntersectionObserver' in window) {
+    var espia = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) { if (e.isIntersecting) marcarApartado(e.target.id); });
+    }, { rootMargin: '-45% 0px -54% 0px' });
+    document.querySelectorAll('main > section[id]').forEach(function (s) { espia.observe(s); });
+    window.addEventListener('resize', colocarMarca);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(colocarMarca);
   }
 
   /* ---------- 2. Vídeos de ejemplo (datos en data/videos.js) ---------- */

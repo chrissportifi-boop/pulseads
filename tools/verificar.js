@@ -93,6 +93,47 @@ async function pagina(b, { w = 1440, h = 900, tema = 'light', mov = 'reduce', in
   res('Todo aparece al bajar', ocultos === 0, ocultos ? ocultos + ' bloques sin aparecer' : '');
   await p.close();
 
+  // Transición del menú
+  p = await pagina(b, { w: 1280, h: 800, mov: 'no-preference' });
+  vigilar(p);
+  await p.goto(srv.url, { waitUntil: 'networkidle0' });
+  await espera(1800);
+  await p.click('.nav-list a[href="#precios"]');
+  await espera(300);
+  const durante = await p.evaluate(() => getComputedStyle(document.querySelector('.nav-cortina')).visibility);
+  await espera(2300);
+  const llegada = await p.evaluate(() => {
+    const s = document.getElementById('precios'), c = document.querySelector('.nav-cortina');
+    return { top: Math.round(s.getBoundingClientRect().top), hash: location.hash, foco: document.activeElement.id, cortina: getComputedStyle(c).visibility,
+      cabecera: !document.querySelector('.site-header').classList.contains('is-hidden'), actual: (document.querySelector('.nav-list [aria-current]') || {}).textContent,
+      ocultos: [...s.querySelectorAll('.reveal, .words-reveal')].filter((n) => n.getBoundingClientRect().top < innerHeight && !n.classList.contains('is-visible')).length };
+  });
+  const navOk = durante === 'visible' && Math.abs(llegada.top - 64) < 12 && llegada.hash === '#precios' && llegada.foco === 'precios' && llegada.cortina === 'hidden' && llegada.cabecera && llegada.actual === 'Precios' && !llegada.ocultos;
+  res('Transición del menú', navOk, navOk ? '' : JSON.stringify({ durante, ...llegada }));
+  await p.close();
+
+  p = await pagina(b, { w: 390, h: 844, mov: 'no-preference' });
+  vigilar(p);
+  await p.goto(srv.url, { waitUntil: 'networkidle0' });
+  await espera(1500);
+  await p.click('.nav-toggle');
+  await espera(300);
+  const anchoMenu = await p.evaluate(() => Math.round(document.getElementById('menu-principal').getBoundingClientRect().width));
+  res('Menú móvil a todo el ancho', anchoMenu === 390, anchoMenu + ' px');
+  await p.click('.nav-list a[href="#faq"]');
+  await espera(2400);
+  const movil = await p.evaluate(() => ({ abierto: !!document.querySelector('.nav-list.is-open'), bloqueo: document.documentElement.classList.contains('menu-abierto'), top: Math.round(document.getElementById('faq').getBoundingClientRect().top) }));
+  res('Transición del menú en móvil', !movil.abierto && !movil.bloqueo && Math.abs(movil.top - 64) < 12, JSON.stringify(movil));
+  await p.close();
+
+  p = await pagina(b, { w: 1280, h: 800 });
+  await p.goto(srv.url, { waitUntil: 'networkidle0' });
+  await p.click('.nav-list a[href="#precios"]');
+  await espera(350);
+  const reducido = await p.evaluate(() => ({ cortina: getComputedStyle(document.querySelector('.nav-cortina')).visibility, llego: document.getElementById('precios').getBoundingClientRect().top < 120 }));
+  res('Sin cortina con «reducir movimiento»', reducido.cortina === 'hidden' && reducido.llego, JSON.stringify(reducido));
+  await p.close();
+
   p = await pagina(b, { intro: true });
   await p.goto(srv.url, { waitUntil: 'networkidle0' });
   await espera(300);

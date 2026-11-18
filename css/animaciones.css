@@ -159,3 +159,48 @@
   }
 }
 @keyframes tarjetas { from { opacity: 0; transform: translateY(60px) rotate(4deg); } }
+
+/* ---------- Transición entre apartados ---------- */
+.nav-cortina { position: fixed; inset: 0; z-index: 150; overflow: hidden; pointer-events: none; visibility: hidden; }
+.nav-cortina.entra, .nav-cortina.sale { visibility: visible; }
+.nav-cortina::before, .nav-cortina-panel { content: ""; position: absolute; inset: 0; transform: translateY(101%); will-change: transform; }
+.nav-cortina::before { background: var(--coral); }
+.nav-cortina-panel { display: grid; place-items: center; padding-inline: 1rem; background: #0E0D0C; color: #F2F0ED; }
+.nav-cortina-texto { display: block; overflow: hidden; padding-bottom: .12em; font-weight: 300; font-size: clamp(3rem, 1rem + 9vw, 9rem); line-height: 1.05; letter-spacing: -.045em; text-align: center; }
+.nav-cortina-texto span { display: block; transform: translateY(112%); }
+
+.nav-cortina.entra::before { animation: cortinaSube .46s cubic-bezier(.76, 0, .24, 1) both; }
+.nav-cortina.entra .nav-cortina-panel { animation: cortinaSube .46s cubic-bezier(.76, 0, .24, 1) .05s both; }
+.nav-cortina.entra .nav-cortina-texto span { animation: cortinaTexto .5s cubic-bezier(.2, .7, .2, 1) .2s both; }
+.nav-cortina.sale::before { transform: none; animation: cortinaSale .58s cubic-bezier(.76, 0, .24, 1) .06s both; }
+.nav-cortina.sale .nav-cortina-panel { transform: none; animation: cortinaSale .58s cubic-bezier(.76, 0, .24, 1) both; }
+.nav-cortina.sale .nav-cortina-texto span { transform: none; animation: cortinaTextoSale .3s ease-in both; }
+@keyframes cortinaSube {
+  from { transform: translateY(101%); border-radius: 50% 50% 0 0 / 16vh 16vh 0 0; }
+  to { transform: none; border-radius: 0; }
+}
+@keyframes cortinaSale {
+  from { transform: none; border-radius: 0; }
+  to { transform: translateY(-101%); border-radius: 0 0 50% 50% / 0 0 16vh 16vh; }
+}
+@keyframes cortinaTexto { from { transform: translateY(112%); } to { transform: none; } }
+@keyframes cortinaTextoSale { to { transform: translateY(-40%); opacity: 0; } }
+
+/* Mientras la cortina cubre la pantalla, el destino se oculta sin transición */
+.re-entrada, .re-entrada * { transition: none !important; }
+section[tabindex="-1"]:focus { outline: none; }
+
+/* ---------- Indicador del apartado actual ---------- */
+@media (min-width: 64rem) { .site-nav { position: relative; } } /* en móvil el menú se coloca respecto a la cabecera */
+.nav-marca { position: absolute; left: 0; bottom: .45rem; height: 2px; border-radius: 2px; background: var(--coral); opacity: 0; pointer-events: none; transition: transform .55s cubic-bezier(.2, .7, .2, 1), width .55s cubic-bezier(.2, .7, .2, 1), opacity .3s; }
+.nav-marca.is-on { opacity: 1; }
+@media (max-width: 63.99rem) {
+  .nav-marca { display: none; }
+  .js .nav-list a[aria-current]::after { content: ""; flex: none; align-self: center; width: .55rem; height: .55rem; margin-left: .75rem; border-radius: 50%; background: var(--coral); }
+}
+
+/* ---------- Enlaces de la portada y del menú ---------- */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hero-index a { transition: color .25s, transform .4s cubic-bezier(.2, .7, .2, 1); }
+  .hero-index a:hover { transform: translateX(.45rem); }
+}
