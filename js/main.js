@@ -117,7 +117,7 @@
     }
 
     var body = el('div', { 'class': 'video-body' });
-    body.appendChild(el('span', { 'class': 'badge' }, 'Ejemplo provisional'));
+    body.appendChild(el('span', { 'class': 'badge' }, 'Pieza de muestra'));
     if (v.categoria) body.appendChild(el('p', { 'class': 'video-category' }, v.categoria));
     body.appendChild(el('h3', {}, v.titulo));
     if (v.descripcion) body.appendChild(el('p', {}, v.descripcion));

@@ -14,13 +14,13 @@
      subtitulos    → archivo .vtt con los subtítulos en español
      transcripcion → texto completo de lo que se ve y se oye en el vídeo
    Para añadir un vídeo copia un bloque entero; para quitarlo, bórralo.
-   Todos se muestran con la etiqueta "Ejemplo provisional".
+   Todos se muestran con la etiqueta "Pieza de muestra".
    ========================================================= */
 window.PULSEADS_VIDEOS = [
   {
     titulo: "Black Friday para una relojería",
-    categoria: "Pieza de prueba · Comercio local",
-    descripcion: "Anuncio vertical para redes que presenta un cronógrafo con detalles técnicos animados al ritmo de un reloj y termina con la oferta de Black Friday y la dirección de la tienda. Es una pieza de práctica hecha por nosotros, no un encargo de la marca que aparece.",
+    categoria: "Comercio local · Relojería",
+    descripcion: "Anuncio vertical para redes que presenta un cronógrafo con detalles técnicos animados al ritmo de un reloj y termina con la oferta de Black Friday y la dirección de la tienda. Pieza de muestra de producción propia, sin relación comercial con la marca que aparece.",
     archivo: "videos/black-friday-relojeria.mp4",
     poster: "img/videos/black-friday-relojeria.webp",
     formato: "vertical",
