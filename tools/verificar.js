@@ -29,11 +29,11 @@ async function pagina(b, { w = 1440, h = 900, tema = 'light', mov = 'reduce', in
   res('Sintaxis JavaScript', !js.length, js.join(' | '));
 
   const bin = path.join(path.dirname(require.resolve('html-validate/package.json')), 'bin', 'html-validate.mjs');
-  const hv = nodo([bin, '--config', '.htmlvalidate.json', '../index.html']);
+  const hv = nodo([bin, '--config', '.htmlvalidate.json', ...version.PAGINAS.map((f) => '../' + f)]);
   res('HTML válido', hv.status === 0, hv.status === 0 ? '' : (hv.stdout + hv.stderr).trim().split('\n').slice(0, 8).join(' / '));
 
   const v = version.calcular(), vs = version.actual();
-  const alDia = vs.length === 6 && vs.every((x) => x === v);
+  const alDia = vs.length === 12 && vs.every((x) => x === v);
   res('Versión ?v= al día', alDia, alDia ? '' : 'ejecuta: npm run version');
 
   const srv = await servidor(), b = await navegador(), errores = [];
@@ -63,6 +63,23 @@ async function pagina(b, { w = 1440, h = 900, tema = 'light', mov = 'reduce', in
   }
   res('Sin scroll horizontal (320-1920 px)', !desb.length, desb.join(', '));
   res('Accesibilidad axe (claro y oscuro)', !viol.length, viol.slice(0, 6).join(' | '));
+
+  // Páginas legales
+  const legal = [];
+  for (const f of version.PAGINAS.slice(1)) {
+    for (const tema of ['light', 'dark']) {
+      const q = await pagina(b, { w: 390, tema });
+      vigilar(q);
+      await q.goto(srv.url + f, { waitUntil: 'networkidle0' });
+      await q.evaluate(axeFuente);
+      const r = await q.evaluate(() => window.axe.run(document, { runOnly: ['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'] }));
+      r.violations.forEach((x) => legal.push(`${f}/${tema} ${x.id}`));
+      const o = await q.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+      if (o > 0) legal.push(`${f} desborda ${o}px`);
+      await q.close();
+    }
+  }
+  res('Páginas legales accesibles', !legal.length, legal.slice(0, 6).join(' | '));
 
   // 3. Animaciones
   let p = await pagina(b, { w: 1280, h: 800, mov: 'no-preference' });
@@ -117,7 +134,7 @@ async function pagina(b, { w = 1440, h = 900, tema = 'light', mov = 'reduce', in
   await p.$eval('#form-contacto button[type=submit]', (e) => e.click());
   await espera(200);
   const form = await p.evaluate(() => ({ foco: document.activeElement.id, inv: document.querySelectorAll('#form-contacto [aria-invalid=true]').length }));
-  res('Formulario avisa de los errores', form.foco === 'resumen-errores' && form.inv === 4, form.inv === 4 ? '' : JSON.stringify(form));
+  res('Formulario avisa de los errores', form.foco === 'resumen-errores' && form.inv === 5, form.inv === 5 ? '' : JSON.stringify(form));
   await p.close();
 
   res('Sin errores de consola ni archivos rotos', !errores.length, [...new Set(errores)].slice(0, 5).join(' | '));

@@ -1,6 +1,6 @@
 # PulseAds · instrucciones para Claude
 
-Web estática de una sola página (HTML, CSS y JS sin frameworks) de **PulseAds**, agencia ficticia de vídeos publicitarios con IA para locales. Proyecto académico de Christian Gómez Moreno (Chris) y César Iglesias. Publicada en https://chrissportifi-boop.github.io/pulseads/ (GitHub Pages, rama `main`).
+Web estática de una sola página (HTML, CSS y JS sin frameworks) de **PulseAds**, negocio real en fase de lanzamiento de vídeos publicitarios con IA para locales, de Christian Gómez Moreno (Chris) y César Iglesias. La web es provisional mientras hablan con los primeros negocios. Publicada en https://chrissportifi-boop.github.io/pulseads/ (GitHub Pages, rama `main`).
 
 Los dos trabajan con su propio Claude y no programan: responde en español, en lenguaje sencillo, y hazlo todo sin pedirles pasos técnicos.
 
@@ -21,6 +21,7 @@ Los dos trabajan con su propio Claude y no programan: responde en español, en l
 | `css/animaciones.css` | Intro, apariciones, efectos de scroll y micro-interacciones |
 | `js/main.js` | 0 animaciones · 0b botón flotante · 1 menú · 2 vídeos · 3 formulario |
 | `data/videos.js` | Lista de vídeos: para cambiar uno, edita solo este archivo |
+| `aviso-legal.html`, `privacidad.html`, `condiciones.html` | Páginas legales (estilos en `css/legal.css`) |
 | `tools/` | Pruebas y utilidades (no forman parte de la web) |
 
 Los CSS se cargan en ese orden (base, secciones, portada, animaciones) y **el orden importa**: no muevas reglas de un archivo a otro sin comprobar el resultado.
@@ -28,7 +29,9 @@ Los CSS se cargan en ese orden (base, secciones, portada, animaciones) y **el or
 ## Reglas del contenido
 - Español de España, tono profesional y cercano.
 - **No inventes** clientes, testimonios, cifras, premios ni precios.
-- Mantén la nota «PulseAds es un proyecto académico ficticio» en el pie.
+- Faltan el NIF y el domicilio en `aviso-legal.html` y `privacidad.html` (busca `[Sustituir]`). Nunca los inventes.
+- Los precios están en `index.html` (sección de precios y FAQ) y en `condiciones.html`: mantenlos iguales.
+- WhatsApp: los botones se activan rellenando `WHATSAPP_NUMERO` en `js/main.js`.
 - El vídeo de Charlie Paris usa una marca real: debe seguir indicando que es una pieza de muestra sin relación comercial con la marca.
 - Si cambia el vídeo destacado, actualiza también el bloque `<noscript>` de la sección de trabajos.
 

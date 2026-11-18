@@ -1,7 +1,7 @@
 # PulseAds · Web
 
 Web de una sola página de **PulseAds**, la agencia de vídeos con IA para locales.
-*Proyecto académico ficticio de Christian Gómez Moreno y César Iglesias.*
+*Negocio en fase de lanzamiento de Christian Gómez Moreno y César Iglesias. Web provisional.*
 
 ## Cómo abrirla
 Haced doble clic en `index.html` y se abrirá en el navegador.

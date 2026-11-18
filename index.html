@@ -34,10 +34,10 @@
   <link rel="preload" href="fonts/bricolage-grotesque-800.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-300.woff2" as="font" type="font/woff2" crossorigin>
   <!-- ?v= lo actualiza solo «npm run version» (carpeta tools): evita que el navegador use archivos antiguos -->
-  <link rel="stylesheet" href="css/base.css?v=67b2f6a28f">
-  <link rel="stylesheet" href="css/secciones.css?v=67b2f6a28f">
-  <link rel="stylesheet" href="css/portada.css?v=67b2f6a28f">
-  <link rel="stylesheet" href="css/animaciones.css?v=67b2f6a28f">
+  <link rel="stylesheet" href="css/base.css?v=5b7d2021e0">
+  <link rel="stylesheet" href="css/secciones.css?v=5b7d2021e0">
+  <link rel="stylesheet" href="css/portada.css?v=5b7d2021e0">
+  <link rel="stylesheet" href="css/animaciones.css?v=5b7d2021e0">
 
   <!-- Marca que hay JavaScript para activar menú móvil y animaciones (sin JS todo sigue visible) -->
   <script>
@@ -60,7 +60,7 @@
     "url": "https://chrissportifi-boop.github.io/pulseads/",
     "logo": "https://chrissportifi-boop.github.io/pulseads/img/icon-512.png",
     "image": "https://chrissportifi-boop.github.io/pulseads/img/og-image.png",
-    "description": "Proyecto académico ficticio: agencia que crea vídeos publicitarios con inteligencia artificial para locales y negocios de barrio.",
+    "description": "Estudio que crea vídeos publicitarios con inteligencia artificial para locales y negocios de barrio.",
     "email": "ceigiggm@gmail.com",
     "founder": [
       { "@type": "Person", "name": "Christian Gómez Moreno" },
@@ -89,9 +89,10 @@
           <li><a href="#ejemplos">Trabajos</a></li>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#proceso">Método</a></li>
+          <li><a href="#precios">Precios</a></li>
           <li><a href="#nosotros">Equipo</a></li>
           <li><a href="#faq">Preguntas</a></li>
-          <li><a class="btn btn-light btn-small" href="#contacto">Pide tu anuncio</a></li>
+          <li><a class="btn btn-light btn-small" href="#contacto" data-interes="Demo gratis">Pide tu demo gratis</a></li>
         </ul>
       </nav>
     </div>
@@ -154,12 +155,12 @@
                 <li><a href="#ejemplos"><span aria-hidden="true">01</span> Trabajos</a></li>
                 <li><a href="#servicios"><span aria-hidden="true">02</span> Servicios</a></li>
                 <li><a href="#proceso"><span aria-hidden="true">03</span> Método</a></li>
-                <li><a href="#nosotros"><span aria-hidden="true">04</span> Equipo</a></li>
+                <li><a href="#precios"><span aria-hidden="true">04</span> Precios</a></li>
                 <li><a href="#contacto"><span aria-hidden="true">05</span> Contacto</a></li>
               </ol>
             </nav>
-            <p class="hero-lead">Vídeos con IA que hacen que tu local se note. Anuncios para redes sociales, pantallas y campañas de bares, restaurantes, tiendas y negocios de barrio.</p>
-            <a class="btn btn-light btn-arrow" href="#contacto">Pide tu anuncio</a>
+            <p class="hero-lead">Vídeos con IA que hacen que tu local se note. Te preparamos una demo gratis de 10 segundos y, si te convence, seguimos.</p>
+            <a class="btn btn-light btn-arrow" href="#contacto" data-interes="Demo gratis">Pide tu demo gratis</a>
           </div>
         </div>
 
@@ -377,11 +378,66 @@
           </li>
         </ol>
 
-        <p class="section-cta reveal"><a class="btn btn-light btn-arrow" href="#contacto">Empezar un proyecto</a></p>
+        <p class="section-cta reveal"><a class="btn btn-light btn-arrow" href="#precios">Ver packs y precios</a></p>
       </div>
 
       <!-- Franja de texto gigante (decorativa) que se desplaza al hacer scroll en sentido contrario -->
       <div class="band" aria-hidden="true"><div class="band-track" data-direction="1"><span>Reels</span><span class="marquee-dot"></span><span class="outline">TikTok</span><span class="marquee-dot"></span><span>Historias</span><span class="marquee-dot"></span><span class="outline">Pantallas</span><span class="marquee-dot"></span><span>Reels</span><span class="marquee-dot"></span><span class="outline">TikTok</span><span class="marquee-dot"></span><span>Historias</span><span class="marquee-dot"></span><span class="outline">Pantallas</span><span class="marquee-dot"></span><span>Reels</span><span class="marquee-dot"></span><span class="outline">TikTok</span><span class="marquee-dot"></span><span>Historias</span><span class="marquee-dot"></span><span class="outline">Pantallas</span><span class="marquee-dot"></span><span>Reels</span><span class="marquee-dot"></span><span class="outline">TikTok</span><span class="marquee-dot"></span><span>Historias</span><span class="marquee-dot"></span><span class="outline">Pantallas</span><span class="marquee-dot"></span></div></div>
+    </section>
+
+    <!-- ============ DEMO GRATIS Y PRECIOS ============ -->
+    <!-- Los precios también aparecen en la pregunta «¿Cuánto cuesta?» y en condiciones.html: cámbialos en los tres sitios. -->
+    <section class="section theme-light" id="precios" aria-labelledby="precios-titulo">
+      <div class="container">
+        <header class="split section-head reveal">
+          <p class="label">Precios</p>
+          <div>
+            <h2 id="precios-titulo" class="h2-light">Primero lo ves. Después decides.</h2>
+            <p class="lead">Empezamos con una demo gratis para tu local. Si te gusta, eliges el pack que mejor encaje con tu negocio.</p>
+          </div>
+        </header>
+
+        <div class="demo theme-dark reveal">
+          <div>
+            <p class="label">Demo gratis</p>
+            <h3>Tu local en un vídeo de 10 segundos</h3>
+            <p>Cuéntanos qué quieres anunciar y te preparamos una muestra hecha para tu negocio.</p>
+          </div>
+          <div class="demo-accion">
+            <ul class="ticks"><li>Sin pago ni tarjeta</li><li>Sin compromiso</li><li>Una demo por negocio</li></ul>
+            <a class="btn btn-light btn-arrow" href="#contacto" data-interes="Demo gratis">Quiero mi demo gratis</a>
+            <a class="btn btn-wa" data-whatsapp hidden>Pedirla por WhatsApp</a>
+          </div>
+        </div>
+
+        <ul class="plans">
+          <li class="plan reveal">
+            <h3>Básico</h3>
+            <p class="plan-precio"><span>Desde</span> 49&nbsp;€</p>
+            <p class="plan-desc">Para anunciar algo concreto.</p>
+            <ul class="ticks"><li>1 vídeo de hasta 30 segundos</li><li>1 formato a elegir</li><li>Guion, música con licencia y subtítulos</li><li>1 ronda de cambios</li></ul>
+            <a class="btn btn-solid btn-arrow" href="#contacto" data-interes="Pack Básico">Quiero el pack Básico</a>
+          </li>
+          <li class="plan reveal plan-destacado">
+            <p class="plan-marca">Recomendado para empezar</p>
+            <h3>Redes</h3>
+            <p class="plan-precio"><span>Desde</span> 149&nbsp;€</p>
+            <p class="plan-desc">Para una campaña con varios vídeos.</p>
+            <ul class="ticks"><li>4 vídeos de hasta 30 segundos</li><li>Formato vertical y cuadrado</li><li>Estilo común para tu marca</li><li>2 rondas de cambios por vídeo</li></ul>
+            <a class="btn btn-solid btn-arrow" href="#contacto" data-interes="Pack Redes">Quiero el pack Redes</a>
+          </li>
+          <li class="plan reveal">
+            <h3>Mensual</h3>
+            <p class="plan-precio"><span>Desde</span> 249&nbsp;€<span> al mes</span></p>
+            <p class="plan-desc">Para publicar de forma constante.</p>
+            <ul class="ticks"><li>8 vídeos al mes de hasta 30 segundos</li><li>Todos los formatos</li><li>Propuesta de calendario de publicación</li><li>2 rondas de cambios por vídeo · sin permanencia</li></ul>
+            <a class="btn btn-solid btn-arrow" href="#contacto" data-interes="Pack Mensual">Quiero el pack Mensual</a>
+          </li>
+        </ul>
+
+        <p class="lanzamiento reveal"><strong>Oferta de lanzamiento:</strong> los 3 primeros negocios tienen un 30&nbsp;% de descuento en su primer pack, a cambio de su opinión y de permiso para enseñar el vídeo.</p>
+        <p class="plan-nota">Precios orientativos, impuestos no incluidos. Antes de empezar recibirás un presupuesto cerrado. Consulta las <a href="condiciones.html">condiciones de contratación</a>.</p>
+      </div>
     </section>
 
     <!-- ============ PARA QUIÉN ============ -->
@@ -461,7 +517,7 @@
           </details>
           <details class="faq-item">
             <summary><span class="faq-num" aria-hidden="true">03</span>¿Cuánto cuesta?</summary>
-            <div class="faq-body"><p>No tenemos tarifas cerradas: el precio depende del contenido que nos pidas. Influyen el número de vídeos, su duración, los formatos que necesites y lo elaborada que sea cada pieza.</p><p>Cuéntanos tu idea y hablamos contigo para darte un presupuesto a medida y sin compromiso.</p></div>
+            <div class="faq-body"><p>La demo es gratis. Después tienes tres packs: Básico desde 49&nbsp;€, Redes desde 149&nbsp;€ y Mensual desde 249&nbsp;€ al mes, impuestos no incluidos.</p><p>El precio final depende del número de vídeos, su duración y lo elaborada que sea cada pieza. Siempre recibirás un presupuesto cerrado antes de empezar.</p></div>
           </details>
           <details class="faq-item">
             <summary><span class="faq-num" aria-hidden="true">04</span>¿Los vídeos están hechos solo con IA?</summary>
@@ -479,6 +535,10 @@
             <summary><span class="faq-num" aria-hidden="true">07</span>¿Puedo usar libremente la música y las imágenes?</summary>
             <div class="faq-body"><p>Sí. Solo usamos recursos cuya licencia permite el uso comercial, y en la entrega te indicamos el origen de cada uno.</p></div>
           </details>
+          <details class="faq-item">
+            <summary><span class="faq-num" aria-hidden="true">08</span>¿La demo es gratis de verdad?</summary>
+            <div class="faq-body"><p>Sí. Te preparamos un vídeo de unos 10 segundos sin pago ni obligación de contratar. Si no te convence, no pagas nada. Hay una demo por negocio y sirve para valorar nuestro trabajo: para publicarla hay que contratar un pack.</p></div>
+          </details>
         </div>
       </div>
     </section>
@@ -490,9 +550,10 @@
         <header class="contact-head reveal">
           <p class="label">Contacto</p>
           <h2 id="contacto-titulo" class="display display-left">Hagamos que tu local se note.</h2>
-          <p class="lead">Cuéntanos qué quieres anunciar y te responderemos con una propuesta y un presupuesto sin compromiso.</p>
+          <p class="lead">Cuéntanos qué quieres anunciar y te prepararemos una demo gratis de 10 segundos, sin compromiso.</p>
           <!-- Email de contacto: si cambia, cámbialo también en js/main.js (CONTACT_EMAIL). -->
           <p class="contact-mail">También puedes escribirnos a <a href="mailto:ceigiggm@gmail.com">ceigiggm@gmail.com</a>.</p>
+          <p class="contact-wa"><a class="btn btn-wa" data-whatsapp hidden>Escríbenos por WhatsApp</a></p>
         </header>
 
         <!--
@@ -502,7 +563,7 @@
         -->
         <form class="contact-form reveal" id="form-contacto" name="contacto" action="https://formspree.io/f/xljbbava" method="POST" novalidate>
           <!-- Asunto del correo cuando se envía sin JavaScript ({{ local }} lo rellena Formspree) -->
-          <input type="hidden" name="subject" value="Nuevo encargo para PulseAds: {{ local }}">
+          <input type="hidden" name="subject" value="PulseAds · {{ interes }}: {{ local }}">
           <!-- Trampa antispam (_gotcha): invisible, fuera del orden de tabulación y oculta a lectores de pantalla.
                Las personas no la ven; si un robot la rellena, Formspree descarta el mensaje. -->
           <div class="visually-hidden" aria-hidden="true">
@@ -532,6 +593,17 @@
           </div>
 
           <div class="field">
+            <label for="interes">¿Qué te interesa?</label>
+            <select id="interes" name="interes">
+              <option>Demo gratis</option>
+              <option>Pack Básico</option>
+              <option>Pack Redes</option>
+              <option>Pack Mensual</option>
+              <option>Otra cosa</option>
+            </select>
+          </div>
+
+          <div class="field">
             <label for="email">Email</label>
             <p class="field-hint" id="email-hint">Por ejemplo: nombre@milocal.es</p>
             <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="email-hint email-error">
@@ -545,7 +617,16 @@
             <p class="field-error" id="mensaje-error" hidden></p>
           </div>
 
-          <button class="btn btn-light btn-arrow" type="submit">Enviar mensaje</button>
+          <div class="field">
+            <label class="check">
+              <input id="privacidad" name="privacidad" type="checkbox" value="Aceptada" required aria-describedby="privacidad-error">
+              <span>He leído y acepto la <a href="privacidad.html">política de privacidad</a>.</span>
+            </label>
+            <p class="field-error" id="privacidad-error" hidden></p>
+          </div>
+          <p class="info-datos">Usaremos tus datos para responder a tu solicitud. Christian Gómez Moreno y César Iglesias son los responsables y Formspree (EE.&nbsp;UU.) gestiona el envío del formulario. Puedes ejercer tus derechos de acceso, rectificación y supresión, entre otros, escribiéndonos.</p>
+
+          <button class="btn btn-light btn-arrow" type="submit">Pedir mi demo gratis</button>
           <p class="form-status" id="estado-formulario" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -566,6 +647,7 @@
           <li><a href="#ejemplos">Trabajos</a></li>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#proceso">Método</a></li>
+          <li><a href="#precios">Precios</a></li>
           <li><a href="#locales">Para quién</a></li>
           <li><a href="#nosotros">Equipo</a></li>
           <li><a href="#faq">Preguntas frecuentes</a></li>
@@ -582,15 +664,12 @@
       </div>
 
       <div>
-        <h2 class="footer-title">Aviso legal</h2>
-        <details class="legal">
-          <summary>Leer el aviso legal y de privacidad</summary>
-          <div class="legal-body">
-            <p>Esta web es un proyecto académico sin actividad comercial. Responsables: Christian Gómez Moreno y César Iglesias. Contacto: <a href="mailto:ceigiggm@gmail.com">ceigiggm@gmail.com</a>.</p>
-            <p>Los mensajes del formulario de contacto se envían a nuestro correo a través de Formspree, un servicio externo de envío de formularios, y solo los usamos para responder a tu solicitud. Esta web no usa cookies ni herramientas de analítica.</p>
-            <p>Las tipografías Bricolage Grotesque e Inter se usan bajo la licencia SIL Open Font License.</p>
-          </div>
-        </details>
+        <h2 class="footer-title">Legal</h2>
+        <ul class="footer-links">
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
+          <li><a href="privacidad.html">Privacidad y cookies</a></li>
+          <li><a href="condiciones.html">Condiciones de contratación</a></li>
+        </ul>
       </div>
     </div>
 
@@ -601,16 +680,18 @@
 
     <div class="container footer-bottom">
       <p>© 2026 PulseAds · Christian Gómez Moreno y César Iglesias</p>
-      <p class="footer-note">PulseAds es un proyecto académico ficticio.</p>
+      <p class="footer-note">Proyecto emprendedor en fase de lanzamiento.</p>
       <p><a class="to-top" href="#inicio">Volver arriba</a></p>
     </div>
   </footer>
 
   <!-- Botón flotante para móvil (aparece tras la portada y se oculta en el contacto) -->
-  <a class="float-cta" href="#contacto" tabindex="-1">Pide tu anuncio</a>
+  <a class="float-cta" href="#contacto" tabindex="-1" data-interes="Demo gratis">Pide tu demo gratis</a>
+  <!-- Botón de WhatsApp: aparece solo cuando se rellena WHATSAPP_NUMERO en js/main.js -->
+  <a class="wa-float" data-whatsapp hidden aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3Zm0 2a7 7 0 1 1-3.6 13l-.4-.2-2.1.6.6-2-.3-.4A7 7 0 0 1 12 5Z"/></svg></a>
 
   <!-- Datos de los vídeos y lógica de la página (defer: no bloquean la carga) -->
-  <script src="data/videos.js?v=67b2f6a28f" defer></script>
-  <script src="js/main.js?v=67b2f6a28f" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="data/videos.js?v=5b7d2021e0" defer></script>
+  <script src="js/main.js?v=5b7d2021e0" defer onerror="document.documentElement.classList.remove('js')"></script>
 </body>
 </html>

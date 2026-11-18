@@ -116,7 +116,7 @@
 
 .ticks { margin: 1.5rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.5rem; }
 .ticks li { display: flex; gap: 0.75rem; align-items: baseline; }
-.ticks li::before { content: ""; flex: none; align-self: center; width: 0.9rem; height: 1.5px; background: var(--coral); }
+.ticks li::before { content: ""; flex: none; align-self: center; width: 0.9rem; height: 2px; background: var(--coral); }
 
 /* Marcos de formato: la "imagen" de cada servicio (decorativa) */
 .frame {
@@ -471,3 +471,62 @@ main > .section.section-tight-top { position: relative; }
 @media (max-width: 55.99rem) {
   .video-media.is-vertical { max-width: 17rem; }
 }
+
+/* ---------- Demo gratis y packs ---------- */
+.btn-solid {
+  color: var(--bg);
+  background: linear-gradient(var(--coral), var(--coral)) left center / 0% 100% no-repeat, var(--text);
+  transition: background-size .45s cubic-bezier(.2, .7, .2, 1), color .25s;
+}
+@media (hover: hover) { .btn-solid:hover { color: #111111; background-size: 100% 100%, auto; } }
+.btn-wa { background: #25D366; color: #111111; }
+[data-whatsapp][hidden] { display: none; }
+
+.demo {
+  display: grid;
+  gap: 2rem;
+  padding: clamp(1.75rem, 5vw, 3.5rem);
+  border-radius: var(--radius);
+}
+.demo .label { margin-bottom: 1rem; }
+.demo h3 { font-weight: 300; font-size: clamp(2rem, 1.2rem + 3vw, 3.5rem); line-height: 1.04; letter-spacing: -.035em; }
+.demo p:not(.label) { color: var(--muted); max-width: 32rem; }
+.demo-accion { display: grid; gap: 1.25rem; align-content: center; justify-items: start; }
+.demo-accion .ticks { margin: 0; }
+@media (min-width: 56rem) { .demo { grid-template-columns: 7fr 5fr; align-items: center; } }
+
+.plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+.plan { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(1.5rem, 3vw, 2.25rem); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.plan-destacado { border: 2px solid var(--coral); }
+.plan-marca { margin: 0 0 1rem; padding: .15rem .7rem; border-radius: 999px; background: var(--coral); color: #111111; font-size: var(--step--1); font-weight: 600; }
+.plan h3 { margin: 0; font-size: 1.5rem; }
+.plan-precio { margin: 1rem 0 .25rem; font-weight: 300; font-size: clamp(2.75rem, 2rem + 2vw, 3.75rem); line-height: 1; letter-spacing: -.04em; }
+.plan-precio span { font-size: var(--step--1); font-weight: 400; letter-spacing: 0; color: var(--muted); }
+.plan-desc { color: var(--muted); }
+.plan .ticks { margin: .5rem 0 2rem; flex: 1; }
+.plan .btn { width: 100%; }
+
+.lanzamiento { margin: 1rem 0 0; padding: 1.25rem 1.5rem; border: 1px solid var(--coral); border-radius: var(--radius); }
+.plan-nota { margin: 1rem 0 0; color: var(--muted); font-size: var(--step--1); }
+
+/* ---------- Campos nuevos del formulario ---------- */
+.field select {
+  width: 100%; min-height: 3rem; padding: .6rem 0;
+  border: 0; border-bottom: 2px solid var(--field); border-radius: 0;
+  background: transparent; color: var(--text); font: inherit; font-size: var(--step-1);
+  color-scheme: dark;
+}
+.field select option { background: #1A1816; color: #F2F0ED; }
+.check { display: flex; gap: .75rem; align-items: flex-start; min-height: 1.75rem; cursor: pointer; }
+.field .check input { flex: none; width: 1.5rem; min-height: 0; height: 1.5rem; margin: 0; padding: 0; accent-color: var(--coral); }
+.info-datos { margin: 0; color: var(--muted); font-size: var(--step--1); }
+.contact-wa { margin-top: 1.25rem; }
+
+/* ---------- Botón flotante de WhatsApp ---------- */
+.wa-float {
+  position: fixed; left: 1rem; bottom: max(1rem, env(safe-area-inset-bottom)); z-index: 40;
+  display: grid; place-items: center; width: 3.25rem; height: 3.25rem;
+  border-radius: 50%; background: #25D366; color: #111111;
+  box-shadow: 0 12px 30px rgb(0 0 0 / .35);
+}
+.wa-float:focus-visible { outline: 3px solid #111111; outline-offset: 3px; box-shadow: 0 0 0 3px #F2F0ED; }

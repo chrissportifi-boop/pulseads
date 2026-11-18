@@ -12,6 +12,10 @@
   // Con el ID puesto, los mensajes llegan directamente a CONTACT_EMAIL.
   // Si lo dejas vacío (''), el formulario abre el programa de correo del visitante (mailto).
   var FORMSPREE_ID = 'xljbbava';
+  // WhatsApp: pon aquí el número con prefijo y sin espacios ni +, p. ej. '34600111222'.
+  // Mientras esté vacío, los botones de WhatsApp no se muestran.
+  var WHATSAPP_NUMERO = '';
+  var WHATSAPP_TEXTO = 'Hola, me gustaría pedir una demo gratis de PulseAds para mi local.';
 
   /* ---------- 0. Animaciones ----------
      Va primero: si algo de más abajo fallara, el contenido nunca se queda invisible.
@@ -203,6 +207,22 @@
     updateCta();
   }
 
+  /* ---------- 0c. WhatsApp y servicio elegido ---------- */
+  if (WHATSAPP_NUMERO) {
+    document.querySelectorAll('[data-whatsapp]').forEach(function (a) {
+      a.href = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(WHATSAPP_TEXTO);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.hidden = false;
+    });
+  }
+  // Los botones de demo y de packs dejan elegida esa opción en el formulario
+  document.addEventListener('click', function (e) {
+    var enlace = e.target.closest && e.target.closest('[data-interes]');
+    var campo = document.getElementById('interes');
+    if (enlace && campo) campo.value = enlace.getAttribute('data-interes');
+  });
+
   /* ---------- 1. Menú móvil ---------- */
   var toggle = document.querySelector('.nav-toggle');
   var menu = document.getElementById('menu-principal');
@@ -345,6 +365,9 @@
         if (!v) return 'Cuéntanos qué quieres anunciar.';
         if (v.length < 10) return 'Escribe un poco más (al menos 10 caracteres) para que podamos ayudarte.';
         return '';
+      },
+      privacidad: function (v, input) {
+        return input.checked ? '' : 'Debes aceptar la política de privacidad para enviar la solicitud.';
       }
     };
 
@@ -426,14 +449,15 @@
         nombre: form.elements.nombre.value.trim(),
         local: form.elements.local.value.trim(),
         email: form.elements.email.value.trim(),
-        mensaje: form.elements.mensaje.value.trim()
+        mensaje: form.elements.mensaje.value.trim(),
+        interes: form.elements.interes.value
       };
     }
 
     // Enlace mailto con el mensaje ya escrito (respaldo y alternativa si falla el envío)
     function mailtoHref(data) {
-      var subject = 'Quiero un anuncio para ' + data.local;
-      var bodyText = 'Nombre: ' + data.nombre + '\nLocal: ' + data.local + '\nEmail: ' + data.email + '\n\n' + data.mensaje;
+      var subject = data.interes + ' para ' + data.local;
+      var bodyText = 'Me interesa: ' + data.interes + '\nNombre: ' + data.nombre + '\nLocal: ' + data.local + '\nEmail: ' + data.email + '\n\n' + data.mensaje;
       return 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyText);
     }
 
@@ -459,7 +483,9 @@
       body.append('local', data.local);
       body.append('email', data.email); // Formspree lo usa como "Responder a"
       body.append('mensaje', data.mensaje);
-      body.append('subject', 'Nuevo encargo para PulseAds: ' + data.local); // asunto del correo
+      body.append('interes', data.interes);
+      body.append('privacidad', 'Aceptada');
+      body.append('subject', 'PulseAds · ' + data.interes + ': ' + data.local); // asunto del correo
       body.append('_gotcha', form.elements._gotcha ? form.elements._gotcha.value : ''); // trampa antispam
 
       setSending(true);
