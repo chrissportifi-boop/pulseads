@@ -47,13 +47,8 @@
   if (!reduceMotion && 'IntersectionObserver' in window) {
     root.classList.add('reveal-on');
 
-    // Titulares: cada palabra sube desde una máscara
-    document.querySelectorAll('.display, .h2-light').forEach(function (h) {
-      if (splitWords(h, 'wl').length) h.classList.add('words-reveal');
-    });
-    // Frase destacada: las palabras se van "encendiendo" al bajar
     var highlight = document.querySelector('.js-highlight');
-    var hlWords = splitWords(highlight, 'hw');
+    var hlWords = [];
 
     // Números que cuentan hasta su valor al aparecer
     function countUp(el) {
@@ -80,8 +75,21 @@
         io.unobserve(t);
       });
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
-    var targets = '.reveal, .reveal-clip, .reveal-up, .words-reveal, .facts';
+    var targets = '.reveal, .reveal-clip, .reveal-up, .facts';
     document.querySelectorAll(targets).forEach(function (n) { io.observe(n); });
+
+    // Partir los textos animados cuando el navegador esté libre (no retrasa la carga)
+    function setupWords() {
+      // Titulares: cada palabra sube desde una máscara
+      document.querySelectorAll('.display, .h2-light').forEach(function (h) {
+        if (splitWords(h, 'wl').length) { h.classList.add('words-reveal'); io.observe(h); }
+      });
+      // Frase destacada: las palabras se van "encendiendo" al bajar
+      hlWords = splitWords(highlight, 'hw');
+      requestFrame();
+    }
+    if (window.requestIdleCallback) requestIdleCallback(setupWords, { timeout: 1500 });
+    else setTimeout(setupWords, 200);
     observeReveal = function (n) { io.observe(n); };
     // Si algo recibe el foco con teclado antes de aparecer, se muestra al momento
     document.addEventListener('focusin', function (e) {
@@ -92,7 +100,7 @@
     // Efectos ligados al scroll (un único bucle con requestAnimationFrame)
     var header = document.querySelector('.site-header');
     var progress = document.querySelector('.scroll-progress');
-    var marquee = document.querySelector('.marquee-track');
+    var marquees = Array.prototype.slice.call(document.querySelectorAll('.marquee-track, .band-track'));
     var parallax = Array.prototype.slice.call(document.querySelectorAll('[data-speed]'));
     var lastY = window.scrollY, ticking = false;
 
@@ -119,14 +127,24 @@
         el.style.setProperty('--py', offset.toFixed(1) + 'px');
       });
 
-      // Texto gigante horizontal
-      if (marquee) {
-        var mr = marquee.parentNode.getBoundingClientRect();
-        if (mr.bottom > 0 && mr.top < vh) {
-          var p = (vh - mr.top) / (vh + mr.height);
-          marquee.style.transform = 'translate3d(' + (-p * 35).toFixed(2) + '%,0,0)';
-        }
-      }
+      // Texto gigante horizontal (data-direction="1" lo mueve en sentido contrario)
+      marquees.forEach(function (track) {
+        var mr = track.parentNode.getBoundingClientRect();
+        if (mr.bottom < 0 || mr.top > vh) return;
+        var p = (vh - mr.top) / (vh + mr.height);
+        var dir = track.getAttribute('data-direction') === '1';
+        var x = dir ? (-35 + p * 30) : (-p * 35);
+        track.style.transform = 'translate3d(' + x.toFixed(2) + '%,0,0)';
+      });
+
+      // Elementos que crecen hasta su tamaño al llegar al centro de la pantalla
+      // (se buscan en cada fotograma porque los vídeos se añaden después)
+      document.querySelectorAll('.js-scale').forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) return;
+        var p = Math.max(0, Math.min(1, (vh - r.top) / (vh * 0.75)));
+        el.style.setProperty('--sc', (0.86 + p * 0.14).toFixed(3));
+      });
 
       // Frase destacada
       if (hlWords.length) {
@@ -192,7 +210,7 @@
   function renderVideo(v, i) {
     var vertical = v.formato === 'vertical';
     var item = el('li', { 'class': 'video-card reveal' + (v.destacado ? ' is-featured' : '') });
-    var media = el('div', { 'class': 'video-media' + (vertical ? ' is-vertical' : '') });
+    var media = el('div', { 'class': 'video-media js-scale' + (vertical ? ' is-vertical' : '') });
 
     if (v.archivo) {
       // Reproductor nativo: sin autoplay, silenciado, solo metadatos al cargar.

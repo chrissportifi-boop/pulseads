@@ -34,7 +34,7 @@
   <link rel="preload" href="fonts/bricolage-grotesque-800.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-300.woff2" as="font" type="font/woff2" crossorigin>
   <!-- ?v=... es la versión: al cambiar CSS o JS, subid el número para que los navegadores no usen la copia antigua -->
-  <link rel="stylesheet" href="css/styles.css?v=20261118-3">
+  <link rel="stylesheet" href="css/styles.css?v=20261118-4">
 
   <!-- Marca que hay JavaScript para activar menú móvil y animaciones (sin JS todo sigue visible) -->
   <script>
@@ -69,7 +69,7 @@
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-  <!-- Cortina de entrada (decorativa; solo con la clase .intro y desaparece sola en 1,6 s) -->
+  <!-- Cortina de entrada (decorativa; solo con la clase .intro y desaparece sola en 1,5 s) -->
   <div class="intro-curtain" aria-hidden="true"><span class="intro-word"><span>PulseAds</span></span></div>
 
   <!-- ============ CABECERA (siempre oscura, fija arriba) ============ -->
@@ -240,7 +240,15 @@
                 <li>Subtítulos incluidos</li>
               </ul>
             </div>
-            <div class="frame frame-16x9 reveal-clip" data-speed="-0.05" aria-hidden="true"><span>16:9</span></div>
+            <div class="frame frame-16x9 reveal-clip" data-speed="-0.05" aria-hidden="true">
+              <div class="mock mock-wide">
+                <span class="mock-rec"><i></i>REC</span>
+                <span class="mock-kicker">Presentación</span>
+                <span class="mock-title">Tu local,<br>en vídeo</span>
+                <span class="mock-bar"><i></i></span>
+              </div>
+              <span class="frame-tag">16:9</span>
+            </div>
           </li>
           <li class="service reveal">
             <span class="service-num" aria-hidden="true">02</span>
@@ -254,7 +262,15 @@
                 <li>Propuesta de calendario de publicación</li>
               </ul>
             </div>
-            <div class="frame frame-9x16 reveal-clip" data-speed="-0.08" aria-hidden="true"><span>9:16</span></div>
+            <div class="frame frame-9x16 reveal-clip" data-speed="-0.08" aria-hidden="true">
+              <div class="mock mock-story">
+                <span class="mock-segs"><i></i><i></i><i></i></span>
+                <span class="mock-kicker">Nueva temporada</span>
+                <span class="mock-title">Algo nuevo te espera</span>
+                <span class="mock-chip">Ver más</span>
+              </div>
+              <span class="frame-tag">9:16</span>
+            </div>
           </li>
           <li class="service reveal">
             <span class="service-num" aria-hidden="true">03</span>
@@ -268,7 +284,14 @@
                 <li>Pensados para campañas con fecha límite</li>
               </ul>
             </div>
-            <div class="frame frame-1x1 reveal-clip" data-speed="-0.05" aria-hidden="true"><span>1:1</span></div>
+            <div class="frame frame-1x1 reveal-clip" data-speed="-0.05" aria-hidden="true">
+              <div class="mock mock-square">
+                <span class="mock-kicker">Este sábado</span>
+                <span class="mock-title">Evento<br>especial</span>
+                <span class="mock-badge">Te esperamos</span>
+              </div>
+              <span class="frame-tag">1:1</span>
+            </div>
           </li>
           <li class="service reveal">
             <span class="service-num" aria-hidden="true">04</span>
@@ -282,7 +305,15 @@
                 <li>Presupuesto a medida</li>
               </ul>
             </div>
-            <div class="frame frame-stack reveal-clip" data-speed="-0.06" aria-hidden="true"><span>Pack</span></div>
+            <div class="frame frame-pack reveal-clip" data-speed="-0.06" aria-hidden="true">
+              <div class="mock-pack">
+                <span class="mock-mini"><b>Semana 1</b></span>
+                <span class="mock-mini"><b>Semana 2</b></span>
+                <span class="mock-mini"><b>Semana 3</b></span>
+                <span class="mock-mini"><b>Semana 4</b></span>
+              </div>
+              <span class="frame-tag">Pack mensual</span>
+            </div>
           </li>
         </ol>
       </div>
@@ -324,6 +355,9 @@
 
         <p class="section-cta reveal"><a class="btn btn-light btn-arrow" href="#contacto">Empezar un proyecto</a></p>
       </div>
+
+      <!-- Franja de texto gigante (decorativa) que se desplaza al hacer scroll en sentido contrario -->
+      <div class="band" aria-hidden="true"><div class="band-track" data-direction="1"><span>Reels</span><span class="marquee-dot"></span><span class="outline">TikTok</span><span class="marquee-dot"></span><span>Historias</span><span class="marquee-dot"></span><span class="outline">Pantallas</span><span class="marquee-dot"></span><span>Reels</span><span class="marquee-dot"></span><span class="outline">TikTok</span><span class="marquee-dot"></span><span>Historias</span><span class="marquee-dot"></span><span class="outline">Pantallas</span><span class="marquee-dot"></span><span>Reels</span><span class="marquee-dot"></span><span class="outline">TikTok</span><span class="marquee-dot"></span><span>Historias</span><span class="marquee-dot"></span><span class="outline">Pantallas</span><span class="marquee-dot"></span><span>Reels</span><span class="marquee-dot"></span><span class="outline">TikTok</span><span class="marquee-dot"></span><span>Historias</span><span class="marquee-dot"></span><span class="outline">Pantallas</span><span class="marquee-dot"></span></div></div>
     </section>
 
     <!-- ============ PARA QUIÉN ============ -->
@@ -547,7 +581,7 @@
   </footer>
 
   <!-- Datos de los vídeos y lógica de la página (defer: no bloquean la carga) -->
-  <script src="data/videos.js?v=20261118-3" defer></script>
-  <script src="js/main.js?v=20261118-3" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="data/videos.js?v=20261118-4" defer></script>
+  <script src="js/main.js?v=20261118-4" defer onerror="document.documentElement.classList.remove('js')"></script>
 </body>
 </html>
