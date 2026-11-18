@@ -30,6 +30,9 @@ Lo que queda por ajustar (en los archivos, lo pendiente lleva la marca `[Sustitu
 5. **Dirección de la web:** ya está puesta (`https://chrissportifi-boop.github.io/pulseads/`). Si algún día usáis un dominio propio, cambiadla en `index.html`, `sitemap.xml` y `robots.txt`.
 6. **Precios:** si algún día tenéis tarifas, cambiad la pregunta "¿Cuánto cuesta?".
 
+## Si la web se ve descolocada tras un cambio
+Es la caché del navegador mezclando archivos nuevos y viejos: pulsad **Ctrl+F5**. Para evitarlo, cada vez que cambiéis `css/styles.css`, `js/main.js` o `data/videos.js`, subid el número `?v=` que aparece en `index.html` (por ejemplo, de `?v=20261118-2` a `?v=20261118-3`).
+
 ## Formulario
 Los mensajes del formulario se envían con **Formspree** (servicio gratuito) y llegan directamente a `ceigiggm@gmail.com`, sin que el visitante tenga que abrir su correo.
 Mientras no pongáis el ID de Formspree, el formulario sigue funcionando a la antigua: abre el programa de correo del visitante con el mensaje ya escrito.

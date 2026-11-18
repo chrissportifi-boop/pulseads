@@ -33,7 +33,8 @@
   <!-- Tipografías autoalojadas: se precargan la del nombre gigante y la de los titulares -->
   <link rel="preload" href="fonts/bricolage-grotesque-800.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-300.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- ?v=... es la versión: al cambiar CSS o JS, subid el número para que los navegadores no usen la copia antigua -->
+  <link rel="stylesheet" href="css/styles.css?v=20261118-2">
 
   <!-- Marca que hay JavaScript para activar menú móvil y animaciones (sin JS todo sigue visible) -->
   <script>document.documentElement.classList.add('js');</script>
@@ -530,7 +531,7 @@
   </footer>
 
   <!-- Datos de los vídeos y lógica de la página (defer: no bloquean la carga) -->
-  <script src="data/videos.js" defer></script>
-  <script src="js/main.js" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="data/videos.js?v=20261118-2" defer></script>
+  <script src="js/main.js?v=20261118-2" defer onerror="document.documentElement.classList.remove('js')"></script>
 </body>
 </html>
