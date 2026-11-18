@@ -950,3 +950,45 @@ main:focus { outline: none; }
   .service:hover .mock-mini:nth-child(3) { transform: translateY(-4cqw); transition-delay: .12s; }
   .service:hover .mock-mini:nth-child(4) { transform: translateY(-4cqw); transition-delay: .18s; }
 }
+
+/* ---------- 22. Portada: anuncios flotando y retícula ---------- */
+.hero-art::before { /* líneas verticales finas, como una retícula de estudio */
+  content: ""; position: absolute; inset: 0;
+  background: repeating-linear-gradient(90deg, transparent 0 calc(25% - 1px), rgb(242 240 237 / .045) calc(25% - 1px) 25%);
+}
+.hero-cards-slot { display: none; }
+@media (min-width: 56rem) {
+  /* El hueco libre de la portada decide el tamaño: alto disponible y proporción 9:16 */
+  .hero-cards-slot { display: block; position: relative; flex: 1 1 0; min-height: 0; margin-block: -1rem; container-type: size; }
+  .hero-cards { position: absolute; top: 6%; bottom: 10%; right: 9%; aspect-ratio: 9 / 16; max-height: 24rem; }
+  .hero-card { position: absolute; max-width: none; box-shadow: 0 30px 60px rgb(0 0 0 / .45), inset 0 0 0 1px rgb(255 255 255 / .06); }
+  .hero-card-a { inset: 0; width: 100%; height: 100%; transform: rotate(-5deg); }
+  .hero-card-b { width: 72%; left: -58%; bottom: 4%; transform: rotate(6deg); }
+  .hero-main { margin-top: 0; }
+}
+/* Si el hueco es muy bajo, las tarjetas no se muestran (quedarían diminutas) */
+@container (max-height: 11rem) {
+  .hero-cards { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-cards { animation: tarjetas 1.4s cubic-bezier(.2, .7, .2, 1) .5s both; }
+  .intro .hero-cards { animation-delay: 1.3s; }
+  .hero-card-a, .hero-card-b { transition: transform .8s cubic-bezier(.2, .7, .2, 1); }
+  .hero:hover .hero-card-a { transform: rotate(-3deg) translateY(-6px); }
+  .hero:hover .hero-card-b { transform: rotate(9deg) translateY(4px); }
+}
+@keyframes tarjetas { from { opacity: 0; transform: translateY(60px) rotate(4deg); } }
+
+/* ---------- 23. Flecha en las filas de "Para quién" ---------- */
+.sector { position: relative; }
+@media (min-width: 48rem) {
+  .sector { grid-template-columns: 1fr 1fr 2rem; }
+  .sector::after { content: "→"; justify-self: end; color: var(--accent-text); opacity: 0; transition: opacity .3s, transform .5s cubic-bezier(.2, .7, .2, 1); transform: translateX(-.5rem); }
+  .sector:hover::after { opacity: 1; transform: none; }
+}
+
+/* ---------- 24. Volver arriba ---------- */
+.to-top { display: inline-flex; align-items: center; gap: .4rem; min-height: 2.75rem; color: var(--text); text-decoration: none; }
+.to-top::after { content: "↑"; transition: transform .3s; }
+.to-top:hover { color: var(--accent-text); }
+.to-top:hover::after { transform: translateY(-3px); }
