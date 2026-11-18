@@ -154,6 +154,27 @@
         hlWords.forEach(function (w, i) { w.classList.toggle('on', i < lit); });
       }
     }
+    // Brillo de la portada que sigue al ratón (solo con ratón, nunca en táctil)
+    var heroSec = document.getElementById('inicio');
+    if (heroSec && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      var gx = 70, gy = 40, glowTick = false;
+      heroSec.addEventListener('pointermove', function (e) {
+        var r = heroSec.getBoundingClientRect();
+        gx = ((e.clientX - r.left) / r.width) * 100;
+        gy = ((e.clientY - r.top) / r.height) * 100;
+        if (!glowTick) {
+          glowTick = true;
+          requestAnimationFrame(function () {
+            glowTick = false;
+            heroSec.style.setProperty('--gx', gx.toFixed(1) + '%');
+            heroSec.style.setProperty('--gy', gy.toFixed(1) + '%');
+          });
+        }
+      });
+      heroSec.addEventListener('pointerenter', function () { heroSec.classList.add('has-glow'); });
+      heroSec.addEventListener('pointerleave', function () { heroSec.classList.remove('has-glow'); });
+    }
+
     function requestFrame() { if (!ticking) { ticking = true; requestAnimationFrame(onFrame); } }
     window.addEventListener('scroll', requestFrame, { passive: true });
     window.addEventListener('resize', requestFrame);

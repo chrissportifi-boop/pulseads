@@ -34,7 +34,7 @@
   <link rel="preload" href="fonts/bricolage-grotesque-800.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-300.woff2" as="font" type="font/woff2" crossorigin>
   <!-- ?v=... es la versión: al cambiar CSS o JS, subid el número para que los navegadores no usen la copia antigua -->
-  <link rel="stylesheet" href="css/styles.css?v=20261118-7">
+  <link rel="stylesheet" href="css/styles.css?v=20261118-8">
 
   <!-- Marca que hay JavaScript para activar menú móvil y animaciones (sin JS todo sigue visible) -->
   <script>
@@ -103,6 +103,7 @@
       <!-- Fondo decorativo: listones verticales y ondas de la marca -->
       <div class="hero-art" aria-hidden="true">
         <div class="hero-slats" data-speed="0.12"></div>
+        <div class="hero-glow"></div>
         <svg class="hero-waves" data-speed="0.28" viewBox="0 0 600 600" focusable="false">
           <circle cx="600" cy="300" r="120"/>
           <circle cx="600" cy="300" r="200"/>
@@ -481,6 +482,7 @@
 
     <!-- ============ CONTACTO ============ -->
     <section class="section theme-dark contact" id="contacto" aria-labelledby="contacto-titulo">
+      <svg class="contact-art" viewBox="0 0 600 600" aria-hidden="true" focusable="false"><circle cx="300" cy="300" r="90"/><circle cx="300" cy="300" r="160"/><circle cx="300" cy="300" r="230"/><circle cx="300" cy="300" r="295"/></svg>
       <div class="container contact-grid">
         <header class="contact-head reveal">
           <p class="label">Contacto</p>
@@ -605,7 +607,7 @@
   <a class="float-cta" href="#contacto" tabindex="-1">Pide tu anuncio</a>
 
   <!-- Datos de los vídeos y lógica de la página (defer: no bloquean la carga) -->
-  <script src="data/videos.js?v=20261118-7" defer></script>
-  <script src="js/main.js?v=20261118-7" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="data/videos.js?v=20261118-8" defer></script>
+  <script src="js/main.js?v=20261118-8" defer onerror="document.documentElement.classList.remove('js')"></script>
 </body>
 </html>

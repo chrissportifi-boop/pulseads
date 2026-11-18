@@ -1052,3 +1052,30 @@ main > .section.section-tight-top { position: relative; }
   .js .float-cta.is-shown { transform: none; opacity: 1; visibility: visible; transition: transform .45s cubic-bezier(.2, .7, .2, 1), opacity .3s, visibility 0s; }
   .float-cta:focus-visible { outline-color: #F2F0ED; box-shadow: 0 0 0 6px #111111; }
 }
+
+/* ---------- 28. Brillo que sigue al ratón en la portada (solo ratón) ---------- */
+.hero-glow { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .6s; background: radial-gradient(28rem circle at var(--gx, 70%) var(--gy, 40%), rgb(255 170 120 / .10), transparent 60%); }
+.hero.has-glow .hero-glow { opacity: 1; }
+
+/* ---------- 29. Contacto: ondas de fondo y confirmación animada ---------- */
+.contact { overflow: hidden; }
+.contact-art { position: absolute; right: -12rem; bottom: -14rem; width: 46rem; max-width: 120vw; pointer-events: none; opacity: .5; }
+.contact-art circle { fill: none; stroke: var(--coral); stroke-width: 1.2; opacity: .45; }
+.contact .container { position: relative; z-index: 1; }
+
+.form-status.is-success { display: flex; gap: .75rem; align-items: flex-start; }
+.form-status.is-success::before {
+  content: ""; flex: none; width: 1.6rem; height: 1.6rem; margin-top: .05rem;
+  border-radius: 50%; background: var(--success);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.5 12.5l3.5 3.5 7.5-8' fill='none' stroke='%230E0D0C' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .form-status.is-success::before { animation: confirmar .6s cubic-bezier(.2, .9, .3, 1.4) both; }
+}
+@keyframes confirmar { from { transform: scale(0) rotate(-30deg); } }
+
+/* ---------- 30. Vídeo destacado más contenido en móvil ---------- */
+@media (max-width: 55.99rem) {
+  .video-media.is-vertical { max-width: 17rem; }
+}
