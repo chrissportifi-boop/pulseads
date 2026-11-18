@@ -34,7 +34,7 @@
   <link rel="preload" href="fonts/bricolage-grotesque-800.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-300.woff2" as="font" type="font/woff2" crossorigin>
   <!-- ?v=... es la versión: al cambiar CSS o JS, subid el número para que los navegadores no usen la copia antigua -->
-  <link rel="stylesheet" href="css/styles.css?v=20261118-5">
+  <link rel="stylesheet" href="css/styles.css?v=20261118-6">
 
   <!-- Marca que hay JavaScript para activar menú móvil y animaciones (sin JS todo sigue visible) -->
   <script>
@@ -118,7 +118,7 @@
           <li>Desde 2026</li>
         </ul>
 
-        <!-- Anuncios ilustrados flotando: ocupan el hueco entre la línea superior y el nombre (solo pantallas medianas y grandes) -->
+        <!-- Anuncios ilustrados flotando: ocupan el hueco entre la línea superior y el nombre (se ocultan si no caben) -->
         <div class="hero-cards-slot" aria-hidden="true">
           <div class="hero-cards" data-speed="0.18">
             <div class="frame frame-9x16 hero-card hero-card-a">
@@ -602,7 +602,7 @@
   </footer>
 
   <!-- Datos de los vídeos y lógica de la página (defer: no bloquean la carga) -->
-  <script src="data/videos.js?v=20261118-5" defer></script>
-  <script src="js/main.js?v=20261118-5" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="data/videos.js?v=20261118-6" defer></script>
+  <script src="js/main.js?v=20261118-6" defer onerror="document.documentElement.classList.remove('js')"></script>
 </body>
 </html>

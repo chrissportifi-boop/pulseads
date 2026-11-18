@@ -963,7 +963,7 @@ main:focus { outline: none; }
   .hero-cards { position: absolute; top: 6%; bottom: 10%; right: 9%; aspect-ratio: 9 / 16; max-height: 24rem; }
   .hero-card { position: absolute; max-width: none; box-shadow: 0 30px 60px rgb(0 0 0 / .45), inset 0 0 0 1px rgb(255 255 255 / .06); }
   .hero-card-a { inset: 0; width: 100%; height: 100%; transform: rotate(-5deg); }
-  .hero-card-b { width: 72%; left: -58%; bottom: 4%; transform: rotate(6deg); }
+  .hero-card-b { width: 70%; left: -66%; bottom: 4%; transform: rotate(6deg); }
   .hero-main { margin-top: 0; }
 }
 /* Si el hueco es muy bajo, las tarjetas no se muestran (quedarían diminutas) */
@@ -992,3 +992,34 @@ main:focus { outline: none; }
 .to-top::after { content: "↑"; transition: transform .3s; }
 .to-top:hover { color: var(--accent-text); }
 .to-top:hover::after { transform: translateY(-3px); }
+
+/* ---------- 25. Móvil: portada y menú a pantalla completa ---------- */
+@media (max-width: 55.99rem) {
+  .hero-wordmark { font-size: clamp(3.25rem, 19.5vw, 15.5rem); }
+  .hero-index { display: none; }            /* en móvil ya está el menú */
+  .hero-cards-slot { display: block; position: relative; flex: 1 1 0; min-height: 0; container-type: size; margin-block: -.5rem; }
+  .hero-cards { position: absolute; top: 4%; bottom: 6%; right: 6%; aspect-ratio: 9 / 16; max-height: 15rem; }
+  .hero-card { position: absolute; max-width: none; box-shadow: 0 24px 48px rgb(0 0 0 / .45), inset 0 0 0 1px rgb(255 255 255 / .06); }
+  .hero-card-a { inset: 0; width: 100%; height: 100%; transform: rotate(-5deg); }
+  .hero-card-b { width: 68%; left: -70%; bottom: 2%; transform: rotate(6deg); }
+  .hero-main { margin-top: 0; }
+}
+
+@media (max-width: 63.99rem) {
+  /* Menú abierto: ocupa toda la pantalla con letras grandes y finas */
+  .js .nav-list {
+    min-height: calc(100svh - var(--header-h));
+    padding-top: 1.5rem;
+    justify-content: flex-start;
+  }
+  .js .nav-list a:not(.btn) { font-size: clamp(1.75rem, 1.2rem + 3vw, 2.5rem); font-weight: 300; letter-spacing: -.03em; padding: .9rem 0; }
+  .js .nav-list .btn { margin-top: 2rem; min-height: 3.25rem; font-size: var(--step-0); }
+}
+@media (max-width: 63.99rem) and (prefers-reduced-motion: no-preference) {
+  .js .nav-list.is-open li { animation: subirSuave .6s cubic-bezier(.2, .7, .2, 1) both; }
+  .js .nav-list.is-open li:nth-child(2) { animation-delay: .05s; }
+  .js .nav-list.is-open li:nth-child(3) { animation-delay: .1s; }
+  .js .nav-list.is-open li:nth-child(4) { animation-delay: .15s; }
+  .js .nav-list.is-open li:nth-child(5) { animation-delay: .2s; }
+  .js .nav-list.is-open li:nth-child(6) { animation-delay: .25s; }
+}
