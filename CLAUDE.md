@@ -1,0 +1,47 @@
+# PulseAds · instrucciones para Claude
+
+Web estática de una sola página (HTML, CSS y JS sin frameworks) de **PulseAds**, agencia ficticia de vídeos publicitarios con IA para locales. Proyecto académico de Christian Gómez Moreno (Chris) y César Iglesias. Publicada en https://chrissportifi-boop.github.io/pulseads/ (GitHub Pages, rama `main`).
+
+Los dos trabajan con su propio Claude y no programan: responde en español, en lenguaje sencillo, y hazlo todo sin pedirles pasos técnicos.
+
+## Flujo de trabajo
+1. **Antes de empezar:** `git pull --ff-only`.
+2. Haz el cambio.
+3. **Si tocaste CSS, `js/main.js` o `data/videos.js`:** `npm --prefix tools run version`.
+4. **Comprueba:** `npm --prefix tools run verificar` (si `tools/node_modules` no existe: `npm --prefix tools install`). Antes de publicar cambios grandes: `npm --prefix tools run completo` (añade Lighthouse, tarda varios minutos).
+5. **Publica:** commit y `git push`. La web se actualiza sola en un minuto.
+
+## Mapa del proyecto
+| Archivo | Contenido |
+|---|---|
+| `index.html` | Toda la página, por secciones con comentarios `<!-- ===== -->` |
+| `css/base.css` | Tipografías, colores y temas, utilidades, botones, cabecera y menú |
+| `css/secciones.css` | Estudio, trabajos, servicios, método, para quién, equipo, FAQ, contacto, pie |
+| `css/portada.css` | Portada, anuncios flotantes y su versión móvil |
+| `css/animaciones.css` | Intro, apariciones, efectos de scroll y micro-interacciones |
+| `js/main.js` | 0 animaciones · 0b botón flotante · 1 menú · 2 vídeos · 3 formulario |
+| `data/videos.js` | Lista de vídeos: para cambiar uno, edita solo este archivo |
+| `tools/` | Pruebas y utilidades (no forman parte de la web) |
+
+Los CSS se cargan en ese orden (base, secciones, portada, animaciones) y **el orden importa**: no muevas reglas de un archivo a otro sin comprobar el resultado.
+
+## Reglas del contenido
+- Español de España, tono profesional y cercano.
+- **No inventes** clientes, testimonios, cifras, premios ni precios.
+- Mantén la nota «PulseAds es un proyecto académico ficticio» en el pie.
+- El vídeo de Charlie Paris usa una marca real: debe seguir indicando que es una pieza de muestra sin relación comercial con la marca.
+- Si cambia el vídeo destacado, actualiza también el bloque `<noscript>` de la sección de trabajos.
+
+## Reglas técnicas
+- **Accesibilidad WCAG 2.2 AA:** contraste 4,5:1 en texto y 3:1 en componentes, foco visible, teclado completo y un solo `h1`.
+- **Movimiento:** nada se mueve solo más de 5 segundos; las animaciones ocurren una vez o van ligadas al scroll. Todo debe respetar `prefers-reduced-motion` y la web debe verse completa sin JavaScript.
+- Sin dependencias externas ni CDN en la web publicada. Debe abrirse con doble clic.
+- Lighthouse 95 o más en las cuatro categorías.
+- Marca: Rojo Pulso `#F04A2D` solo como acento, Papel `#EFEDEA`, Noche `#0E0D0C`. Más detalle en `BRAND.md`.
+- Formulario: Formspree, ID `xljbbava`. No hagas envíos reales de prueba: cada uno gasta uno de los 50 mensajes gratis al mes.
+
+## Para gastar pocos tokens
+- No leas archivos enteros: localiza con `grep` y lee solo esas líneas.
+- Para ver un cambio, captura solo su sección: `npm --prefix tools run captura -- 390 "#servicios"` (admite `dark` al final). Evita capturas de la página completa.
+- Fíate del resumen de `verificar`; no repitas sus comprobaciones a mano.
+- Usa subagentes solo si te lo piden: cada revisión completa gasta más de 100.000 tokens.

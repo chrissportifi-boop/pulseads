@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "html-validate:recommended"
+  ],
+  "rules": {
+    "no-inline-style": "off",
+    "long-title": "off",
+    "aria-label-misuse": [
+      "error",
+      {
+        "allowAnyNamable": true
+      }
+    ]
+  }
+}

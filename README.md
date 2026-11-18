@@ -10,7 +10,10 @@ Haced doble clic en `index.html` y se abrirá en el navegador.
 ## Estructura
 ```
 index.html          → la página
-css/styles.css      → estilos (colores y tamaños arriba, en :root)
+css/base.css        → colores, tipografías, botones, cabecera y menú
+css/secciones.css   → estudio, trabajos, servicios, método, equipo, preguntas, contacto y pie
+css/portada.css     → portada y anuncios flotantes
+css/animaciones.css → intro, apariciones y efectos de scroll
 js/main.js          → menú móvil, vídeos, formulario y animaciones
 data/videos.js      → LISTA DE VÍDEOS (edita aquí)
 videos/             → archivos .mp4 y subtítulos .vtt
@@ -19,6 +22,8 @@ img/brand/          → logos en todas sus versiones + hoja de marca (index.html
 img/logo-options/   → las 3 propuestas iniciales de logo
 fonts/              → tipografías autoalojadas (licencia OFL)
 BRAND.md            → guía de marca
+CLAUDE.md           → instrucciones para el Claude de cada uno
+tools/              → pruebas automáticas (no forman parte de la web)
 ```
 
 ## Qué tenéis que personalizar
@@ -30,8 +35,14 @@ Lo que queda por ajustar (en los archivos, lo pendiente lleva la marca `[Sustitu
 4. **Dirección de la web:** ya está puesta (`https://chrissportifi-boop.github.io/pulseads/`). Si algún día usáis un dominio propio, cambiadla en `index.html`, `sitemap.xml` y `robots.txt`.
 5. **Precios:** si algún día tenéis tarifas, cambiad la pregunta "¿Cuánto cuesta?".
 
-## Si la web se ve descolocada tras un cambio
-Es la caché del navegador mezclando archivos nuevos y viejos: pulsad **Ctrl+F5**. Para evitarlo, cada vez que cambiéis `css/styles.css`, `js/main.js` o `data/videos.js`, subid el número `?v=` que aparece en `index.html` (por ejemplo, de `?v=20261118-2` a `?v=20261118-3`).
+## Comprobar y publicar cambios
+Dentro de la carpeta `tools` (la primera vez, `npm install`):
+- `npm run version`: actualiza la versión de CSS y JS para que los navegadores no usen copias antiguas. Hay que ejecutarlo después de cambiar esos archivos.
+- `npm run verificar`: comprueba HTML, accesibilidad, tamaños de pantalla, animaciones, teclado y formulario en menos de dos minutos.
+- `npm run completo`: lo mismo y además Lighthouse.
+- `npm run captura -- 390 "#servicios"`: guarda una captura de esa sección en `tools/capturas`.
+
+Si la web se ve descolocada tras un cambio, pulsad **Ctrl+F5**.
 
 ## Formulario
 El formulario ya está **conectado a Formspree** (ID `xljbbava`): los mensajes llegan directamente a `ceigiggm@gmail.com` con el asunto «Nuevo encargo para PulseAds: (nombre del local)», y al pulsar Responder en Gmail se contesta al cliente.
@@ -46,7 +57,7 @@ El formulario ya está **conectado a Formspree** (ID `xljbbava`): los mensajes l
 ## Diseño y animaciones
 Estilo editorial «estudio 2026»: portada oscura con el nombre gigante, secciones claras y oscuras alternas que se superponen como láminas, titulares grandes en letra fina y el rojo de la marca como acento.
 
-Animaciones (todo en `js/main.js`, apartado 0, y al final de `css/styles.css`):
+Animaciones (en `js/main.js`, apartado 0, y en `css/animaciones.css`):
 - Intro con cortina: solo la primera visita de cada sesión.
 - Nombre de la portada letra a letra, titulares palabra a palabra, frase del estudio que se «enciende» al bajar y números que cuentan.
 - Franjas de texto gigante y efecto de profundidad (parallax) ligados al scroll: no se mueven solos.

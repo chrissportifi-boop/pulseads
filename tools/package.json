@@ -1,0 +1,17 @@
+{
+  "name": "pulseads-herramientas",
+  "private": true,
+  "description": "Pruebas y utilidades de la web de PulseAds (no se usan en la web publicada).",
+  "scripts": {
+    "verificar": "node verificar.js",
+    "completo": "node verificar.js --completo",
+    "version": "node version.js",
+    "captura": "node captura.js"
+  },
+  "devDependencies": {
+    "axe-core": "^4.10.0",
+    "html-validate": "^9.0.0",
+    "lighthouse": "^12.0.0",
+    "puppeteer-core": "^24.0.0"
+  }
+}
