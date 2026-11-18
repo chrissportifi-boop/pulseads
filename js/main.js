@@ -1,6 +1,6 @@
 /* =========================================================
    PulseAds · JavaScript mínimo
-   0. Aparición al hacer scroll  1. Menú móvil  2. Vídeos de ejemplo  3. Formulario
+   0. Animaciones  1. Menú móvil  2. Vídeos de ejemplo  3. Formulario
    ========================================================= */
 (function () {
   'use strict';
@@ -13,33 +13,135 @@
   // Si lo dejas vacío (''), el formulario abre el programa de correo del visitante (mailto).
   var FORMSPREE_ID = 'xljbbava';
 
-  /* ---------- 0. Aparición suave al hacer scroll ----------
+  /* ---------- 0. Animaciones ----------
      Va primero: si algo de más abajo fallara, el contenido nunca se queda invisible.
-     Para lo que se añade después (vídeos), se usa observeReveal(). */
+     Nada se mueve solo de forma continua: todo ocurre una vez al aparecer o va ligado al scroll.
+     Con "reducir movimiento" no se activa nada de esto y todo se ve tal cual. */
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var observeReveal = function (n) { n.classList.add("is-visible"); };
-  var revealEls = document.querySelectorAll('.reveal');
+  var root = document.documentElement;
+  var observeReveal = function (n) { n.classList.add('is-visible'); };
 
-  if (reduceMotion || !('IntersectionObserver' in window)) {
-    revealEls.forEach(function (n) { n.classList.add('is-visible'); });
-  } else {
-    // Solo a partir de aquí se ocultan los bloques para animarlos (ver .reveal-on en el CSS)
-    document.documentElement.classList.add('reveal-on');
+  // Parte un texto en palabras (spans) sin cambiar lo que leen los lectores de pantalla
+  function splitWords(node, wrapClass) {
+    if (!node || node.dataset.split) return [];
+    // Solo si el elemento contiene únicamente texto (para no romper enlaces o etiquetas internas)
+    for (var c = 0; c < node.childNodes.length; c++) { if (node.childNodes[c].nodeType !== 3) return []; }
+    var words = node.textContent.trim().split(/\s+/);
+    node.textContent = '';
+    var spans = [];
+    words.forEach(function (w, i) {
+      var outer = document.createElement('span');
+      outer.className = wrapClass;
+      var inner = document.createElement('span');
+      inner.textContent = w;
+      inner.style.setProperty('--w', i);
+      outer.appendChild(inner);
+      node.appendChild(outer);
+      if (i < words.length - 1) node.appendChild(document.createTextNode(' '));
+      spans.push(outer);
+    });
+    node.dataset.split = '1';
+    return spans;
+  }
+
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    root.classList.add('reveal-on');
+
+    // Titulares: cada palabra sube desde una máscara
+    document.querySelectorAll('.display, .h2-light').forEach(function (h) {
+      if (splitWords(h, 'wl').length) h.classList.add('words-reveal');
+    });
+    // Frase destacada: las palabras se van "encendiendo" al bajar
+    var highlight = document.querySelector('.js-highlight');
+    var hlWords = splitWords(highlight, 'hw');
+
+    // Números que cuentan hasta su valor al aparecer
+    function countUp(el) {
+      var end = parseInt(el.getAttribute('data-count'), 10);
+      if (isNaN(end) || el.dataset.counted) return;
+      el.dataset.counted = '1';
+      var start = null, dur = 1200;
+      function tick(t) {
+        if (!start) start = t;
+        var p = Math.min(1, (t - start) / dur);
+        el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      el.textContent = '0';
+      requestAnimationFrame(tick);
+    }
+
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        var t = entry.target;
+        t.classList.add('is-visible');
+        t.querySelectorAll('[data-count]').forEach(countUp);
+        io.unobserve(t);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-    revealEls.forEach(function (n) { io.observe(n); });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+    var targets = '.reveal, .reveal-clip, .reveal-up, .words-reveal, .facts';
+    document.querySelectorAll(targets).forEach(function (n) { io.observe(n); });
     observeReveal = function (n) { io.observe(n); };
     // Si algo recibe el foco con teclado antes de aparecer, se muestra al momento
     document.addEventListener('focusin', function (e) {
-      var r = e.target.closest && e.target.closest('.reveal');
+      var r = e.target.closest && e.target.closest('.reveal, .reveal-clip, .reveal-up');
       if (r) r.classList.add('is-visible');
     });
+
+    // Efectos ligados al scroll (un único bucle con requestAnimationFrame)
+    var header = document.querySelector('.site-header');
+    var progress = document.querySelector('.scroll-progress');
+    var marquee = document.querySelector('.marquee-track');
+    var parallax = Array.prototype.slice.call(document.querySelectorAll('[data-speed]'));
+    var lastY = window.scrollY, ticking = false;
+
+    function onFrame() {
+      ticking = false;
+      var y = window.scrollY, vh = window.innerHeight;
+      var max = document.documentElement.scrollHeight - vh;
+
+      if (progress) progress.style.transform = 'scaleX(' + (max > 0 ? y / max : 0) + ')';
+
+      // Cabecera: se esconde al bajar y vuelve al subir (nunca si tiene el foco o el menú abierto)
+      if (header) {
+        var hide = y > lastY && y > vh * 0.6 && !header.contains(document.activeElement);
+        header.classList.toggle('is-hidden', hide);
+      }
+      lastY = y;
+
+      // Parallax suave
+      parallax.forEach(function (el) {
+        var speed = parseFloat(el.getAttribute('data-speed'));
+        var r = el.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        var offset = (r.top + r.height / 2 - vh / 2) * speed;
+        el.style.setProperty('--py', offset.toFixed(1) + 'px');
+      });
+
+      // Texto gigante horizontal
+      if (marquee) {
+        var mr = marquee.parentNode.getBoundingClientRect();
+        if (mr.bottom > 0 && mr.top < vh) {
+          var p = (vh - mr.top) / (vh + mr.height);
+          marquee.style.transform = 'translate3d(' + (-p * 35).toFixed(2) + '%,0,0)';
+        }
+      }
+
+      // Frase destacada
+      if (hlWords.length) {
+        var hr = highlight.getBoundingClientRect();
+        var hp = (vh * 0.85 - hr.top) / (hr.height + vh * 0.35);
+        var lit = Math.round(Math.max(0, Math.min(1, hp)) * hlWords.length);
+        hlWords.forEach(function (w, i) { w.classList.toggle('on', i < lit); });
+      }
+    }
+    function requestFrame() { if (!ticking) { ticking = true; requestAnimationFrame(onFrame); } }
+    window.addEventListener('scroll', requestFrame, { passive: true });
+    window.addEventListener('resize', requestFrame);
+    onFrame();
+  } else {
+    document.querySelectorAll('.reveal, .reveal-clip, .reveal-up').forEach(function (n) { n.classList.add('is-visible'); });
   }
 
   /* ---------- 1. Menú móvil ---------- */

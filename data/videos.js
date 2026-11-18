@@ -28,11 +28,9 @@ window.PULSEADS_VIDEOS = [
     formato: "vertical",
     destacado: true,
     ficha: [
-      ["Objetivo", "Llevar visitas a la tienda en Black Friday"],
-      ["Formato", "Vertical 9:16 · Reels, TikTok e historias"],
+      ["Formato", "Vertical 9:16"],
       ["Duración", "13 segundos"],
-      ["Sonido", "Diseño sonoro sin voz, con subtítulos"],
-      ["Producción", "Creado con herramientas de IA"]
+      ["Producción", "Con herramientas de IA"]
     ],
     subtitulos: "videos/black-friday-relojeria.vtt",
     transcripcion:
