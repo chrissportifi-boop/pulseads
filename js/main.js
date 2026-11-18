@@ -117,7 +117,11 @@
     }
 
     var body = el('div', { 'class': 'video-body' });
-    body.appendChild(el('span', { 'class': 'badge' }, 'Pieza de muestra'));
+    // Fila superior: número de pieza, año y etiqueta de muestra
+    var top = el('div', { 'class': 'video-top' });
+    top.appendChild(el('span', {}, (i + 1 < 10 ? '0' : '') + (i + 1) + (v.anio ? ' · ' + v.anio : '')));
+    top.appendChild(el('span', { 'class': 'badge' }, 'Pieza de muestra'));
+    body.appendChild(top);
     if (v.categoria) body.appendChild(el('p', { 'class': 'video-category' }, v.categoria));
     body.appendChild(el('h3', {}, v.titulo));
     if (v.descripcion) body.appendChild(el('p', {}, v.descripcion));

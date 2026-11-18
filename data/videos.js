@@ -4,6 +4,7 @@
    Cada vídeo es un bloque { ... }. Campos:
      titulo        → título visible
      categoria     → texto pequeño encima del título (opcional)
+     anio          → año de la pieza, p. ej. "2026" (opcional)
      descripcion   → una o dos frases
      archivo       → ruta al vídeo, p. ej. "videos/cafeteria.mp4"
                      (déjalo vacío "" para mostrar un marcador de posición)
@@ -20,6 +21,7 @@ window.PULSEADS_VIDEOS = [
   {
     titulo: "Black Friday para una relojería",
     categoria: "Comercio local · Relojería",
+    anio: "2026",
     descripcion: "Anuncio vertical para redes que presenta un cronógrafo con detalles técnicos animados al ritmo de un reloj y termina con la oferta de Black Friday y la dirección de la tienda. Pieza de muestra de producción propia, sin relación comercial con la marca que aparece.",
     archivo: "videos/black-friday-relojeria.mp4",
     poster: "img/videos/black-friday-relojeria.webp",
@@ -49,6 +51,7 @@ window.PULSEADS_VIDEOS = [
   ,{
     titulo: "Menú del día para un restaurante",
     categoria: "Hostelería",
+    anio: "2026",
     descripcion: "Vídeo vertical que presenta el menú de la semana.",
     archivo: "",
     poster: "",

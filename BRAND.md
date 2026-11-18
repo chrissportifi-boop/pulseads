@@ -13,12 +13,17 @@ Una **P de onda**: el palo de la P es firme (el local, la base) y su curva está
 | Crema | `#FBF7F2` | Neutro: fondo claro principal; logo y texto sobre fondo oscuro. |
 | Rojo texto | `#C2321A` | Variante accesible del rojo para enlaces y textos en modo claro (5,2:1 sobre crema). |
 | Rojo texto oscuro | `#FF8A70` | Variante del rojo para textos en modo oscuro (8:1 sobre Tinta). |
+| Papel | `#EFEDEA` | Fondo de las secciones claras de la web (estilo editorial). |
+| Noche | `#0E0D0C` | Fondo de la portada, las secciones oscuras y el pie de la web. |
+
+**Estilo de la web (2026):** editorial y minimalista. Secciones claras (Papel) y oscuras (Noche) alternas, titulares grandes en Inter Light (300), etiquetas pequeñas con el punto Rojo Pulso y el rojo reservado para acentos. El nombre gigante de la portada y del pie usa Bricolage Grotesque ExtraBold.
 
 **Contraste del logo (mínimo 3:1):** Rojo Pulso sobre Crema 3,4:1 · sobre blanco 3,7:1 · sobre Tinta 5,0:1. Tinta sobre Crema 17,3:1. Las versiones monocromas, 21:1.
 Texto Tinta sobre botón Rojo Pulso: 5,0:1 (cumple AA para texto normal).
 
 ## Tipografías
 - **Bricolage Grotesque ExtraBold (800):** logotipo (convertido a trazados) y titulares.
+- **Inter Light (300):** titulares grandes y frases destacadas de la web.
 - **Inter Regular (400) y SemiBold (600):** texto, botones y formularios.
 Ambas tienen licencia SIL Open Font License y están en `fonts/`.
 
