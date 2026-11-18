@@ -1023,3 +1023,32 @@ main:focus { outline: none; }
   .js .nav-list.is-open li:nth-child(5) { animation-delay: .2s; }
   .js .nav-list.is-open li:nth-child(6) { animation-delay: .25s; }
 }
+
+/* ---------- 26. Secciones como láminas apiladas ---------- */
+:root { --sheet: clamp(1.25rem, 3.5vw, 2.75rem); }
+main > .section:not(.section-tight-top) {
+  position: relative;
+  border-radius: var(--sheet) var(--sheet) 0 0;
+  margin-top: calc(var(--sheet) * -1);
+}
+main > .section.section-tight-top { position: relative; }
+
+/* ---------- 27. Botón flotante "Pide tu anuncio" (móvil) ---------- */
+.float-cta { display: none; }
+@media (max-width: 55.99rem) {
+  html { scroll-padding-bottom: 5.5rem; }  /* el botón flotante nunca tapa el elemento enfocado */
+  .js .float-cta {
+    display: inline-flex; align-items: center; gap: .6rem;
+    position: fixed; right: 1rem; bottom: max(1rem, env(safe-area-inset-bottom)); z-index: 40;
+    min-height: 3.25rem; padding: .8rem 1.3rem;
+    border-radius: 999px;
+    background: var(--coral); color: #111111;
+    font-weight: 600; text-decoration: none;
+    box-shadow: 0 12px 30px rgb(0 0 0 / .35);
+    transform: translateY(calc(100% + 2rem)); opacity: 0; visibility: hidden;
+    transition: transform .45s cubic-bezier(.2, .7, .2, 1), opacity .3s, visibility 0s .45s;
+  }
+  .js .float-cta::after { content: "→"; }
+  .js .float-cta.is-shown { transform: none; opacity: 1; visibility: visible; transition: transform .45s cubic-bezier(.2, .7, .2, 1), opacity .3s, visibility 0s; }
+  .float-cta:focus-visible { outline-color: #F2F0ED; box-shadow: 0 0 0 6px #111111; }
+}

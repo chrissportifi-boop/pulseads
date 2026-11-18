@@ -162,6 +162,25 @@
     document.querySelectorAll('.reveal, .reveal-clip, .reveal-up').forEach(function (n) { n.classList.add('is-visible'); });
   }
 
+  /* ---------- 0b. Botón flotante "Pide tu anuncio" (móvil) ----------
+     Visible tras la portada y oculto cuando se ve el formulario. Solo entra en el
+     orden de tabulación mientras está visible. */
+  var floatCta = document.querySelector('.float-cta');
+  var heroEl = document.getElementById('inicio');
+  var contactEl = document.getElementById('contacto');
+  if (floatCta && heroEl && contactEl && 'IntersectionObserver' in window) {
+    var pastHero = false, atContact = false;
+    var updateCta = function () {
+      var show = pastHero && !atContact;
+      floatCta.classList.toggle('is-shown', show);
+      floatCta.tabIndex = show ? 0 : -1;
+      if (show) floatCta.removeAttribute('aria-hidden'); else floatCta.setAttribute('aria-hidden', 'true');
+    };
+    new IntersectionObserver(function (e) { pastHero = !e[0].isIntersecting; updateCta(); }).observe(heroEl);
+    new IntersectionObserver(function (e) { atContact = e[0].isIntersecting; updateCta(); }, { rootMargin: '0px 0px -30% 0px' }).observe(contactEl);
+    updateCta();
+  }
+
   /* ---------- 1. Menú móvil ---------- */
   var toggle = document.querySelector('.nav-toggle');
   var menu = document.getElementById('menu-principal');
