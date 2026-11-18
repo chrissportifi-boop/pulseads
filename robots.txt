@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Si algún día usáis un dominio propio, cambiad esta dirección
+Sitemap: https://chrissportifi-boop.github.io/pulseads/sitemap.xml

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PulseAds · Vídeos publicitarios con IA para locales</title>
+  <meta name="description" content="Vídeos publicitarios con IA para bares, restaurantes, tiendas, peluquerías y gimnasios. Cuéntanos tu idea y la convertimos en un anuncio listo para redes.">
+  <meta name="theme-color" content="#FBF7F2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17130F" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+
+  <!-- Dirección pública de la web (GitHub Pages). Si algún día usáis un dominio propio, cambiadla
+       (aquí, en Open Graph, en el JSON-LD, en sitemap.xml y en robots.txt). -->
+  <link rel="canonical" href="https://chrissportifi-boop.github.io/pulseads/">
+
+  <!-- Open Graph / redes sociales -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="PulseAds">
+  <meta property="og:title" content="PulseAds · Vídeos publicitarios con IA para locales">
+  <meta property="og:description" content="Vídeos con IA que hacen que tu local se note. Anuncios para redes, ofertas y eventos.">
+  <meta property="og:url" content="https://chrissportifi-boop.github.io/pulseads/">
+  <meta property="og:image" content="https://chrissportifi-boop.github.io/pulseads/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Logotipo de PulseAds y el lema: vídeos con IA que hacen que tu local se note.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Iconos -->
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <!-- Tipografías autoalojadas: se precarga solo la de titulares -->
+  <link rel="preload" href="fonts/bricolage-grotesque-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Marca que hay JavaScript para activar menú móvil y animaciones (sin JS todo sigue visible) -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Datos estructurados para buscadores -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PulseAds",
+    "url": "https://chrissportifi-boop.github.io/pulseads/",
+    "logo": "https://chrissportifi-boop.github.io/pulseads/img/icon-512.png",
+    "image": "https://chrissportifi-boop.github.io/pulseads/img/og-image.png",
+    "description": "Proyecto académico ficticio: agencia que crea vídeos publicitarios con inteligencia artificial para locales y negocios de barrio.",
+    "email": "ceigiggm@gmail.com",
+    "founder": [
+      { "@type": "Person", "name": "Christian Gómez Moreno" },
+      { "@type": "Person", "name": "César Iglesias" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ============ CABECERA ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio"><svg class="logo" viewBox="13.5 6.00 284.10 52.00" width="168" height="31" role="img" aria-label="PulseAds" focusable="false"><path d="M19 6h11.5a20 20 0 0 1 0 40H19v-7h11.5a13 13 0 0 0 0-26H19z" class="logo-wave"/><path d="M24.5 19.5h6a6.5 6.5 0 0 1 0 13h-6z" class="logo-wave"/><rect x="13.5" y="6" width="11" height="52" rx="5.5" fill="currentColor"/><path fill="currentColor" d="M75.80 49L67.50 49L67.50 15L81.72 15Q85.02 15 87.67 15.77Q90.33 16.55 92.23 18.07Q94.14 19.58 95.14 21.93Q96.15 24.27 96.15 27.42Q96.15 31.43 94.32 34.16Q92.49 36.89 88.91 38.28Q85.33 39.68 79.97 39.68L75.80 39.68L75.80 49M81.47 21.34L75.80 21.34L75.80 33.29L81.16 33.29Q84.50 33.29 86.15 31.90Q87.80 30.51 87.80 27.21Q87.80 24.32 86.28 22.83Q84.76 21.34 81.47 21.34M109.76 49.72Q104.92 49.72 102.47 46.45Q100.02 43.18 100.02 36.48L100.02 21.80L108.37 21.80L108.37 35.40Q108.37 39.21 109.50 41.09Q110.63 42.97 112.95 42.97Q114.34 42.97 115.35 42.28Q116.35 41.58 117.05 40.32Q117.74 39.06 118.08 37.41Q118.41 35.76 118.41 33.80L118.41 21.80L126.71 21.80L126.71 49L120.11 49L119.96 40.60L118.93 40.60Q118.16 43.80 117 45.83Q115.84 47.87 114.09 48.79Q112.33 49.72 109.76 49.72M140.83 49L132.70 49L132.70 11.91L140.83 11.91L140.83 49M158 49.72Q155.27 49.72 153.06 49.23Q150.84 48.74 149.19 47.82Q147.54 46.89 146.49 45.57Q145.43 44.26 145.02 42.66L151.20 39.93Q151.56 40.81 152.46 41.71Q153.37 42.61 154.88 43.18Q156.40 43.75 158.57 43.75Q160.63 43.75 161.79 43.15Q162.95 42.56 162.95 41.43Q162.95 40.60 162.30 40.11Q161.66 39.62 160.37 39.24Q159.08 38.85 157.18 38.49Q155.22 38.08 153.21 37.54Q151.20 37 149.45 36.04Q147.70 35.09 146.64 33.52Q145.59 31.95 145.59 29.53Q145.59 27 146.93 25.12Q148.27 23.24 150.92 22.16Q153.57 21.08 157.38 21.08Q160.78 21.08 163.36 21.95Q165.93 22.83 167.66 24.45Q169.39 26.08 170.06 28.34L163.41 30.71Q163.15 29.58 162.35 28.75Q161.56 27.93 160.35 27.49Q159.13 27.05 157.49 27.05Q155.48 27.05 154.37 27.67Q153.26 28.29 153.26 29.32Q153.26 30.15 154.01 30.69Q154.76 31.23 156.15 31.59Q157.54 31.95 159.44 32.36Q161.45 32.77 163.44 33.31Q165.42 33.85 167.04 34.76Q168.67 35.66 169.62 37.13Q170.57 38.59 170.57 40.91Q170.57 43.64 169.13 45.63Q167.69 47.61 164.88 48.67Q162.07 49.72 158 49.72M187.69 49.72Q184.29 49.72 181.61 48.82Q178.93 47.92 177.05 46.17Q175.17 44.42 174.19 41.84Q173.21 39.26 173.21 35.92Q173.21 32.67 174.16 29.94Q175.12 27.21 176.89 25.23Q178.67 23.24 181.27 22.16Q183.87 21.08 187.12 21.08Q190.42 21.08 192.92 22.13Q195.41 23.19 197.04 25.25Q198.66 27.31 199.43 30.27Q200.20 33.24 199.95 37.05L181.20 37.20Q181.45 40.35 183 41.89Q184.80 43.80 187.63 43.80Q189.03 43.80 189.95 43.41Q190.88 43.02 191.47 42.43Q192.07 41.84 192.40 41.12Q192.73 40.40 192.94 39.73L200.15 41.27Q199.74 43.18 198.84 44.72Q197.94 46.27 196.42 47.40Q194.90 48.54 192.76 49.13Q190.62 49.72 187.69 49.72M181.40 32.88L192.37 32.77Q192.37 31.48 191.96 30.51Q191.29 28.91 190 28.16Q188.72 27.42 187.22 27.42Q185.42 27.42 184.05 28.39Q182.69 29.37 181.92 31.23Q181.61 31.95 181.40 32.88M211.19 49L202.12 49L213.66 15L225.82 15L237.36 49L228.29 49L226.39 42.61L213.10 42.61L211.19 49M214.74 37.05L224.74 37.05L220.15 21.49L219.33 21.49L214.74 37.05M250.82 49.72Q247.42 49.72 244.87 48Q242.32 46.27 240.87 43.05Q239.43 39.83 239.43 35.35Q239.43 31.23 240.67 28.03Q241.90 24.84 244.35 23.01Q246.80 21.18 250.40 21.18Q252.98 21.18 254.76 22.11Q256.53 23.04 257.72 24.89Q258.90 26.75 259.63 29.58L260.91 29.58Q260.55 27.83 260.24 26.26Q259.93 24.68 259.75 23.32Q259.57 21.95 259.57 20.92L259.57 11.91L267.92 11.91L267.92 49L261.12 49L261.02 40.96L259.88 40.96Q259.32 44.05 258.11 45.99Q256.90 47.92 255.07 48.82Q253.24 49.72 250.82 49.72M253.80 43.02Q255.40 43.02 256.51 42.33Q257.62 41.63 258.29 40.55Q258.96 39.47 259.27 38.23Q259.57 37 259.57 35.92L259.57 34.83Q259.57 33.85 259.32 32.88Q259.06 31.90 258.57 30.97Q258.08 30.04 257.36 29.32Q256.64 28.60 255.68 28.19Q254.73 27.78 253.60 27.78Q251.90 27.78 250.69 28.70Q249.48 29.63 248.83 31.33Q248.19 33.03 248.19 35.35Q248.19 37.67 248.86 39.39Q249.53 41.12 250.82 42.07Q252.10 43.02 253.80 43.02M285.03 49.72Q282.30 49.72 280.09 49.23Q277.87 48.74 276.23 47.82Q274.58 46.89 273.52 45.57Q272.47 44.26 272.05 42.66L278.23 39.93Q278.60 40.81 279.50 41.71Q280.40 42.61 281.92 43.18Q283.44 43.75 285.60 43.75Q287.66 43.75 288.82 43.15Q289.98 42.56 289.98 41.43Q289.98 40.60 289.34 40.11Q288.69 39.62 287.40 39.24Q286.12 38.85 284.21 38.49Q282.25 38.08 280.24 37.54Q278.23 37 276.48 36.04Q274.73 35.09 273.68 33.52Q272.62 31.95 272.62 29.53Q272.62 27 273.96 25.12Q275.30 23.24 277.95 22.16Q280.60 21.08 284.42 21.08Q287.82 21.08 290.39 21.95Q292.97 22.83 294.69 24.45Q296.42 26.08 297.09 28.34L290.44 30.71Q290.19 29.58 289.39 28.75Q288.59 27.93 287.38 27.49Q286.17 27.05 284.52 27.05Q282.51 27.05 281.40 27.67Q280.30 28.29 280.30 29.32Q280.30 30.15 281.04 30.69Q281.79 31.23 283.18 31.59Q284.57 31.95 286.48 32.36Q288.49 32.77 290.47 33.31Q292.45 33.85 294.08 34.76Q295.70 35.66 296.65 37.13Q297.60 38.59 297.60 40.91Q297.60 43.64 296.16 45.63Q294.72 47.61 291.91 48.67Q289.10 49.72 285.03 49.72"/></svg></a>
+
+      <nav class="site-nav" aria-label="Principal">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" hidden>
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
+          <span class="nav-toggle-text">Menú</span>
+        </button>
+        <ul class="nav-list" id="menu-principal">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proceso">Cómo trabajamos</a></li>
+          <li><a href="#ejemplos">Ejemplos</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#faq">Preguntas</a></li>
+          <li><a class="btn btn-primary btn-small" href="#contacto">Pide tu anuncio</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido" tabindex="-1">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-wave" aria-hidden="true"></span>Agencia de vídeo para locales</p>
+          <h1 id="hero-titulo">Vídeos con IA que hacen que tu local <span class="accent">se note</span>.</h1>
+          <p class="lead">Creamos anuncios cortos para redes sociales, pantallas y campañas de bares, restaurantes, tiendas y negocios de barrio. Tú nos cuentas qué quieres comunicar y nosotros lo convertimos en un vídeo listo para publicar.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contacto">Pide tu anuncio</a>
+            <a class="btn btn-secondary" href="#ejemplos">Ver ejemplos</a>
+          </div>
+        </div>
+
+        <!-- Ilustración decorativa: un móvil con un anuncio de muestra rodeado de ondas -->
+        <div class="hero-visual" aria-hidden="true">
+          <svg class="hero-waves" viewBox="0 0 400 400" focusable="false">
+            <circle cx="200" cy="200" r="190"/>
+            <circle cx="200" cy="200" r="150"/>
+            <circle cx="200" cy="200" r="110"/>
+          </svg>
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="phone-top"><span class="rec-dot"></span>REC</div>
+              <p class="phone-kicker">Solo este martes</p>
+              <p class="phone-title">2×1 en cafés</p>
+              <p class="phone-tag">[Ejemplo]</p>
+              <div class="phone-bar"><span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICIOS ============ -->
+    <section class="section" id="servicios" aria-labelledby="servicios-titulo">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow"><span class="eyebrow-wave" aria-hidden="true"></span>Servicios</p>
+          <h2 id="servicios-titulo">Todo lo que tu local necesita para anunciarse en vídeo</h2>
+          <p class="section-lead">Usamos Claude y otras herramientas de inteligencia artificial para idear, escribir y producir cada vídeo. La IA nos da velocidad; la revisión y el criterio los ponemos nosotros.</p>
+        </header>
+
+        <ul class="cards cards-4">
+          <li class="card reveal">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></svg>
+            <h3>Vídeos promocionales con IA</h3>
+            <p>Un vídeo corto que presenta tu local, tus productos o tu forma de trabajar, con guion, imagen, texto en pantalla y música.</p>
+          </li>
+          <li class="card reveal">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
+            <h3>Campañas para redes sociales</h3>
+            <p>Una serie de vídeos con el mismo estilo para Instagram, TikTok o WhatsApp, en formato vertical, cuadrado u horizontal.</p>
+          </li>
+          <li class="card reveal">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="8" cy="8" r="1.5"/></svg>
+            <h3>Anuncios para ofertas y eventos</h3>
+            <p>Piezas rápidas para dar a conocer una promoción, un menú especial, una inauguración o un evento con fecha.</p>
+          </li>
+          <li class="card reveal">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg>
+            <h3>Packs para locales</h3>
+            <p>Varios vídeos pensados juntos para cubrir un mes o una temporada, adaptados a lo que necesite tu negocio.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ CÓMO TRABAJAMOS ============ -->
+    <section class="section section-alt" id="proceso" aria-labelledby="proceso-titulo">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow"><span class="eyebrow-wave" aria-hidden="true"></span>Cómo trabajamos</p>
+          <h2 id="proceso-titulo">De tu idea a un vídeo publicado en cuatro pasos</h2>
+        </header>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">01</span>
+            <h3><span lang="en">Briefing</span> <span class="step-sub">(reunión inicial)</span></h3>
+            <p>Hablamos contigo: qué vendes, a quién te diriges, qué quieres anunciar y dónde lo vas a publicar.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">02</span>
+            <h3>Creación con IA</h3>
+            <p>Escribimos el guion y generamos imágenes, voz y montaje con herramientas de IA, siempre con el estilo de tu marca.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">03</span>
+            <h3>Revisión</h3>
+            <p>Te enseñamos el vídeo y ajustamos lo que haga falta: textos, ritmo, música o colores.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">04</span>
+            <h3>Entrega</h3>
+            <p>Recibes los archivos finales en los formatos de cada red, con subtítulos, listos para subir.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ PARA QUÉ LOCALES ============ -->
+    <section class="section" id="locales" aria-labelledby="locales-titulo">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow"><span class="eyebrow-wave" aria-hidden="true"></span>Para quién</p>
+          <h2 id="locales-titulo">Pensado para el comercio y la hostelería de barrio</h2>
+          <p class="section-lead">Si tienes un local abierto al público y quieres que más gente lo conozca, podemos ayudarte.</p>
+        </header>
+
+        <ul class="sectors">
+          <li class="sector reveal">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v18M4.5 3v5a2.5 2.5 0 0 0 5 0V3M17 21V3c-2.2 1.2-3.5 4-3.5 7.5H17"/></svg>
+            <h3>Restaurantes</h3>
+            <p>Menús del día, platos nuevos y reservas.</p>
+          </li>
+          <li class="sector reveal">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 3h12l-1 6a5 5 0 0 1-10 0z"/><path d="M12 14v7M8 21h8"/></svg>
+            <h3>Bares y cafeterías</h3>
+            <p><i lang="en">Happy hours</i>, partidos y desayunos.</p>
+          </li>
+          <li class="sector reveal">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8h14l-1 13H6z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>
+            <h3>Comercio local</h3>
+            <p>Novedades, rebajas y temporadas.</p>
+          </li>
+          <li class="sector reveal">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 7.5 20 18M8.5 16.5 20 6"/></svg>
+            <h3>Peluquerías y estética</h3>
+            <p>Servicios, cambios de <i lang="en">look</i> y citas.</p>
+          </li>
+          <li class="sector reveal">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 6v12M17.5 6v12M3.5 9v6M20.5 9v6M6.5 12h11"/></svg>
+            <h3>Gimnasios y deporte</h3>
+            <p>Clases, matrículas y retos.</p>
+          </li>
+          <li class="sector reveal">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16v4a2 2 0 0 0 0 4v4H4v-4a2 2 0 0 0 0-4z"/><path d="M14 7v2M14 11v2M14 15v2"/></svg>
+            <h3>Ocio y eventos</h3>
+            <p>Conciertos, fiestas e inauguraciones.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ EJEMPLOS ============ -->
+    <!-- Los vídeos se definen en data/videos.js: para cambiar uno, edita ese archivo. -->
+    <section class="section section-alt" id="ejemplos" aria-labelledby="ejemplos-titulo">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow"><span class="eyebrow-wave" aria-hidden="true"></span>Ejemplos de trabajo</p>
+          <h2 id="ejemplos-titulo">Así pueden quedar tus vídeos</h2>
+          <p class="section-lead">Estos son ejemplos provisionales para enseñar el estilo. Los iremos sustituyendo por trabajos definitivos.</p>
+        </header>
+
+        <ul class="videos" id="lista-videos">
+          <!-- js/main.js rellena esta lista con los vídeos de data/videos.js -->
+        </ul>
+        <noscript><p class="notice">Activa JavaScript para ver los vídeos de ejemplo.</p></noscript>
+      </div>
+    </section>
+
+    <!-- ============ SOBRE NOSOTROS ============ -->
+    <section class="section" id="nosotros" aria-labelledby="nosotros-titulo">
+      <div class="container about-grid">
+        <header class="section-head reveal">
+          <p class="eyebrow"><span class="eyebrow-wave" aria-hidden="true"></span>Sobre nosotros</p>
+          <h2 id="nosotros-titulo">Jóvenes, cercanos y con hambre de hacerlo bien</h2>
+          <p class="section-lead">Somos Christian y César, dos jóvenes emprendedores convencidos de que el bar de la esquina merece un anuncio tan cuidado como el de una gran marca. Por eso creamos PulseAds.</p>
+          <p>Estamos empezando y lo decimos claro: todavía no tenemos una lista de clientes que enseñarte. Lo que sí tenemos es trato cercano, muchas ganas de trabajar y de aprender algo nuevo en cada proyecto. Usamos herramientas de IA actuales para ir rápido, y cada vídeo lo revisamos nosotros antes de que llegue a ti.</p>
+          <ul class="values" aria-label="Lo que nos define">
+            <li>Trato cercano</li>
+            <li>Ganas de aprender</li>
+            <li>Trabajo bien hecho</li>
+          </ul>
+        </header>
+
+        <ul class="team">
+          <li class="person reveal">
+            <span class="avatar" aria-hidden="true">CG</span>
+            <div>
+              <h3>Christian Gómez Moreno</h3>
+              <p class="person-role">Cofundador</p>
+              <p>Cree que un buen anuncio no se mide en «me gusta», sino en gente nueva entrando por la puerta. Te escucha, entiende tu negocio y no se queda tranquilo hasta que el vídeo te convence.</p>
+            </div>
+          </li>
+          <li class="person reveal">
+            <span class="avatar avatar-alt" aria-hidden="true">CI</span>
+            <div>
+              <h3>César Iglesias</h3>
+              <p class="person-role">Cofundador</p>
+              <p>Su lema: si se puede hacer mejor, se repite. Amable, curioso y siempre con una idea nueva en la cabeza, busca ese detalle que hace que la gente se pare a mirar tu vídeo.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ PREGUNTAS FRECUENTES ============ -->
+    <section class="section section-alt" id="faq" aria-labelledby="faq-titulo">
+      <div class="container faq-grid">
+        <header class="section-head reveal">
+          <p class="eyebrow"><span class="eyebrow-wave" aria-hidden="true"></span>Preguntas frecuentes</p>
+          <h2 id="faq-titulo">Lo que suelen preguntarnos</h2>
+          <p class="section-lead">¿Tienes otra duda? <a href="#contacto">Escríbenos desde el formulario de contacto</a>.</p>
+        </header>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>¿Qué necesito para empezar?</summary>
+            <div class="faq-body"><p>Solo contarnos qué quieres anunciar. Si tienes logo, fotos de tu local o de tus productos, mejor, pero no es imprescindible.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>¿Cuánto tarda un vídeo?</summary>
+            <div class="faq-body"><p>Depende del tipo de vídeo y de los cambios que pidas. Después de la reunión inicial te damos un plazo concreto antes de empezar.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>¿Cuánto cuesta?</summary>
+            <div class="faq-body"><p>No tenemos tarifas cerradas: el precio depende del contenido que nos pidas. Influyen el número de vídeos, su duración, los formatos que necesites y lo elaborada que sea cada pieza.</p><p>Cuéntanos tu idea y hablamos contigo para darte un presupuesto a medida y sin compromiso.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>¿Los vídeos están hechos solo con IA?</summary>
+            <div class="faq-body"><p>La IA nos ayuda a escribir guiones y generar imágenes, voz y montaje, pero la idea, la revisión y el resultado final los cuidamos nosotros.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>¿Puedo pedir cambios?</summary>
+            <div class="faq-body"><p>Sí. La revisión es parte del proceso: te enseñamos el vídeo antes de entregarlo y ajustamos lo que necesites.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>¿En qué formatos me lo entregáis?</summary>
+            <div class="faq-body"><p>En vertical (9:16) para historias y <i lang="en">reels</i>, cuadrado (1:1) para publicaciones y horizontal (16:9) para pantallas o YouTube, con subtítulos.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>¿Puedo usar la música y las imágenes sin problemas?</summary>
+            <div class="faq-body"><p>Usamos recursos cuya licencia permite el uso comercial y te indicamos en la entrega de dónde sale cada uno.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section class="section" id="contacto" aria-labelledby="contacto-titulo">
+      <div class="container contact-grid">
+        <header class="section-head reveal">
+          <p class="eyebrow"><span class="eyebrow-wave" aria-hidden="true"></span>Contacto</p>
+          <h2 id="contacto-titulo">Cuéntanos qué quieres anunciar</h2>
+          <p class="section-lead">Te respondemos con una propuesta y un presupuesto sin compromiso.</p>
+          <!-- Email de contacto: si cambia, cámbialo también en js/main.js (CONTACT_EMAIL). -->
+          <p class="contact-mail">También puedes escribirnos a <a href="mailto:ceigiggm@gmail.com">ceigiggm@gmail.com</a>.</p>
+        </header>
+
+        <!--
+          FORMULARIO CON FORMSPREE (los mensajes llegan a ceigiggm@gmail.com sin abrir el correo del visitante)
+          1. En js/main.js pon el ID de tu formulario de Formspree en FORMSPREE_ID (p. ej. 'xyzabcde').
+             Con eso ya funciona: el envío se hace en segundo plano y se muestra el aviso debajo del botón.
+          2. Pega también el mismo ID al final del action de abajo (https://formspree.io/f/xyzabcde)
+             para que el formulario funcione aunque el navegador tenga JavaScript desactivado.
+          Mientras FORMSPREE_ID esté vacío, al enviar se abre el programa de correo con el mensaje ya escrito (mailto).
+          Pasos detallados en README.md (sección «Formulario»).
+        -->
+        <form class="contact-form reveal" id="form-contacto" name="contacto" action="https://formspree.io/f/xljbbava" method="POST" novalidate>
+          <!-- Asunto del correo cuando se envía sin JavaScript ({{ local }} lo rellena Formspree) -->
+          <input type="hidden" name="subject" value="Nuevo encargo para PulseAds: {{ local }}">
+          <!-- Trampa antispam (_gotcha): invisible, fuera del orden de tabulación y oculta a lectores de pantalla.
+               Las personas no la ven; si un robot la rellena, Formspree descarta el mensaje. -->
+          <div class="visually-hidden" aria-hidden="true">
+            <label for="gotcha">No rellenes este campo</label>
+            <input id="gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="error-summary" id="resumen-errores" tabindex="-1" hidden>
+            <h3 id="resumen-errores-titulo">Revisa el formulario</h3>
+            <ul></ul>
+          </div>
+
+          <p class="form-note">Todos los campos son obligatorios.</p>
+
+          <div class="field">
+            <label for="nombre">Tu nombre</label>
+            <input id="nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="nombre-error">
+            <p class="field-error" id="nombre-error" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="local">Nombre de tu local</label>
+            <input id="local" name="local" type="text" autocomplete="organization" required aria-describedby="local-error">
+            <p class="field-error" id="local-error" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <p class="field-hint" id="email-hint">Por ejemplo: nombre@milocal.es</p>
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="email-hint email-error">
+            <p class="field-error" id="email-error" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="mensaje">¿Qué quieres anunciar?</label>
+            <p class="field-hint" id="mensaje-hint">Una oferta, un evento, tu local en general… Cuanto más nos cuentes, mejor.</p>
+            <textarea id="mensaje" name="mensaje" rows="5" required aria-describedby="mensaje-hint mensaje-error"></textarea>
+            <p class="field-error" id="mensaje-error" hidden></p>
+          </div>
+
+          <button class="btn btn-primary btn-block" type="submit">Enviar mensaje</button>
+          <p class="form-status" id="estado-formulario" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ PIE ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#inicio"><svg class="logo" viewBox="13.5 6.00 284.10 52.00" width="168" height="31" role="img" aria-label="PulseAds" focusable="false"><path d="M19 6h11.5a20 20 0 0 1 0 40H19v-7h11.5a13 13 0 0 0 0-26H19z" class="logo-wave"/><path d="M24.5 19.5h6a6.5 6.5 0 0 1 0 13h-6z" class="logo-wave"/><rect x="13.5" y="6" width="11" height="52" rx="5.5" fill="currentColor"/><path fill="currentColor" d="M75.80 49L67.50 49L67.50 15L81.72 15Q85.02 15 87.67 15.77Q90.33 16.55 92.23 18.07Q94.14 19.58 95.14 21.93Q96.15 24.27 96.15 27.42Q96.15 31.43 94.32 34.16Q92.49 36.89 88.91 38.28Q85.33 39.68 79.97 39.68L75.80 39.68L75.80 49M81.47 21.34L75.80 21.34L75.80 33.29L81.16 33.29Q84.50 33.29 86.15 31.90Q87.80 30.51 87.80 27.21Q87.80 24.32 86.28 22.83Q84.76 21.34 81.47 21.34M109.76 49.72Q104.92 49.72 102.47 46.45Q100.02 43.18 100.02 36.48L100.02 21.80L108.37 21.80L108.37 35.40Q108.37 39.21 109.50 41.09Q110.63 42.97 112.95 42.97Q114.34 42.97 115.35 42.28Q116.35 41.58 117.05 40.32Q117.74 39.06 118.08 37.41Q118.41 35.76 118.41 33.80L118.41 21.80L126.71 21.80L126.71 49L120.11 49L119.96 40.60L118.93 40.60Q118.16 43.80 117 45.83Q115.84 47.87 114.09 48.79Q112.33 49.72 109.76 49.72M140.83 49L132.70 49L132.70 11.91L140.83 11.91L140.83 49M158 49.72Q155.27 49.72 153.06 49.23Q150.84 48.74 149.19 47.82Q147.54 46.89 146.49 45.57Q145.43 44.26 145.02 42.66L151.20 39.93Q151.56 40.81 152.46 41.71Q153.37 42.61 154.88 43.18Q156.40 43.75 158.57 43.75Q160.63 43.75 161.79 43.15Q162.95 42.56 162.95 41.43Q162.95 40.60 162.30 40.11Q161.66 39.62 160.37 39.24Q159.08 38.85 157.18 38.49Q155.22 38.08 153.21 37.54Q151.20 37 149.45 36.04Q147.70 35.09 146.64 33.52Q145.59 31.95 145.59 29.53Q145.59 27 146.93 25.12Q148.27 23.24 150.92 22.16Q153.57 21.08 157.38 21.08Q160.78 21.08 163.36 21.95Q165.93 22.83 167.66 24.45Q169.39 26.08 170.06 28.34L163.41 30.71Q163.15 29.58 162.35 28.75Q161.56 27.93 160.35 27.49Q159.13 27.05 157.49 27.05Q155.48 27.05 154.37 27.67Q153.26 28.29 153.26 29.32Q153.26 30.15 154.01 30.69Q154.76 31.23 156.15 31.59Q157.54 31.95 159.44 32.36Q161.45 32.77 163.44 33.31Q165.42 33.85 167.04 34.76Q168.67 35.66 169.62 37.13Q170.57 38.59 170.57 40.91Q170.57 43.64 169.13 45.63Q167.69 47.61 164.88 48.67Q162.07 49.72 158 49.72M187.69 49.72Q184.29 49.72 181.61 48.82Q178.93 47.92 177.05 46.17Q175.17 44.42 174.19 41.84Q173.21 39.26 173.21 35.92Q173.21 32.67 174.16 29.94Q175.12 27.21 176.89 25.23Q178.67 23.24 181.27 22.16Q183.87 21.08 187.12 21.08Q190.42 21.08 192.92 22.13Q195.41 23.19 197.04 25.25Q198.66 27.31 199.43 30.27Q200.20 33.24 199.95 37.05L181.20 37.20Q181.45 40.35 183 41.89Q184.80 43.80 187.63 43.80Q189.03 43.80 189.95 43.41Q190.88 43.02 191.47 42.43Q192.07 41.84 192.40 41.12Q192.73 40.40 192.94 39.73L200.15 41.27Q199.74 43.18 198.84 44.72Q197.94 46.27 196.42 47.40Q194.90 48.54 192.76 49.13Q190.62 49.72 187.69 49.72M181.40 32.88L192.37 32.77Q192.37 31.48 191.96 30.51Q191.29 28.91 190 28.16Q188.72 27.42 187.22 27.42Q185.42 27.42 184.05 28.39Q182.69 29.37 181.92 31.23Q181.61 31.95 181.40 32.88M211.19 49L202.12 49L213.66 15L225.82 15L237.36 49L228.29 49L226.39 42.61L213.10 42.61L211.19 49M214.74 37.05L224.74 37.05L220.15 21.49L219.33 21.49L214.74 37.05M250.82 49.72Q247.42 49.72 244.87 48Q242.32 46.27 240.87 43.05Q239.43 39.83 239.43 35.35Q239.43 31.23 240.67 28.03Q241.90 24.84 244.35 23.01Q246.80 21.18 250.40 21.18Q252.98 21.18 254.76 22.11Q256.53 23.04 257.72 24.89Q258.90 26.75 259.63 29.58L260.91 29.58Q260.55 27.83 260.24 26.26Q259.93 24.68 259.75 23.32Q259.57 21.95 259.57 20.92L259.57 11.91L267.92 11.91L267.92 49L261.12 49L261.02 40.96L259.88 40.96Q259.32 44.05 258.11 45.99Q256.90 47.92 255.07 48.82Q253.24 49.72 250.82 49.72M253.80 43.02Q255.40 43.02 256.51 42.33Q257.62 41.63 258.29 40.55Q258.96 39.47 259.27 38.23Q259.57 37 259.57 35.92L259.57 34.83Q259.57 33.85 259.32 32.88Q259.06 31.90 258.57 30.97Q258.08 30.04 257.36 29.32Q256.64 28.60 255.68 28.19Q254.73 27.78 253.60 27.78Q251.90 27.78 250.69 28.70Q249.48 29.63 248.83 31.33Q248.19 33.03 248.19 35.35Q248.19 37.67 248.86 39.39Q249.53 41.12 250.82 42.07Q252.10 43.02 253.80 43.02M285.03 49.72Q282.30 49.72 280.09 49.23Q277.87 48.74 276.23 47.82Q274.58 46.89 273.52 45.57Q272.47 44.26 272.05 42.66L278.23 39.93Q278.60 40.81 279.50 41.71Q280.40 42.61 281.92 43.18Q283.44 43.75 285.60 43.75Q287.66 43.75 288.82 43.15Q289.98 42.56 289.98 41.43Q289.98 40.60 289.34 40.11Q288.69 39.62 287.40 39.24Q286.12 38.85 284.21 38.49Q282.25 38.08 280.24 37.54Q278.23 37 276.48 36.04Q274.73 35.09 273.68 33.52Q272.62 31.95 272.62 29.53Q272.62 27 273.96 25.12Q275.30 23.24 277.95 22.16Q280.60 21.08 284.42 21.08Q287.82 21.08 290.39 21.95Q292.97 22.83 294.69 24.45Q296.42 26.08 297.09 28.34L290.44 30.71Q290.19 29.58 289.39 28.75Q288.59 27.93 287.38 27.49Q286.17 27.05 284.52 27.05Q282.51 27.05 281.40 27.67Q280.30 28.29 280.30 29.32Q280.30 30.15 281.04 30.69Q281.79 31.23 283.18 31.59Q284.57 31.95 286.48 32.36Q288.49 32.77 290.47 33.31Q292.45 33.85 294.08 34.76Q295.70 35.66 296.65 37.13Q297.60 38.59 297.60 40.91Q297.60 43.64 296.16 45.63Q294.72 47.61 291.91 48.67Q289.10 49.72 285.03 49.72"/></svg></a>
+        <p>Vídeos publicitarios con IA para locales y negocios de barrio.</p>
+      </div>
+
+      <nav aria-label="Pie de página">
+        <h2 class="footer-title">Secciones</h2>
+        <ul class="footer-links">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proceso">Cómo trabajamos</a></li>
+          <li><a href="#locales">Para quién</a></li>
+          <li><a href="#ejemplos">Ejemplos</a></li>
+          <li><a href="#nosotros">Sobre nosotros</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h2 class="footer-title">Aviso legal</h2>
+        <details class="legal">
+          <summary>Leer el aviso legal y de privacidad</summary>
+          <div class="legal-body">
+            <p>Esta web es un proyecto académico sin actividad comercial. Responsables: Christian Gómez Moreno y César Iglesias. Contacto: <a href="mailto:ceigiggm@gmail.com">ceigiggm@gmail.com</a>.</p>
+            <p>Los mensajes del formulario de contacto se envían a nuestro correo a través de Formspree, un servicio externo de envío de formularios, y solo los usamos para responder a tu solicitud. Esta web no usa cookies ni herramientas de analítica.</p>
+            <p>Las tipografías Bricolage Grotesque e Inter se usan bajo la licencia SIL Open Font License.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 PulseAds · Christian Gómez Moreno y César Iglesias</p>
+      <p class="footer-note">PulseAds es un proyecto académico ficticio.</p>
+    </div>
+  </footer>
+
+  <!-- Datos de los vídeos y lógica de la página (defer: no bloquean la carga) -->
+  <script src="data/videos.js" defer></script>
+  <script src="js/main.js" defer onerror="document.documentElement.classList.remove('js')"></script>
+</body>
+</html>
