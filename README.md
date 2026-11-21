@@ -29,7 +29,7 @@ tools/              → pruebas automáticas (no forman parte de la web)
 ## Qué tenéis que personalizar
 Lo que queda por ajustar (en los archivos, lo pendiente lleva la marca `[Sustituir]`):
 1. **Vídeos:** copiad los `.mp4` a `videos/` y los pósters a `img/videos/`. En `data/videos.js` hay una plantilla comentada: rellenad `archivo`, `poster`, `formato` y `transcripcion`. Si `archivo` está vacío, sale un marcador de posición.
-2. **Subtítulos:** un `.vtt` por vídeo; tenéis la plantilla `videos/ejemplo-1.vtt` y un ejemplo completo en `videos/black-friday-relojeria.vtt`.
+2. **Subtítulos:** un `.vtt` por vídeo; tenéis la plantilla `videos/ejemplo-1.vtt` y un ejemplo completo en `videos/hamburgueseria-brasa21.vtt`.
    Si cambiáis el vídeo destacado, actualizad también la versión sin JavaScript que hay dentro de `<noscript>` en `index.html`.
 3. **Email de contacto (si cambia):** en `index.html` (contacto y aviso legal) y en `js/main.js` (`CONTACT_EMAIL`).
 4. **Dirección de la web:** ya está puesta (`https://chrissportifi-boop.github.io/pulseads/`). Si algún día usáis un dominio propio, cambiadla en `index.html`, `sitemap.xml` y `robots.txt`.

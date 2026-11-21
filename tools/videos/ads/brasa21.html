@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@500;700;900&display=block" rel="stylesheet">
+<link rel="stylesheet" href="../engine.css">
+<style>
+:root{--fire:#FF5A1F;--ched:#FFC226;--cream:#FFF4E0;--ink:#0d0b09}
+#stage{font-family:Archivo,sans-serif;color:#fff}
+.big{font-family:Anton,sans-serif;text-transform:uppercase;line-height:.86;letter-spacing:.005em;text-shadow:0 6px 40px rgba(0,0,0,.55)}
+.shade.top{background:linear-gradient(180deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.15) 42%,rgba(0,0,0,0) 60%,rgba(0,0,0,.55) 100%)}
+.shade.bot{background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.25) 45%,rgba(0,0,0,0) 65%,rgba(0,0,0,.35) 100%)}
+.tag{display:inline-block;font-weight:900;font-size:22px;letter-spacing:.18em;text-transform:uppercase;padding:10px 16px;background:var(--fire);color:#fff}
+.chip{display:inline-block;font-weight:700;font-size:26px;padding:14px 22px;border-radius:999px;background:rgba(255,244,224,.95);color:var(--ink)}
+.sticker{position:absolute;width:210px;height:210px;border-radius:50%;background:var(--ched);color:var(--ink);display:grid;place-items:center;text-align:center;font-family:Anton;font-size:40px;line-height:.95;text-transform:uppercase;box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.outline{color:transparent;-webkit-text-stroke:4px #fff}
+.bug{left:36px;top:40px;z-index:25;font-family:Anton;font-size:30px;letter-spacing:.04em;display:flex;align-items:center;gap:10px;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.bug i{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--fire);font-style:normal;font-size:22px}
+</style></head>
+<body data-bpm="120" data-style="trap">
+<div id="stage">
+
+  <!-- 1 · gancho -->
+  <section class="scene" data-beats="4" data-img="../ai/c/burger1.jpg" data-kb="1.45,1.12,0,0,4%,0" data-pos="50% 60%">
+    <div class="shade top"></div>
+    <div class="layer" style="padding:150px 48px 0">
+      <div class="mask"><span class="tag" data-fx="rise" data-at="0">Aviso</span></div>
+      <div class="big" style="font-size:190px;margin-top:22px">
+        <div data-fx="slam" data-at="0.5">Esto</div>
+        <div data-fx="slam" data-at="1.5">da</div>
+        <div data-fx="slam" data-at="2.5" style="color:var(--ched)">hambre</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · plancha -->
+  <section class="scene" data-beats="4" data-tr="up" data-flash data-img="../ai/c/burger2.jpg" data-kb="1.15,1.32,0,0,0,-3%" data-pos="50% 70%">
+    <div class="shade top"></div>
+    <div class="layer" style="padding:170px 48px 0;text-align:center">
+      <div class="big outline" style="font-size:220px" data-fx="slam" data-at="0">Smash</div>
+      <div class="mask" style="margin-top:18px"><span class="big" style="font-size:64px;color:var(--fire)" data-fx="rise" data-at="1">aplastada a la plancha</span></div>
+      <div style="position:absolute;left:0;right:0;bottom:200px"><span class="chip" data-fx="pop" data-at="2.2" style="--r:-2deg">100 % vaca · picada cada mañana</span></div>
+    </div>
+  </section>
+
+  <!-- 3 · queso -->
+  <section class="scene" data-beats="4" data-tr="zoom" data-flash data-img="../ai/c/burger1.jpg" data-kb="2.1,1.75,-3%,2%,-6%,-4%" data-pos="50% 60%">
+    <div class="shade bot"></div>
+    <div class="layer" style="padding:0 48px;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:210px">
+      <div class="mask"><span class="big" style="font-size:150px" data-fx="rise" data-at="0.3">Doble</span></div>
+      <div class="mask"><span class="big" style="font-size:150px;color:var(--ched)" data-fx="rise" data-at="1">cheddar</span></div>
+    </div>
+    <div class="sticker" style="right:44px;top:170px;--r:10deg" data-fx="pop" data-at="2">fundido<br>de<br>verdad</div>
+  </section>
+
+  <!-- 4 · patatas -->
+  <section class="scene" data-beats="4" data-tr="left" data-img="../ai/c/burger3.jpg" data-kb="1.3,1.08,2%,0,0,2%" data-pos="50% 45%">
+    <div class="shade top"></div>
+    <div class="layer" style="padding:160px 48px 0">
+      <div class="big" style="font-size:150px" data-fx="slam" data-at="0.2">+ patatas</div>
+      <div class="mask" style="margin-top:14px"><span style="font-size:44px;font-weight:700;color:var(--cream)" data-fx="rise" data-at="1">caseras, crujientes</span></div>
+      <div class="mask"><span style="font-size:44px;font-weight:700;color:var(--ched)" data-fx="rise" data-at="1.5">y con sal en escamas</span></div>
+    </div>
+  </section>
+
+  <!-- 5 · oferta -->
+  <section class="scene" data-beats="4" data-tr="circle" style="background:var(--fire)">
+    <div style="position:absolute;left:50%;top:50%;width:2200px;height:2200px;margin:-1100px 0 0 -1100px;background:repeating-conic-gradient(rgba(255,255,255,.13) 0 7.5deg,transparent 7.5deg 15deg)" data-loop="spin" data-ldur="16"></div>
+    <div class="layer" data-fx="shake" data-at="1.5" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+      <div class="mask"><span class="big" style="font-size:120px;color:var(--ink);text-shadow:none" data-fx="rise" data-at="0">Los martes</span></div>
+      <div data-fx="stamp" data-at="1.5" style="--r:-8deg;margin:30px 0;width:420px;height:420px;border-radius:50%;background:var(--ink);display:grid;place-items:center;box-shadow:0 0 0 16px var(--ched),0 30px 80px rgba(0,0,0,.45)">
+        <span class="big" style="font-size:260px;line-height:1;color:var(--ched);text-shadow:none">2×1</span>
+      </div>
+      <div class="mask"><span style="font-size:48px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--ink)" data-fx="rise" data-at="2.5">en todas las smash</span></div>
+    </div>
+  </section>
+
+  <!-- 6 · cierre -->
+  <section class="scene endc" data-beats="8" data-tr="bars" data-flash style="background:radial-gradient(circle at 50% 42%,#5a1d08 0%,#1a0c06 45%,#0b0806 100%)">
+    <div class="layer" style="background:url(../ai/c/burger1.jpg) center 60%/cover;opacity:.18;filter:blur(6px)"></div>
+    <div class="layer" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 40px">
+      <div style="display:flex;align-items:center;gap:18px" data-fx="slam" data-at="0.2">
+        <span class="big" style="font-size:184px;text-shadow:0 0 60px rgba(255,90,31,.45)">Brasa</span>
+        <span style="width:150px;height:150px;border-radius:50%;background:var(--fire);display:grid;place-items:center;font-family:Anton;font-size:90px">21</span>
+      </div>
+      <div style="height:6px;width:520px;background:var(--fire);margin:26px 0 22px;transform-origin:left" data-fx="grow" data-at="1"></div>
+      <div style="font-size:30px;font-weight:900;letter-spacing:.42em;text-transform:uppercase;color:var(--cream)" data-fx="blurin" data-at="1.2">Smash burgers</div>
+      <div style="margin-top:60px;--r:0deg" data-fx="pop" data-at="2.2">
+        <div data-loop="pulse" data-lat="3" data-ldur="1" style="background:var(--ched);color:var(--ink);font-weight:900;font-size:48px;text-transform:uppercase;padding:24px 72px;letter-spacing:.04em;border-radius:999px;box-shadow:0 16px 50px rgba(255,194,38,.35)">Pide ya</div>
+      </div>
+      <div style="margin-top:34px;font-size:30px;font-weight:700;color:var(--cream)" data-fx="fade" data-at="3">Recogida o a domicilio<br><span style="color:rgba(255,244,224,.75);font-weight:500">Calle Mayor, 21 · Abierto hasta las 00:00</span></div>
+    </div>
+    <div style="position:absolute;left:0;right:0;bottom:46px;text-align:center;font-size:19px;font-weight:500;color:rgba(255,244,224,.6);letter-spacing:.04em" data-fx="fadeonly" data-at="3.5">Negocio ficticio · Anuncio de muestra hecho por PulseAds</div>
+  </section>
+
+  <div class="bug" data-fx="fadeonly" data-at="4"><i>21</i>BRASA</div>
+  <div class="vig"></div>
+</div>
+<script src="../engine.js"></script>
+</body></html>

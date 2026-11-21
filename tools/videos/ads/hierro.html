@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,800;1,900&family=Inter:wght@500;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="../engine.css">
+<style>
+:root{--red:#FF2B2B;--ink:#0A0A0A}
+#stage{font-family:Inter,sans-serif;color:#fff}
+.bc{font-family:"Barlow Condensed",sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;line-height:.84;letter-spacing:-.005em}
+.outline{color:transparent;-webkit-text-stroke:3px #fff}
+.shade.bot{background:linear-gradient(0deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.3) 45%,rgba(0,0,0,0) 65%,rgba(0,0,0,.45) 100%)}
+.shade.top{background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.3) 40%,rgba(0,0,0,0) 60%,rgba(0,0,0,.4) 100%)}
+.row{white-space:nowrap;font-size:120px}
+.bug{left:40px;top:44px;z-index:25;font-family:"Barlow Condensed";font-style:italic;font-weight:900;font-size:34px;letter-spacing:.04em;display:flex;align-items:center;gap:10px}
+.bug i{width:14px;height:34px;background:var(--red);transform:skewX(-12deg)}
+</style></head>
+<body data-bpm="128" data-style="edm">
+<div id="stage">
+
+  <!-- 1 · gancho tipográfico -->
+  <section class="scene" data-beats="4" style="background:var(--ink)">
+    <div class="layer" style="display:flex;flex-direction:column;justify-content:center;padding:0 50px">
+      <div class="bc" style="font-size:250px" data-fx="slam" data-at="0">No</div>
+      <div class="bc" style="font-size:190px;color:var(--red)" data-fx="slam" data-at="1">esperes</div>
+      <div class="bc outline" style="font-size:190px" data-fx="slam" data-at="2">al</div>
+      <div class="bc" style="font-size:250px" data-fx="slam" data-at="3">lunes</div>
+    </div>
+  </section>
+
+  <!-- 2 · foto -->
+  <section class="scene" data-beats="4" data-tr="zoom" data-flash data-img="../ai/c/gym1.jpg" data-kb="1.35,1.1,0,0,3%,0" data-pos="50% 40%">
+    <div class="shade bot"></div>
+    <div class="layer" style="display:flex;flex-direction:column;justify-content:flex-end;padding:0 46px 220px">
+      <div class="bc" style="font-size:176px" data-fx="slam" data-at="0.2">Entrena</div>
+      <div style="display:inline-block;align-self:flex-start;margin-top:16px;background:var(--red);padding:10px 18px;transform:skewX(-10deg);transform-origin:left" data-fx="grow" data-at="1">
+        <span style="display:block;font-size:33px;font-weight:800;text-transform:uppercase;white-space:nowrap;transform:skewX(10deg)">con entrenadores en sala</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · clases (gráfico en movimiento) -->
+  <section class="scene" data-beats="4" data-tr="left" style="background:var(--red)">
+    <div class="layer" style="display:flex;flex-direction:column;justify-content:center;gap:10px;transform:rotate(-8deg) scale(1.2)">
+      <div class="bc row" data-loop="marquee" data-ldur="3.75">Fuerza · HIIT · Cross · Cardio · Fuerza · HIIT · Cross · Cardio · </div>
+      <div class="bc row outline" data-loop="marquee" data-ldur="5" data-ldir="reverse">Boxeo · Yoga · Spinning · Boxeo · Yoga · Spinning · Boxeo · Yoga · </div>
+      <div class="bc row" style="color:var(--ink)" data-loop="marquee" data-ldur="4.2">Fuerza · HIIT · Cross · Cardio · Fuerza · HIIT · Cross · Cardio · </div>
+      <div class="bc row outline" data-loop="marquee" data-ldur="3.4" data-ldir="reverse">Boxeo · Yoga · Spinning · Boxeo · Yoga · Spinning · Boxeo · Yoga · </div>
+      <div class="bc row" data-loop="marquee" data-ldur="4.6">Fuerza · HIIT · Cross · Cardio · Fuerza · HIIT · Cross · Cardio · </div>
+    </div>
+    <div class="layer" style="display:grid;place-items:center">
+      <div data-fx="stamp" data-at="1" style="--r:-4deg;background:var(--ink);padding:34px 44px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.45)">
+        <div class="bc" style="font-size:120px">Clases</div>
+        <div style="font-size:34px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;margin-top:10px;color:var(--red)">todos los días</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · horario -->
+  <section class="scene" data-beats="4" data-tr="up" data-flash data-img="../ai/c/gym1.jpg" data-kb="1.5,1.32,3%,1%,9%,7%" data-pos="50% 10%">
+    <div class="shade bot"></div>
+    <div class="layer" style="display:flex;flex-direction:column;justify-content:flex-end;padding:0 46px 210px">
+      <div class="mask"><span style="font-size:36px;font-weight:800;letter-spacing:.3em;color:var(--red)" data-fx="rise" data-at="0">ABIERTO</span></div>
+      <div style="display:flex;align-items:baseline;gap:22px;margin-top:10px">
+        <div class="bc" style="font-size:150px" data-fx="slam" data-at="0.5">6:00</div>
+        <div class="bc outline" style="font-size:150px" data-fx="slam" data-at="1.5">23:00</div>
+      </div>
+      <div class="mask" style="margin-top:20px"><span style="font-size:36px;font-weight:700" data-fx="rise" data-at="2.5">De lunes a domingo</span></div>
+    </div>
+  </section>
+
+  <!-- 5 · cierre -->
+  <section class="scene endc" data-beats="8" data-tr="circle" data-flash style="background:var(--ink)">
+    <div class="layer" style="background:url(../ai/c/gym1.jpg) center 30%/cover;opacity:.2;filter:grayscale(1) contrast(1.2)"></div>
+    <div class="layer" data-fx="shake" data-at="1" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 40px">
+      <div class="bc" style="font-size:110px" data-fx="slam" data-at="0">Primera semana</div>
+      <div data-fx="stamp" data-at="1" style="--r:-6deg;margin-top:20px;background:var(--red);padding:6px 40px 18px">
+        <span class="bc" style="font-size:230px">Gratis</span>
+      </div>
+      <div style="margin-top:80px;display:flex;align-items:center;gap:16px" data-fx="fade" data-at="2.5">
+        <span style="width:22px;height:70px;background:var(--red);transform:skewX(-12deg)"></span>
+        <span class="bc" style="font-size:96px">Hierro Gym</span>
+      </div>
+      <div style="margin-top:44px;--r:0deg" data-fx="pop" data-at="3.5">
+        <div data-loop="pulse" data-lat="4.5" data-ldur=".94" style="background:#fff;color:var(--ink);font-weight:800;font-size:36px;text-transform:uppercase;letter-spacing:.06em;padding:24px 56px;border-radius:999px">Apúntate hoy</div>
+      </div>
+      <div style="margin-top:28px;font-size:28px;font-weight:500;color:rgba(255,255,255,.75)" data-fx="fade" data-at="4.5">Avenida del Puerto, 40 · Ven con un amigo</div>
+    </div>
+    <div style="position:absolute;left:0;right:0;bottom:46px;text-align:center;font-size:19px;color:rgba(255,255,255,.5)" data-fx="fadeonly" data-at="5">Negocio ficticio · Anuncio de muestra hecho por PulseAds</div>
+  </section>
+
+  <div class="bug" data-fx="fadeonly" data-at="4"><i></i>HIERRO</div>
+  <div class="vig"></div>
+</div>
+<script src="../engine.js"></script>
+</body></html>

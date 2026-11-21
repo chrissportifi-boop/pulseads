@@ -5,3 +5,6 @@ desktop.ini
 # Herramientas de prueba
 tools/node_modules/
 tools/capturas/
+tools/videos/node_modules/
+tools/videos/out/
+tools/videos/package-lock.json

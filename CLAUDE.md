@@ -32,7 +32,7 @@ Los CSS se cargan en ese orden (base, secciones, portada, animaciones) y **el or
 - Faltan el NIF y el domicilio en `aviso-legal.html` y `privacidad.html` (busca `[Sustituir]`). Nunca los inventes.
 - Los precios están en `index.html` (sección de precios y FAQ) y en `condiciones.html`: mantenlos iguales.
 - WhatsApp: los botones se activan rellenando `WHATSAPP_NUMERO` en `js/main.js`.
-- El vídeo de Charlie Paris usa una marca real: debe seguir indicando que es una pieza de muestra sin relación comercial con la marca.
+- Los vídeos de muestra son de negocios inventados (Brasa 21, Café Alba, Navaja Barber Club, Hierro Gym): su descripción debe seguir diciendo que el nombre, los precios y la dirección son de ejemplo. No uses marcas reales.
 - Si cambia el vídeo destacado, actualiza también el bloque `<noscript>` de la sección de trabajos.
 
 ## Reglas técnicas

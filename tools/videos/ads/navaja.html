@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@1,500;1,700&family=Inter:wght@400;600;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="../engine.css">
+<style>
+:root{--gold:#D4AF6A;--gold2:#F1D9A6;--ink:#0b0a09}
+#stage{font-family:Inter,sans-serif;color:#fff}
+.cond{font-family:Oswald,sans-serif;text-transform:uppercase;line-height:.92;letter-spacing:.01em;text-shadow:0 6px 34px rgba(0,0,0,.6)}
+.pf{font-family:"Playfair Display",serif;font-style:italic;text-shadow:0 4px 26px rgba(0,0,0,.6)}
+.shade.top{background:linear-gradient(180deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.25) 40%,rgba(0,0,0,0) 60%,rgba(0,0,0,.5) 100%)}
+.shade.bot{background:linear-gradient(0deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.3) 42%,rgba(0,0,0,0) 62%,rgba(0,0,0,.4) 100%)}
+.line{height:3px;background:var(--gold);transform-origin:left}
+.bug{left:40px;top:44px;z-index:25;font-family:Oswald;font-weight:700;font-size:28px;letter-spacing:.2em;color:var(--gold2);display:flex;align-items:center;gap:12px;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.bug b{width:26px;height:3px;background:var(--gold)}
+</style></head>
+<body data-bpm="90" data-style="boombap">
+<div id="stage">
+
+  <!-- 1 · gancho -->
+  <section class="scene" data-beats="4" data-tr="fade" data-img="../ai/c/barber3.jpg" data-kb="1.3,1.08,0,0,2%,0" data-pos="50% 55%">
+    <div class="shade top"></div>
+    <div class="layer" style="padding:150px 50px 0">
+      <div class="cond" style="font-size:94px;font-weight:700;line-height:1.02" data-fx="slam" data-split="words" data-at="0.2" data-step="0.5">¿Cuánto hace</div>
+      <div class="cond" style="font-size:94px;font-weight:700;line-height:1.02" data-fx="slam" data-split="words" data-at="1.2" data-step="0.5">que no te</div>
+      <div class="pf" style="font-size:80px;color:var(--gold2);margin-top:10px" data-fx="blurin" data-at="2.4">cuidas el pelo?</div>
+    </div>
+  </section>
+
+  <!-- 2 · degradado -->
+  <section class="scene" data-beats="3" data-tr="left" data-img="../ai/c/barberfade.jpg" data-kb="1.15,1.3,0,0,0,-2%" data-pos="50% 50%">
+    <div class="shade bot"></div>
+    <div class="layer" style="display:flex;flex-direction:column;justify-content:flex-end;padding:0 50px 220px">
+      <div class="line" style="width:120px;margin-bottom:22px" data-fx="grow" data-at="0.1"></div>
+      <div class="mask"><span class="cond" style="font-size:104px;font-weight:700" data-fx="rise" data-at="0.2">Degradados</span></div>
+      <div class="mask"><span class="pf" style="font-size:54px;color:var(--gold2)" data-fx="rise" data-at="0.7">a máquina y a navaja</span></div>
+    </div>
+  </section>
+
+  <!-- 3 · barba -->
+  <section class="scene" data-beats="3" data-tr="up" data-img="../ai/c/barber4.jpg" data-kb="1.28,1.1,2%,0,0,0" data-pos="60% 40%">
+    <div class="shade top"></div>
+    <div class="layer" style="padding:150px 50px 0">
+      <div class="mask"><span class="cond" style="font-size:170px;font-weight:700" data-fx="rise" data-at="0.2">Barba</span></div>
+      <div class="mask"><span class="pf" style="font-size:62px;color:var(--gold2)" data-fx="rise" data-at="0.6">perfilada a navaja</span></div>
+      <div class="mask"><span style="display:inline-block;margin-top:18px;font-size:26px;font-weight:600;letter-spacing:.2em;text-transform:uppercase" data-fx="rise" data-at="1">con toalla caliente</span></div>
+    </div>
+  </section>
+
+  <!-- 4 · reserva -->
+  <section class="scene" data-beats="3" data-tr="bars" data-img="../ai/c/barber2.jpg" data-kb="1.1,1.25,0,0,0,0" data-pos="50% 50%">
+    <div class="shade" style="background:rgba(0,0,0,.55)"></div>
+    <div class="layer" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 40px">
+      <div class="cond" style="font-size:150px;font-weight:700" data-fx="slam" data-at="0.2">Sin esperas</div>
+      <div class="line" style="width:200px;margin:26px auto;transform-origin:center" data-fx="grow" data-at="0.8"></div>
+      <div class="pf" style="font-size:60px;color:var(--gold2);text-wrap:balance" data-fx="fade" data-at="1">reserva tu hora en un minuto</div>
+    </div>
+  </section>
+
+  <!-- 5 · cierre -->
+  <section class="scene endc" data-beats="6" data-tr="fade" style="background:radial-gradient(circle at 50% 38%,#2a2117 0%,#0e0c0a 55%,#070605 100%)">
+    <div class="layer" style="background:url(../ai/c/barber3.jpg) center/cover;opacity:.12;filter:blur(4px) grayscale(.4)"></div>
+    <div class="layer" style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:200px 50px 0">
+      <div style="display:flex;align-items:center;gap:22px" data-fx="fade" data-at="0.2">
+        <span class="line" style="width:70px;transform-origin:right" data-fx="grow" data-at="0.2"></span>
+        <span style="font-size:22px;font-weight:600;letter-spacing:.4em;color:var(--gold)">EST. 2026</span>
+        <span class="line" style="width:70px" data-fx="grow" data-at="0.2"></span>
+      </div>
+      <div class="cond" style="font-size:190px;font-weight:700;letter-spacing:.06em;margin-top:24px;color:#fff" data-fx="blurin" data-at="0.4">Navaja</div>
+      <div class="pf" style="font-size:58px;color:var(--gold2);margin-top:-6px" data-fx="fade" data-at="1">Barber Club</div>
+
+      <div style="margin-top:64px;width:100%;max-width:520px;font-size:32px" data-fx="fade" data-at="1.6">
+        <div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(212,175,106,.35)"><span>Corte</span><span style="color:var(--gold2);font-weight:800">14 €</span></div>
+        <div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(212,175,106,.35)"><span>Corte + barba</span><span style="color:var(--gold2);font-weight:800">20 €</span></div>
+      </div>
+      <div style="margin-top:54px;--r:0deg" data-fx="pop" data-at="2.4">
+        <div data-loop="pulse" data-lat="3.2" data-ldur="1.33" style="background:var(--gold);color:var(--ink);font-weight:800;font-size:34px;letter-spacing:.06em;text-transform:uppercase;padding:24px 50px;border-radius:999px;box-shadow:0 14px 44px rgba(212,175,106,.3)">Reserva por WhatsApp</div>
+      </div>
+      <div style="margin-top:30px;font-size:28px;color:rgba(255,255,255,.75)" data-fx="fade" data-at="3">Calle Real, 12 · Martes a sábado</div>
+    </div>
+    <div style="position:absolute;left:0;right:0;bottom:46px;text-align:center;font-size:19px;color:rgba(241,217,166,.55)" data-fx="fadeonly" data-at="3.5">Negocio ficticio · Anuncio de muestra hecho por PulseAds</div>
+  </section>
+
+  <div class="bug" data-fx="fadeonly" data-at="4"><b></b>NAVAJA</div>
+  <div class="vig"></div>
+</div>
+<script src="../engine.js"></script>
+</body></html>

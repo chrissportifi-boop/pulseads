@@ -19,29 +19,97 @@
    ========================================================= */
 window.PULSEADS_VIDEOS = [
   {
-    titulo: "Black Friday para una relojería",
-    categoria: "Comercio local · Relojería",
+    titulo: "Smash burgers para una hamburguesería",
+    categoria: "Hostelería · Hamburguesería",
     anio: "2026",
-    descripcion: "Anuncio vertical para redes que presenta un cronógrafo con detalles técnicos animados al ritmo de un reloj y termina con la oferta de Black Friday y la dirección de la tienda. Pieza de muestra de producción propia, sin relación comercial con la marca que aparece.",
-    archivo: "videos/black-friday-relojeria.mp4",
-    poster: "img/videos/black-friday-relojeria.webp",
+    descripcion: "Anuncio vertical para redes con cortes al ritmo de la música: abre con un gancho que da hambre, enseña el producto de cerca, lanza la oferta de los martes y cierra con una llamada a pedir. Negocio inventado para enseñar el estilo: el nombre, los precios y la dirección son de ejemplo.",
+    archivo: "videos/hamburgueseria-brasa21.mp4",
+    poster: "img/videos/hamburgueseria-brasa21.webp",
     formato: "vertical",
     destacado: true,
     ficha: [
       ["Formato", "Vertical 9:16"],
-      ["Duración", "13 segundos"],
-      ["Producción", "Con herramientas de IA"]
+      ["Duración", "14 segundos"],
+      ["Producción", "Imágenes con IA, montaje y música propios"]
     ],
-    subtitulos: "videos/black-friday-relojeria.vtt",
+    subtitulos: "videos/hamburgueseria-brasa21.vtt",
     transcripcion:
-      "Vídeo sin voz, solo con efectos de sonido.\n" +
-      "0–2 s · Primer plano de un cronógrafo de esfera verde. Texto: «Grande Randonnée». Suena un tic-tac con golpes de aire suaves.\n" +
-      "2–3 s · Detalle de la corona. Texto: «Cronógrafo Mecaquartz».\n" +
-      "3–4 s · Tapa trasera grabada. Texto: «Diseñado y ensamblado en Francia».\n" +
-      "4–6 s · Animación de los engranajes del movimiento. Texto: «Movimiento Mecaquartz». Un sonido mecánico va subiendo.\n" +
-      "6–9 s · El reloj se recompone pieza a pieza. Textos: «Acero 316L · Ø 39 mm» y «Cristal de zafiro · 10 ATM». Golpes de aire y, al final, una campanilla suave que sigue sonando.\n" +
-      "9–11 s · Plano completo con la correa. Textos: «Charlie Paris», «GR — Cronógrafo Mecaquartz» y «Verde · Correa de nailon».\n" +
-      "11–13 s · Cierre. Textos: «Black Friday», «10 % de descuento en tienda» y «Calle Narváez 43, Madrid». Golpe grave final."
+      "Vídeo sin voz, con música urbana con graves y efectos de barrido en cada corte.\n" +
+      "0–2 s · Primer plano de una hamburguesa doble con queso fundido. Etiqueta «Aviso» y, palabra a palabra: «Esto da hambre».\n" +
+      "2–4 s · La carne se aplasta en la plancha, con humo. Textos: «Smash», «aplastada a la plancha» y «100 % vaca · picada cada mañana».\n" +
+      "4–6 s · Detalle del queso cayendo. Textos: «Doble cheddar» y una pegatina: «fundido de verdad».\n" +
+      "6–8 s · Cucurucho de patatas fritas. Textos: «+ patatas», «caseras, crujientes» y «y con sal en escamas».\n" +
+      "8–10 s · Fondo naranja con rayos girando. Textos: «Los martes», un sello grande «2×1» y «en todas las smash».\n" +
+      "10–14 s · Cierre con el logotipo «Brasa 21 · Smash burgers», botón «Pide ya», «Recogida o a domicilio», «Calle Mayor, 21 · Abierto hasta las 00:00» y la nota «Negocio ficticio · Anuncio de muestra hecho por PulseAds». Golpe grave final."
+  },
+  {
+    titulo: "Desayunos para una cafetería",
+    categoria: "Hostelería · Cafetería",
+    anio: "2026",
+    descripcion: "Pieza cálida y tranquila para atraer clientela por la mañana: café, bollería y tostadas con textos que aparecen con suavidad, y un cierre con el precio del desayuno y el horario. Negocio inventado para enseñar el estilo: el nombre, los precios y la dirección son de ejemplo.",
+    archivo: "videos/cafeteria-cafe-alba.mp4",
+    poster: "img/videos/cafeteria-cafe-alba.webp",
+    formato: "vertical",
+    destacado: false,
+    ficha: [
+      ["Formato", "Vertical 9:16"],
+      ["Duración", "13 segundos"],
+      ["Producción", "Imágenes con IA, montaje y música propios"]
+    ],
+    subtitulos: "videos/cafeteria-cafe-alba.vtt",
+    transcripcion:
+      "Vídeo sin voz, con música lo-fi suave de piano y sonido de vinilo.\n" +
+      "0–3 s · Un capuchino sobre la barra de madera. Textos: «Buenos días,» y «empiezan aquí.».\n" +
+      "3–5 s · Un barista vierte la leche y dibuja en la espuma. Textos: «Cada taza, al momento» y «Café recién molido».\n" +
+      "5–7 s · Croissant junto a un café en una mesa de mármol. Textos: «Croissant de mantequilla» y una pegatina: «recién horneado».\n" +
+      "7–9 s · Tostada de aguacate con huevo y tomates vista desde arriba. Texto: «Tostadas para empezar con ganas».\n" +
+      "9–13 s · Cierre en color crema con el logotipo «Café Alba · Desayunos · Brunch», la tarjeta «Desayuno completo: café + tostada + zumo natural» con el precio «4,50 €», «Lunes a viernes · de 8:00 a 12:00», «Calle del Sol, 8» y la nota «Negocio ficticio · Anuncio de muestra hecho por PulseAds»."
+  },
+  {
+    titulo: "Reservas para una barbería",
+    categoria: "Belleza · Barbería",
+    anio: "2026",
+    descripcion: "Anuncio elegante en negro y dorado que empieza con una pregunta directa, enseña los servicios y termina con la lista de precios y el botón de reservar por WhatsApp. Negocio inventado para enseñar el estilo: el nombre, los precios y la dirección son de ejemplo.",
+    archivo: "videos/barberia-navaja.mp4",
+    poster: "img/videos/barberia-navaja.webp",
+    formato: "vertical",
+    destacado: false,
+    ficha: [
+      ["Formato", "Vertical 9:16"],
+      ["Duración", "13 segundos"],
+      ["Producción", "Imágenes con IA, montaje y música propios"]
+    ],
+    subtitulos: "videos/barberia-navaja.vtt",
+    transcripcion:
+      "Vídeo sin voz, con música hip hop clásica y efectos de barrido en cada corte.\n" +
+      "0–3 s · Un sillón de barbero vacío en una barbería con luz cálida. Texto, palabra a palabra: «¿Cuánto hace que no te cuidas el pelo?».\n" +
+      "3–5 s · Nuca de un cliente con un degradado recién hecho. Textos: «Degradados» y «a máquina y a navaja».\n" +
+      "5–7 s · Perfil de un hombre con barba y una navaja. Textos: «Barba», «perfilada a navaja» y «con toalla caliente».\n" +
+      "7–9 s · Herramientas de barbero sobre madera. Textos: «Sin esperas» y «reserva tu hora en un minuto».\n" +
+      "9–13 s · Cierre en negro y dorado con «Est. 2026», el logotipo «Navaja · Barber Club», los precios «Corte 14 €» y «Corte + barba 20 €», el botón «Reserva por WhatsApp», «Calle Real, 12 · Martes a sábado» y la nota «Negocio ficticio · Anuncio de muestra hecho por PulseAds»."
+  },
+  {
+    titulo: "Captación para un gimnasio",
+    categoria: "Deporte · Gimnasio",
+    anio: "2026",
+    descripcion: "Ritmo rápido y tipografía grande para captar socios: un gancho que interpela, clases y horario en movimiento, y un cierre con la semana gratis como reclamo. Negocio inventado para enseñar el estilo: el nombre, los precios y la dirección son de ejemplo.",
+    archivo: "videos/gimnasio-hierro.mp4",
+    poster: "img/videos/gimnasio-hierro.webp",
+    formato: "vertical",
+    destacado: false,
+    ficha: [
+      ["Formato", "Vertical 9:16"],
+      ["Duración", "11 segundos"],
+      ["Producción", "Imágenes con IA, montaje y música propios"]
+    ],
+    subtitulos: "videos/gimnasio-hierro.vtt",
+    transcripcion:
+      "Vídeo sin voz, con música electrónica rápida y efectos de barrido en cada corte.\n" +
+      "0–2 s · Fondo negro. Palabras que golpean al ritmo: «No esperes al lunes».\n" +
+      "2–4 s · Una mujer entrena con cuerdas de batalla en un gimnasio oscuro. Textos: «Entrena» y «con entrenadores en sala».\n" +
+      "4–6 s · Fondo rojo con filas de texto en movimiento: «Fuerza · HIIT · Cross · Cardio» y «Boxeo · Yoga · Spinning». En el centro: «Clases todos los días».\n" +
+      "6–8 s · Otra vez la deportista, más cerca. Textos: «Abierto», «6:00», «23:00» y «De lunes a domingo».\n" +
+      "8–11 s · Cierre en negro con «Primera semana gratis», el logotipo «Hierro Gym», el botón «Apúntate hoy», «Avenida del Puerto, 40 · Ven con un amigo» y la nota «Negocio ficticio · Anuncio de muestra hecho por PulseAds». Golpe grave al aparecer la oferta."
   }
 
   /* Plantilla para el siguiente vídeo: quita los símbolos de comentario,

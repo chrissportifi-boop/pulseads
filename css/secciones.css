@@ -97,6 +97,15 @@
 @media (min-width: 56rem) {
   .video-card.is-featured { grid-template-columns: minmax(16rem, 5fr) 7fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
   .video-card.is-featured .video-media.is-vertical { justify-self: end; }
+  /* El destacado ocupa toda la fila; el resto, en columnas de tres */
+  .videos { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(1.5rem, 3vw, 2.75rem); }
+  .video-card.is-featured { grid-column: 1 / -1; }
+  .video-card:not(.is-featured) { align-content: start; gap: 1.25rem; }
+  .video-card:not(.is-featured) .video-media.is-vertical { max-width: none; }
+  .video-card:not(.is-featured) .video-body h3 { font-size: clamp(1.4rem, 1rem + 1vw, 1.9rem); }
+  .video-card:not(.is-featured) .video-body > p:not(.video-category) { font-size: var(--step--1); }
+  .video-card:not(.is-featured) .video-specs { grid-template-columns: 1fr 1fr; }
+  .video-card:not(.is-featured) .video-specs div:last-child { grid-column: 1 / -1; }
 }
 @media (max-width: 55.99rem) {
   .video-media.is-vertical { margin-inline: auto; }
