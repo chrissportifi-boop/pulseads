@@ -14,7 +14,7 @@
   var FORMSPREE_ID = 'xljbbava';
   // WhatsApp: pon aquí el número con prefijo y sin espacios ni +, p. ej. '34600111222'.
   // Mientras esté vacío, los botones de WhatsApp no se muestran.
-  var WHATSAPP_NUMERO = '';
+  var WHATSAPP_NUMERO = '34639721362';
   var WHATSAPP_TEXTO = 'Hola, me gustaría pedir una demo gratis de PulseAds para mi local.';
 
   /* ---------- 0. Animaciones ----------
@@ -304,6 +304,8 @@
       a.target = '_blank';
       a.rel = 'noopener';
       a.hidden = false;
+      var caja = a.closest('.wa-box');
+      if (caja) caja.hidden = false;
     });
   }
   // Los botones de demo y de packs dejan elegida esa opción en el formulario
