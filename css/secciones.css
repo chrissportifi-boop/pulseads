@@ -13,7 +13,7 @@
   border-top: 1px solid var(--line);
 }
 .facts div { display: flex; flex-direction: column-reverse; gap: 0.25rem; }
-.facts dd { margin: 0; font-weight: 300; font-size: clamp(2.75rem, 1.8rem + 3vw, 4.5rem); line-height: 1; letter-spacing: -0.04em; }
+.facts dd { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(2.75rem, 1.8rem + 3vw, 4.5rem); line-height: 1; letter-spacing: -0.03em; }
 .facts dt { color: var(--muted); font-size: var(--step--1); }
 
 .arches {
@@ -59,7 +59,7 @@
   font-size: 0.8125rem;
 }
 .video-category { margin: 0; color: var(--muted); font-size: var(--step--1); }
-.video-body h3 { margin: 0; font-weight: 300; font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem); letter-spacing: -0.035em; line-height: 1.05; }
+.video-body h3 { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 1.1rem + 1.7vw, 2.4rem); letter-spacing: -0.025em; line-height: 1.04; }
 .video-body > p:not(.video-category) { margin: 0; color: var(--muted); max-width: 38rem; }
 
 .video-specs {
@@ -120,7 +120,7 @@
   border-top: 1px solid var(--line);
 }
 .service-num { color: var(--muted); font-size: var(--step--1); font-variant-numeric: tabular-nums; }
-.service-body h3 { font-weight: 300; font-size: clamp(1.75rem, 1.2rem + 2.1vw, 2.75rem); letter-spacing: -0.035em; line-height: 1.05; margin-bottom: 0.6em; }
+.service-body h3 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.4rem); letter-spacing: -0.025em; line-height: 1.04; margin-bottom: 0.6em; }
 .service-body > p { color: var(--muted); max-width: 34rem; }
 
 .ticks { margin: 1.5rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.5rem; }
@@ -158,7 +158,7 @@
 .step { position: relative; padding-top: 1.5rem; border-top: 1px solid var(--line); }
 .step::before { content: ""; position: absolute; top: -1px; left: 0; width: 2.5rem; height: 1px; background: var(--coral); }
 .step-num { display: block; margin-bottom: 2.5rem; color: var(--muted); font-size: var(--step--1); font-variant-numeric: tabular-nums; }
-.step h3 { font-weight: 300; font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.25rem); letter-spacing: -0.03em; }
+.step h3 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem); letter-spacing: -0.02em; }
 .step p { color: var(--muted); }
 .section-cta { margin-top: clamp(3rem, 6vw, 4.5rem); }
 
@@ -170,7 +170,7 @@
   padding-block: 1.4rem;
   border-top: 1px solid var(--line);
 }
-.sector h3 { margin: 0; font-weight: 300; font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem); letter-spacing: -0.03em; }
+.sector h3 { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.35rem, 1rem + 1.4vw, 2rem); letter-spacing: -0.02em; }
 .sector p { margin: 0; color: var(--muted); }
 @media (min-width: 48rem) {
   .sector { grid-template-columns: 1fr 1fr; align-items: baseline; }
@@ -242,7 +242,7 @@
 @media (min-width: 56rem) {
   .contact-grid { grid-template-columns: 1fr 1fr; align-items: start; }
 }
-.display-left { font-size: clamp(2.5rem, 1rem + 5.2vw, 5.75rem); margin-bottom: 0.4em; }
+.display-left { font-size: clamp(2.4rem, 1rem + 4.6vw, 5rem); margin-bottom: 0.4em; }
 .contact-mail { color: var(--muted); margin-top: 2rem; }
 
 .contact-form { display: grid; gap: 1.75rem; }
@@ -396,7 +396,7 @@
 .band { overflow: hidden; padding-top: clamp(4rem, 9vw, 7rem); }
 .band-track {
   display: flex; align-items: center; gap: .35em; width: max-content;
-  font-weight: 300; font-size: clamp(3.5rem, 1rem + 10vw, 10.5rem); letter-spacing: -.05em; line-height: 1.05;
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(3.25rem, 1rem + 9vw, 9.5rem); letter-spacing: -.035em; line-height: 1.05;
   color: var(--text); white-space: nowrap; will-change: transform;
   transform: translate3d(-20%, 0, 0);
 }
@@ -472,14 +472,27 @@ main > .section.section-tight-top { position: relative; }
 .btn-wa { background: #25D366; color: #111111; }
 [data-whatsapp][hidden] { display: none; }
 
+/* Bloque de la demo gratis: entero en Rojo Pulso, con texto negro */
 .demo {
+  position: relative;
   display: grid;
   gap: 2rem;
   padding: clamp(1.75rem, 5vw, 3.5rem);
   border-radius: var(--radius);
 }
+.demo-roja {
+  --bg: var(--coral); --text: #111111; --muted: #2B120C; --line: rgb(17 17 17 / .3);
+  --accent-text: #111111; --focus: #111111;
+  background: var(--coral); color: #111111;
+}
+.demo-roja .label::before, .demo-roja .ticks li::before { background: #111111; }
+.demo-roja .btn-light { background: linear-gradient(var(--cream), var(--cream)) left center / 0% 100% no-repeat, #111111; color: var(--cream); }
+@media (hover: hover) { .demo-roja .btn-light:hover { color: #111111; } }
+.demo-roja .btn-wa { box-shadow: inset 0 0 0 2px #111111; }
+.demo-roja h3 em { color: #111111; text-decoration: underline; text-decoration-thickness: .09em; text-underline-offset: .12em; }
+.demo .sticker { position: absolute; top: -.9rem; right: clamp(1rem, 4vw, 2.5rem); font-size: clamp(1.1rem, .9rem + .8vw, 1.5rem); transform: rotate(6deg); }
 .demo .label { margin-bottom: 1rem; }
-.demo h3 { font-weight: 300; font-size: clamp(2rem, 1.2rem + 3vw, 3.5rem); line-height: 1.04; letter-spacing: -.035em; }
+.demo h3 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 1.2rem + 2.8vw, 3.25rem); line-height: 1.02; letter-spacing: -.03em; }
 .demo p:not(.label) { color: var(--muted); max-width: 32rem; }
 .demo-accion { display: grid; gap: 1.25rem; align-content: center; justify-items: start; }
 .demo-accion .ticks { margin: 0; }
@@ -487,16 +500,25 @@ main > .section.section-tight-top { position: relative; }
 
 .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; margin: 1rem 0 0; padding: 0; list-style: none; }
 .plan { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(1.5rem, 3vw, 2.25rem); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
-.plan-destacado { border: 2px solid var(--coral); }
+.plan-destacado { border: 2px solid var(--coral); box-shadow: 0 30px 70px -40px rgb(240 74 45 / .7); }
+.plan-destacado .btn-solid { background: linear-gradient(var(--cream), var(--cream)) left center / 0% 100% no-repeat, var(--coral); color: #111111; font-weight: 600; }
 .plan-marca { margin: 0 0 1rem; padding: .15rem .7rem; border-radius: 999px; background: var(--coral); color: #111111; font-size: var(--step--1); font-weight: 600; }
-.plan h3 { margin: 0; font-size: 1.5rem; }
-.plan-precio { margin: 1rem 0 .25rem; font-weight: 300; font-size: clamp(2.75rem, 2rem + 2vw, 3.75rem); line-height: 1; letter-spacing: -.04em; }
+.plan h3 { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; letter-spacing: -.02em; }
+.plan-precio { margin: 1rem 0 .25rem; font-family: var(--font-display); font-weight: 800; font-size: clamp(3.25rem, 2.4rem + 2.4vw, 4.75rem); line-height: 1; letter-spacing: -.035em; }
+.plan-precio span { font-family: var(--font-body); }
 .plan-precio span { font-size: var(--step--1); font-weight: 400; letter-spacing: 0; color: var(--muted); }
 .plan-desc { color: var(--muted); }
 .plan .ticks { margin: .5rem 0 2rem; flex: 1; align-content: start; }
 .plan .btn { width: 100%; }
 
-.lanzamiento { margin: 1rem 0 0; padding: 1.25rem 1.5rem; border: 1px solid var(--coral); border-radius: var(--radius); }
+/* Oferta de lanzamiento en amarillo mostaza, con su pegatina de −30 % */
+.lanzamiento {
+  display: flex; align-items: center; gap: 1.25rem 1.5rem; flex-wrap: wrap;
+  margin: 1rem 0 0; padding: 1.4rem 1.6rem; border-radius: var(--radius);
+  background: var(--mostaza); color: #111111;
+}
+.lanzamiento .sticker { flex: none; font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.25rem); background: #111111; color: var(--mostaza); transform: rotate(-4deg); }
+.lanzamiento-texto { flex: 1 1 16rem; margin: 0; }
 .plan-nota { margin: 1rem 0 0; color: var(--muted); font-size: var(--step--1); }
 
 /* ---------- Campos nuevos del formulario ---------- */
@@ -546,7 +568,8 @@ main > .section.section-tight-top { position: relative; }
 /* ---------- Vídeos verticales dentro de un móvil ---------- */
 .video-media.is-vertical {
   padding: .5rem; border-radius: 2.4rem; background: #0B0A09;
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / .1), 0 30px 50px -26px rgb(0 0 0 / .6);
+  /* filo del móvil, sombra y brillo rojo detrás */
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / .12), 0 30px 50px -26px rgb(0 0 0 / .6), 0 0 90px -18px rgb(240 74 45 / .55);
 }
 .video-media.is-vertical video, .video-media.is-vertical .video-placeholder { display: block; border-radius: 1.9rem; }
 .video-media.is-vertical::before {

@@ -29,16 +29,23 @@
   // Parte un texto en palabras (spans) sin cambiar lo que leen los lectores de pantalla
   function splitWords(node, wrapClass) {
     if (!node || node.dataset.split) return [];
-    // Solo si el elemento contiene únicamente texto (para no romper enlaces o etiquetas internas)
-    for (var c = 0; c < node.childNodes.length; c++) { if (node.childNodes[c].nodeType !== 3) return []; }
-    var words = node.textContent.trim().split(/\s+/);
+    // Solo texto y palabras en rojo (<em>); con cualquier otra etiqueta no se parte
+    var words = [];
+    for (var c = 0; c < node.childNodes.length; c++) {
+      var hijo = node.childNodes[c];
+      var enRojo = hijo.nodeName === 'EM' && !hijo.children.length;
+      if (hijo.nodeType !== 3 && !enRojo) return [];
+      hijo.textContent.split(/\s+/).forEach(function (t) { if (t) words.push({ t: t, em: enRojo }); });
+    }
     node.textContent = '';
     var spans = [];
-    words.forEach(function (w, i) {
+    words.forEach(function (pal, i) {
+      var w = pal.t;
       var outer = document.createElement('span');
       outer.className = wrapClass;
       var inner = document.createElement('span');
-      inner.textContent = w;
+      if (pal.em) inner.appendChild(document.createElement('em')).textContent = w;
+      else inner.textContent = w;
       inner.style.setProperty('--w', i);
       outer.appendChild(inner);
       node.appendChild(outer);

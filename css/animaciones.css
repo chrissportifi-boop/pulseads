@@ -70,7 +70,7 @@
 .marquee { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); overflow: hidden; pointer-events: none; }
 .marquee-track {
   display: flex; align-items: center; gap: 0.35em; width: max-content;
-  font-weight: 300; font-size: clamp(2.75rem, 1rem + 8vw, 8.5rem); letter-spacing: -0.045em; line-height: 1.1;
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(2.5rem, 1rem + 7vw, 7.5rem); letter-spacing: -0.035em; line-height: 1.1;
   color: var(--text); white-space: nowrap; will-change: transform;
 }
 .marquee-dot { width: .16em; height: .16em; border-radius: 50%; background: var(--coral); flex: none; }

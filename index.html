@@ -6,7 +6,7 @@
   <title>PulseAds · Vídeos publicitarios con IA para locales</title>
   <meta name="description" content="Vídeos publicitarios con IA para bares, restaurantes, tiendas, peluquerías y gimnasios. Cuéntanos tu idea y la convertimos en un anuncio listo para redes.">
   <meta name="theme-color" content="#0E0D0C">
-  <meta name="color-scheme" content="light dark">
+  <meta name="color-scheme" content="dark">
 
   <!-- Dirección pública de la web (GitHub Pages). Si algún día usáis un dominio propio, cambiadla
        (aquí, en Open Graph, en el JSON-LD, en sitemap.xml y en robots.txt). -->
@@ -34,10 +34,10 @@
   <link rel="preload" href="fonts/bricolage-grotesque-800.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-300.woff2" as="font" type="font/woff2" crossorigin>
   <!-- ?v= lo actualiza solo «npm run version» (carpeta tools): evita que el navegador use archivos antiguos -->
-  <link rel="stylesheet" href="css/base.css?v=bc5930523c">
-  <link rel="stylesheet" href="css/secciones.css?v=bc5930523c">
-  <link rel="stylesheet" href="css/portada.css?v=bc5930523c">
-  <link rel="stylesheet" href="css/animaciones.css?v=bc5930523c">
+  <link rel="stylesheet" href="css/base.css?v=1fe128c2d5">
+  <link rel="stylesheet" href="css/secciones.css?v=1fe128c2d5">
+  <link rel="stylesheet" href="css/portada.css?v=1fe128c2d5">
+  <link rel="stylesheet" href="css/animaciones.css?v=1fe128c2d5">
 
   <!-- Marca que hay JavaScript para activar menú móvil y animaciones (sin JS todo sigue visible) -->
   <script>
@@ -162,8 +162,11 @@
                 <li><a href="#contacto"><span aria-hidden="true">05</span> Contacto</a></li>
               </ol>
             </nav>
-            <p class="hero-lead">Vídeos con IA que hacen que tu local se note. Te preparamos una demo gratis de 10 segundos y, si te convence, seguimos.</p>
-            <a class="btn btn-light btn-arrow" href="#contacto" data-interes="Demo gratis">Pide tu demo gratis</a>
+            <p class="hero-lead">Vídeos con IA que hacen que tu local <em>se note</em>. Te preparamos una demo gratis de 10 segundos y, si te convence, seguimos.</p>
+            <div class="hero-cta">
+              <a class="btn btn-light btn-arrow" href="#contacto" data-interes="Demo gratis">Pide tu demo gratis</a>
+              <span class="sticker" aria-hidden="true">Gratis · 10 s</span>
+            </div>
           </div>
         </div>
 
@@ -218,7 +221,7 @@
     <section class="section theme-light section-tight-top" id="ejemplos" aria-labelledby="ejemplos-titulo">
       <div class="container">
         <header class="work-head reveal">
-          <h2 id="ejemplos-titulo" class="display">Trabajo seleccionado</h2>
+          <h2 id="ejemplos-titulo" class="display">Trabajo <em>seleccionado</em></h2>
           <p class="work-lead">Cuatro anuncios de muestra para negocios inventados: ritmo, detalle y un mensaje claro en pocos segundos.</p>
         </header>
 
@@ -256,7 +259,7 @@
         <header class="split section-head reveal">
           <p class="label">Servicios</p>
           <div>
-            <h2 id="servicios-titulo" class="h2-light">Lo que hacemos</h2>
+            <h2 id="servicios-titulo" class="h2-light">Lo que <em>hacemos</em></h2>
             <p class="lead">Usamos Claude y otras herramientas de inteligencia artificial para idear, escribir y producir cada vídeo. La IA nos da velocidad; la revisión y el criterio los ponemos nosotros.</p>
           </div>
         </header>
@@ -359,7 +362,7 @@
         <header class="split section-head reveal">
           <p class="label">Método</p>
           <div>
-            <h2 id="proceso-titulo" class="h2-light">Nuestro método</h2>
+            <h2 id="proceso-titulo" class="h2-light">Nuestro <em>método</em></h2>
             <p class="lead">Un proceso transparente, de la primera conversación a la entrega, para que sepas en todo momento en qué punto está tu vídeo.</p>
           </div>
         </header>
@@ -401,15 +404,16 @@
         <header class="split section-head reveal">
           <p class="label">Precios</p>
           <div>
-            <h2 id="precios-titulo" class="h2-light">Primero lo ves. Después decides.</h2>
+            <h2 id="precios-titulo" class="h2-light">Primero lo ves. <em>Después decides.</em></h2>
             <p class="lead">Empezamos con una demo gratis para tu local. Si te gusta, eliges el pack que mejor encaje con tu negocio.</p>
           </div>
         </header>
 
-        <div class="demo theme-dark reveal">
+        <div class="demo demo-roja reveal">
+          <span class="sticker" aria-hidden="true">Gratis</span>
           <div>
             <p class="label">Demo gratis</p>
-            <h3>Tu local en un vídeo de 10 segundos</h3>
+            <h3>Tu local en un vídeo de <em>10 segundos</em></h3>
             <p>Cuéntanos qué quieres anunciar y te preparamos una muestra hecha para tu negocio.</p>
           </div>
           <div class="demo-accion">
@@ -444,7 +448,10 @@
           </li>
         </ul>
 
-        <p class="lanzamiento reveal"><strong>Oferta de lanzamiento:</strong> los 3 primeros negocios tienen un 30&nbsp;% de descuento en su primer pack, a cambio de su opinión y de permiso para enseñar el vídeo.</p>
+        <div class="lanzamiento reveal">
+          <span class="sticker" aria-hidden="true">−30&nbsp;%</span>
+          <p class="lanzamiento-texto"><strong>Oferta de lanzamiento:</strong> los 3 primeros negocios tienen un 30&nbsp;% de descuento en su primer pack, a cambio de su opinión y de permiso para enseñar el vídeo.</p>
+        </div>
         <p class="plan-nota">Precios orientativos, impuestos no incluidos. Antes de empezar recibirás un presupuesto cerrado. Consulta las <a href="condiciones.html">condiciones de contratación</a>.</p>
       </div>
     </section>
@@ -455,7 +462,7 @@
         <header class="split section-head reveal">
           <p class="label">Para quién</p>
           <div>
-            <h2 id="locales-titulo" class="h2-light">Comercio y hostelería de barrio</h2>
+            <h2 id="locales-titulo" class="h2-light">Comercio y hostelería <em>de barrio</em></h2>
             <p class="lead">Si tienes un local abierto al público y quieres que más gente lo conozca, podemos ayudarte.</p>
           </div>
         </header>
@@ -477,7 +484,7 @@
         <header class="split section-head reveal">
           <p class="label">Equipo</p>
           <div>
-            <h2 id="nosotros-titulo" class="h2-light">Tecnología y criterio creativo al servicio de tu negocio</h2>
+            <h2 id="nosotros-titulo" class="h2-light">Tecnología y <em>criterio creativo</em> al servicio de tu negocio</h2>
             <p class="lead">PulseAds nace de la mano de Christian Gómez Moreno y César Iglesias con un objetivo claro: que cualquier comercio local tenga una imagen profesional en vídeo.</p>
             <p class="body-muted">Combinamos herramientas de inteligencia artificial actuales con un proceso de trabajo cuidadoso: escuchamos lo que necesitas, te proponemos una idea a medida y revisamos personalmente cada vídeo antes de entregarlo. Plazos claros, comunicación directa y un interlocutor que conoce tu proyecto de principio a fin.</p>
             <ul class="values" aria-label="Lo que nos define">
@@ -510,7 +517,7 @@
       <div class="container faq-grid">
         <header class="faq-head reveal">
           <p class="label">Preguntas frecuentes</p>
-          <h2 id="faq-titulo" class="h2-light">Preguntas y respuestas</h2>
+          <h2 id="faq-titulo" class="h2-light">Preguntas y <em>respuestas</em></h2>
           <p class="body-muted">Lo que conviene saber antes de empezar a trabajar juntos.</p>
           <a class="link-arrow" href="#contacto">Envíanos tu pregunta</a>
         </header>
@@ -558,7 +565,7 @@
       <div class="container contact-grid">
         <header class="contact-head reveal">
           <p class="label">Contacto</p>
-          <h2 id="contacto-titulo" class="display display-left">Hagamos que tu local se note.</h2>
+          <h2 id="contacto-titulo" class="display display-left">Hagamos que tu local <em>se note.</em></h2>
           <p class="lead">Cuéntanos qué quieres anunciar y te prepararemos una demo gratis de 10 segundos, sin compromiso.</p>
           <!-- Email de contacto: si cambia, cámbialo también en js/main.js (CONTACT_EMAIL). -->
           <p class="contact-mail">También puedes escribirnos a <a href="mailto:ceigiggm@gmail.com">ceigiggm@gmail.com</a>.</p>
@@ -695,7 +702,7 @@
   </aside>
 
   <!-- Datos de los vídeos y lógica de la página (defer: no bloquean la carga) -->
-  <script src="data/videos.js?v=bc5930523c" defer></script>
-  <script src="js/main.js?v=bc5930523c" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="data/videos.js?v=1fe128c2d5" defer></script>
+  <script src="js/main.js?v=1fe128c2d5" defer onerror="document.documentElement.classList.remove('js')"></script>
 </body>
 </html>

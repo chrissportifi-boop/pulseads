@@ -26,7 +26,7 @@ Los dos trabajan con su propio Claude y no programan: responde en español, en l
 - **Movimiento:** nada se mueve solo más de 5 segundos; las animaciones ocurren una vez o van ligadas al scroll. Todo debe respetar `prefers-reduced-motion` y la web debe verse completa sin JavaScript.
 - Sin dependencias externas ni CDN en la web publicada. Debe abrirse con doble clic.
 - Lighthouse 95 o más en las cuatro categorías.
-- Marca: Rojo Pulso `#F04A2D` solo como acento, Papel `#EFEDEA`, Noche `#0E0D0C`. Más detalle en `BRAND.md`.
+- Marca: web toda oscura; Rojo Pulso `#F04A2D` en botones principales, palabras clave de los titulares (`<em>`) y el bloque de la demo; Mostaza `#F6B92B` solo en pegatinas y la oferta. Titulares en Bricolage Grotesque 800. Más detalle en `BRAND.md`.
 - Formulario: Formspree, ID `xljbbava`. No hagas envíos reales de prueba: cada uno gasta uno de los 50 mensajes gratis al mes.
 
 ## Para gastar pocos tokens

@@ -69,6 +69,8 @@
 }
 .hero-side { display: grid; gap: 1.75rem; align-items: start; }
 .hero-lead { max-width: 30rem; margin: 0; color: var(--muted); font-size: var(--step-1); }
+.hero-lead em { font-style: normal; color: var(--accent-text); }
+.hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.25rem; }
 .hero-side .btn { justify-self: start; }
 
 .hero-index ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.1rem; }
