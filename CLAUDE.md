@@ -11,31 +11,18 @@ Los dos trabajan con su propio Claude y no programan: responde en español, en l
 4. **Comprueba:** `npm --prefix tools run verificar` (si `tools/node_modules` no existe: `npm --prefix tools install`). Antes de publicar cambios grandes: `npm --prefix tools run completo` (añade Lighthouse, tarda varios minutos).
 5. **Publica:** commit y `git push`. La web se actualiza sola en un minuto.
 
-## Mapa del proyecto
-| Archivo | Contenido |
-|---|---|
-| `index.html` | Toda la página, por secciones con comentarios `<!-- ===== -->` |
-| `css/base.css` | Tipografías, colores y temas, utilidades, botones, cabecera y menú |
-| `css/secciones.css` | Estudio, trabajos, servicios, método, para quién, equipo, FAQ, contacto, pie |
-| `css/portada.css` | Portada, anuncios flotantes y su versión móvil |
-| `css/animaciones.css` | Intro, apariciones, efectos de scroll y micro-interacciones |
-| `js/main.js` | 0 animaciones · 0b botón flotante · 1 menú · 2 vídeos · 3 formulario |
-| `data/videos.js` | Lista de vídeos: para cambiar uno, edita solo este archivo |
-| `aviso-legal.html`, `privacidad.html`, `condiciones.html` | Páginas legales (estilos en `css/legal.css`) |
-| `tools/` | Pruebas y utilidades (no forman parte de la web) |
-
-Los CSS se cargan en ese orden (base, secciones, portada, animaciones) y **el orden importa**: no muevas reglas de un archivo a otro sin comprobar el resultado.
-
 ## Reglas del contenido
 - Español de España, tono profesional y cercano.
 - **No inventes** clientes, testimonios, cifras, premios ni precios.
 - Faltan el NIF y el domicilio en `aviso-legal.html` y `privacidad.html` (busca `[Sustituir]`). Nunca los inventes.
 - Los precios están en `index.html` (sección de precios y FAQ) y en `condiciones.html`: mantenlos iguales.
 - WhatsApp: los botones se activan rellenando `WHATSAPP_NUMERO` en `js/main.js`.
+- Estadísticas: GoatCounter, sin cookies, se activa rellenando `GOATCOUNTER_CODIGO` en `js/main.js` (envía una petición, no carga scripts externos). Si cambias qué se cuenta, revisa la sección de cookies de `privacidad.html`.
 - Los vídeos de muestra son de negocios inventados (Brasa 21, Café Alba, Navaja Barber Club, Hierro Gym): su descripción debe seguir diciendo que el nombre, los precios y la dirección son de ejemplo. No uses marcas reales.
 - Si cambia el vídeo destacado, actualiza también el bloque `<noscript>` de la sección de trabajos.
 
 ## Reglas técnicas
+- **Orden de los CSS:** se cargan en este orden: base, secciones, portada, animaciones. **El orden importa**: no muevas reglas de un archivo a otro sin comprobar el resultado.
 - **Accesibilidad WCAG 2.2 AA:** contraste 4,5:1 en texto y 3:1 en componentes, foco visible, teclado completo y un solo `h1`.
 - **Movimiento:** nada se mueve solo más de 5 segundos; las animaciones ocurren una vez o van ligadas al scroll. Todo debe respetar `prefers-reduced-motion` y la web debe verse completa sin JavaScript.
 - Sin dependencias externas ni CDN en la web publicada. Debe abrirse con doble clic.

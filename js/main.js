@@ -16,6 +16,53 @@
   // Mientras esté vacío, los botones de WhatsApp no se muestran.
   var WHATSAPP_NUMERO = '34639721362';
   var WHATSAPP_TEXTO = 'Hola, me gustaría pedir una demo gratis de PulseAds para mi local.';
+  // Estadísticas sin cookies (GoatCounter): pon aquí el nombre de la cuenta, lo que va
+  // delante de .goatcounter.com (p. ej. 'pulseads'). Mientras esté vacío, no se cuenta nada.
+  var GOATCOUNTER_CODIGO = '';
+
+  /* ---------- Estadísticas (GoatCounter, sin cookies ni scripts externos) ----------
+     Cuenta visitas y clics importantes (WhatsApp, botones de demo y packs, vídeos, formulario).
+     No cuenta la web abierta con doble clic, en local ni en las pruebas automáticas.
+     Para que no cuenten vuestras propias visitas, abrid una vez en cada móvil u ordenador
+     la web con #no-contar al final de la dirección (#si-contar lo deshace). */
+  var contar = (function () {
+    var excluido = false;
+    try {
+      if (location.hash === '#no-contar') localStorage.setItem('pa-no-contar', '1');
+      if (location.hash === '#si-contar') localStorage.removeItem('pa-no-contar');
+      excluido = localStorage.getItem('pa-no-contar') === '1';
+    } catch (e) { /* sin almacenamiento: se cuenta con normalidad */ }
+    var activo = !!GOATCOUNTER_CODIGO && /^https?:$/.test(location.protocol) &&
+      !/^(localhost|127\.|\[::1\])/.test(location.hostname) && !navigator.webdriver && !excluido;
+    return function (ruta, evento) {
+      if (!activo) return;
+      var url = 'https://' + GOATCOUNTER_CODIGO + '.goatcounter.com/count?p=' + encodeURIComponent(ruta) +
+        '&t=' + encodeURIComponent(evento ? ruta : document.title) +
+        (evento ? '&e=true' : '&r=' + encodeURIComponent(document.referrer)) +
+        '&s=' + encodeURIComponent([screen.width, screen.height, window.devicePixelRatio || 1].join(',')) +
+        '&rnd=' + Math.random().toString(36).slice(2);
+      try { if (navigator.sendBeacon && navigator.sendBeacon(url)) return; } catch (e) { /* se usa la imagen */ }
+      new Image().src = url;
+    };
+  })();
+  // Texto sin tildes ni espacios para nombrar los clics: «Pack Redes» → «pack-redes»
+  function slug(t) {
+    return String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+  // Dónde está un botón: id de su sección, o «barra» si es la barra de contacto rápido
+  function origen(n) {
+    if (n.closest('.quick-bar')) return 'barra';
+    var s = n.closest('section[id]');
+    if (s) return s.id;
+    return n.closest('.site-header') ? 'cabecera' : (n.closest('footer') ? 'pie' : 'pagina');
+  }
+  contar(location.pathname);
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('[data-whatsapp], [data-interes]');
+    if (!a) return;
+    if (a.hasAttribute('data-whatsapp')) contar('whatsapp-' + origen(a), true);
+    else contar('boton-' + slug(a.getAttribute('data-interes')) + '-' + origen(a), true);
+  });
 
   /* ---------- 0. Animaciones ----------
      Va primero: si algo de más abajo fallara, el contenido nunca se queda invisible.
@@ -427,6 +474,7 @@
         video.appendChild(el('track', { kind: 'captions', src: v.subtitulos, srclang: 'es', label: 'Español' }));
       }
       video.setAttribute('aria-label', 'Vídeo: ' + v.titulo);
+      video.addEventListener('play', function () { contar('video-' + slug(v.titulo), true); }, { once: true });
       media.appendChild(video);
     } else {
       // Marcador de posición (9:16 o 16:9) claramente identificado
@@ -718,6 +766,7 @@
     }
 
     function showSuccess(data) {
+      contar('formulario-enviado-' + slug(data.interes), true);
       status.textContent = '¡Gracias, ' + data.nombre + '! Hemos recibido tu mensaje y te responderemos lo antes posible en ' + data.email + '.';
       status.classList.add('is-success');
       form.reset();
