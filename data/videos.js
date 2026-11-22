@@ -5,7 +5,8 @@
      titulo        → título visible
      categoria     → texto pequeño encima del título (opcional)
      anio          → año de la pieza, p. ej. "2026" (opcional)
-     descripcion   → una o dos frases
+     resumen       → una frase corta que se ve siempre bajo el título
+     descripcion   → una o dos frases (se ven al pulsar «Ver detalles»)
      archivo       → ruta al vídeo, p. ej. "videos/cafeteria.mp4"
                      (déjalo vacío "" para mostrar un marcador de posición)
      poster        → imagen que se ve antes de reproducir, p. ej. "img/videos/cafeteria.webp"
@@ -21,6 +22,7 @@ window.PULSEADS_VIDEOS = [
   {
     titulo: "Smash burgers para una hamburguesería",
     categoria: "Hostelería · Hamburguesería",
+    resumen: "Gancho que da hambre, la carne de cerca y la oferta de los martes.",
     anio: "2026",
     descripcion: "Anuncio vertical para redes con cortes al ritmo de la música: abre con un gancho que da hambre, enseña el producto de cerca, lanza la oferta de los martes y cierra con una llamada a pedir. Negocio inventado para enseñar el estilo: el nombre, los precios y la dirección son de ejemplo.",
     archivo: "videos/hamburgueseria-brasa21.mp4",
@@ -45,6 +47,7 @@ window.PULSEADS_VIDEOS = [
   {
     titulo: "Desayunos para una cafetería",
     categoria: "Hostelería · Cafetería",
+    resumen: "Café, bollería y tostadas, con el precio del desayuno al final.",
     anio: "2026",
     descripcion: "Pieza cálida y tranquila para atraer clientela por la mañana: café, bollería y tostadas con textos que aparecen con suavidad, y un cierre con el precio del desayuno y el horario. Negocio inventado para enseñar el estilo: el nombre, los precios y la dirección son de ejemplo.",
     archivo: "videos/cafeteria-cafe-alba.mp4",
@@ -68,6 +71,7 @@ window.PULSEADS_VIDEOS = [
   {
     titulo: "Reservas para una barbería",
     categoria: "Belleza · Barbería",
+    resumen: "Una pregunta directa, los servicios con precio y reserva por WhatsApp.",
     anio: "2026",
     descripcion: "Anuncio elegante en negro y dorado que empieza con una pregunta directa, enseña los servicios y termina con la lista de precios y el botón de reservar por WhatsApp. Negocio inventado para enseñar el estilo: el nombre, los precios y la dirección son de ejemplo.",
     archivo: "videos/barberia-navaja.mp4",
@@ -91,6 +95,7 @@ window.PULSEADS_VIDEOS = [
   {
     titulo: "Captación para un gimnasio",
     categoria: "Deporte · Gimnasio",
+    resumen: "Ritmo rápido, clases y horario, y una semana gratis como reclamo.",
     anio: "2026",
     descripcion: "Ritmo rápido y tipografía grande para captar socios: un gancho que interpela, clases y horario en movimiento, y un cierre con la semana gratis como reclamo. Negocio inventado para enseñar el estilo: el nombre, los precios y la dirección son de ejemplo.",
     archivo: "videos/gimnasio-hierro.mp4",
@@ -117,6 +122,7 @@ window.PULSEADS_VIDEOS = [
   ,{
     titulo: "Menú del día para un restaurante",
     categoria: "Hostelería",
+    resumen: "Una frase corta que resuma el vídeo.",
     anio: "2026",
     descripcion: "Vídeo vertical que presenta el menú de la semana.",
     archivo: "",

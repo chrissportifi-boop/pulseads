@@ -34,10 +34,10 @@
   <link rel="preload" href="fonts/bricolage-grotesque-800.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-300.woff2" as="font" type="font/woff2" crossorigin>
   <!-- ?v= lo actualiza solo «npm run version» (carpeta tools): evita que el navegador use archivos antiguos -->
-  <link rel="stylesheet" href="css/base.css?v=13bbe401f0">
-  <link rel="stylesheet" href="css/secciones.css?v=13bbe401f0">
-  <link rel="stylesheet" href="css/portada.css?v=13bbe401f0">
-  <link rel="stylesheet" href="css/animaciones.css?v=13bbe401f0">
+  <link rel="stylesheet" href="css/base.css?v=bc5930523c">
+  <link rel="stylesheet" href="css/secciones.css?v=bc5930523c">
+  <link rel="stylesheet" href="css/portada.css?v=bc5930523c">
+  <link rel="stylesheet" href="css/animaciones.css?v=bc5930523c">
 
   <!-- Marca que hay JavaScript para activar menú móvil y animaciones (sin JS todo sigue visible) -->
   <script>
@@ -225,6 +225,12 @@
         <ul class="videos" id="lista-videos">
           <!-- js/main.js rellena esta lista con los vídeos de data/videos.js -->
         </ul>
+        <!-- Flechas del carrusel (solo en móvil; las activa js/main.js) -->
+        <div class="videos-nav" hidden>
+          <button type="button" class="videos-btn" data-dir="-1" aria-label="Vídeo anterior">←</button>
+          <p class="videos-count"><span class="videos-now">1</span> / <span class="videos-total">4</span></p>
+          <button type="button" class="videos-btn" data-dir="1" aria-label="Vídeo siguiente">→</button>
+        </div>
         <!-- Sin JavaScript: versión básica del trabajo destacado (si cambiáis el vídeo, actualizadlo también aquí) -->
         <noscript>
           <div class="video-card is-featured">
@@ -414,13 +420,6 @@
         </div>
 
         <ul class="plans">
-          <li class="plan reveal">
-            <h3>Básico</h3>
-            <p class="plan-precio"><span>Desde</span> 49&nbsp;€</p>
-            <p class="plan-desc">Para anunciar algo concreto.</p>
-            <ul class="ticks"><li>1 vídeo de hasta 30 segundos</li><li>1 formato a elegir</li><li>Guion, música con licencia y subtítulos</li><li>1 ronda de cambios</li></ul>
-            <a class="btn btn-solid btn-arrow" href="#contacto" data-interes="Pack Básico">Quiero el pack Básico</a>
-          </li>
           <li class="plan reveal plan-destacado">
             <p class="plan-marca">Recomendado para empezar</p>
             <h3>Redes</h3>
@@ -428,6 +427,13 @@
             <p class="plan-desc">Para una campaña con varios vídeos.</p>
             <ul class="ticks"><li>4 vídeos de hasta 30 segundos</li><li>Formato vertical y cuadrado</li><li>Estilo común para tu marca</li><li>2 rondas de cambios por vídeo</li></ul>
             <a class="btn btn-solid btn-arrow" href="#contacto" data-interes="Pack Redes">Quiero el pack Redes</a>
+          </li>
+          <li class="plan reveal plan-basico">
+            <h3>Básico</h3>
+            <p class="plan-precio"><span>Desde</span> 49&nbsp;€</p>
+            <p class="plan-desc">Para anunciar algo concreto.</p>
+            <ul class="ticks"><li>1 vídeo de hasta 30 segundos</li><li>1 formato a elegir</li><li>Guion, música con licencia y subtítulos</li><li>1 ronda de cambios</li></ul>
+            <a class="btn btn-solid btn-arrow" href="#contacto" data-interes="Pack Básico">Quiero el pack Básico</a>
           </li>
           <li class="plan reveal">
             <h3>Mensual</h3>
@@ -579,6 +585,10 @@
             <ul></ul>
           </div>
 
+          <!-- Lo que ha pedido (demo o pack): lo rellenan los botones de la página -->
+          <input type="hidden" id="interes" name="interes" value="Demo gratis">
+          <p class="form-interes" id="form-interes" hidden></p>
+
           <p class="form-note">Todos los campos son obligatorios.</p>
 
           <div class="field-row">
@@ -593,17 +603,6 @@
               <input id="local" name="local" type="text" autocomplete="organization" required aria-describedby="local-error">
               <p class="field-error" id="local-error" hidden></p>
             </div>
-          </div>
-
-          <div class="field">
-            <label for="interes">¿Qué te interesa?</label>
-            <select id="interes" name="interes">
-              <option>Demo gratis</option>
-              <option>Pack Básico</option>
-              <option>Pack Redes</option>
-              <option>Pack Mensual</option>
-              <option>Otra cosa</option>
-            </select>
           </div>
 
           <div class="field">
@@ -688,15 +687,15 @@
     </div>
   </footer>
 
-  <!-- Botón flotante para móvil (aparece tras la portada y se oculta en el contacto) -->
-  <a class="float-cta" href="#contacto" tabindex="-1" data-interes="Demo gratis">Pide tu demo gratis</a>
-  <!-- Botón de WhatsApp: aparece solo cuando se rellena WHATSAPP_NUMERO en js/main.js -->
-  <aside class="wa-box" aria-label="Contacto rápido" hidden>
-  <a class="wa-float" data-whatsapp hidden aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3Zm0 2a7 7 0 1 1-3.6 13l-.4-.2-2.1.6.6-2-.3-.4A7 7 0 0 1 12 5Z"/></svg></a>
+  <!-- Barra de contacto rápido: aparece tras la portada y se esconde en Precios, Contacto y el pie.
+       El botón de WhatsApp aparece solo cuando se rellena WHATSAPP_NUMERO en js/main.js -->
+  <aside class="quick-bar" aria-label="Contacto rápido">
+    <a class="quick-demo" href="#contacto" data-interes="Demo gratis">Pide tu demo gratis</a>
+    <a class="quick-wa" data-whatsapp hidden aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3Zm0 2a7 7 0 1 1-3.6 13l-.4-.2-2.1.6.6-2-.3-.4A7 7 0 0 1 12 5Z"/></svg></a>
   </aside>
 
   <!-- Datos de los vídeos y lógica de la página (defer: no bloquean la carga) -->
-  <script src="data/videos.js?v=13bbe401f0" defer></script>
-  <script src="js/main.js?v=13bbe401f0" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="data/videos.js?v=bc5930523c" defer></script>
+  <script src="js/main.js?v=bc5930523c" defer onerror="document.documentElement.classList.remove('js')"></script>
 </body>
 </html>

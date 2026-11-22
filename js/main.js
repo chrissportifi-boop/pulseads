@@ -280,21 +280,24 @@
   /* ---------- 0b. Botón flotante "Pide tu anuncio" (móvil) ----------
      Visible tras la portada y oculto cuando se ve el formulario o el pie. Solo entra en el
      orden de tabulación mientras está visible. */
-  var floatCta = document.querySelector('.float-cta');
+  // Barra de contacto rápido: se esconde en la portada, en Precios y Contacto (que ya tienen
+  // sus propios botones) y en el pie, para no tapar nunca otros botones.
+  var quickBar = document.querySelector('.quick-bar');
   var heroEl = document.getElementById('inicio');
-  var contactEl = document.getElementById('contacto');
-  if (floatCta && heroEl && contactEl && 'IntersectionObserver' in window) {
-    var pastHero = false, atContact = false, atFooter = false;
-    var updateCta = function () {
-      var show = pastHero && !atContact && !atFooter;
-      floatCta.classList.toggle('is-shown', show);
-      floatCta.tabIndex = show ? 0 : -1;
-      if (show) floatCta.removeAttribute('aria-hidden'); else floatCta.setAttribute('aria-hidden', 'true');
+  if (quickBar && heroEl && 'IntersectionObserver' in window) {
+    var pastHero = false, tapado = {};
+    var updateBar = function () {
+      var show = pastHero && !Object.keys(tapado).some(function (k) { return tapado[k]; });
+      quickBar.classList.toggle('is-shown', show);
     };
-    new IntersectionObserver(function (e) { pastHero = !e[0].isIntersecting; updateCta(); }).observe(heroEl);
-    new IntersectionObserver(function (e) { atContact = e[0].isIntersecting; updateCta(); }, { rootMargin: '0px 0px -30% 0px' }).observe(contactEl);
-    new IntersectionObserver(function (e) { atFooter = e[0].isIntersecting; updateCta(); }).observe(document.querySelector('.site-footer'));
-    updateCta();
+    new IntersectionObserver(function (e) { pastHero = !e[0].isIntersecting; updateBar(); }).observe(heroEl);
+    ['precios', 'contacto'].forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (sec) new IntersectionObserver(function (e) { tapado[id] = e[0].isIntersecting; updateBar(); }, { rootMargin: '0px 0px -25% 0px' }).observe(sec);
+    });
+    var pie = document.querySelector('.site-footer');
+    if (pie) new IntersectionObserver(function (e) { tapado.pie = e[0].isIntersecting; updateBar(); }).observe(pie);
+    updateBar();
   }
 
   /* ---------- 0c. WhatsApp y servicio elegido ---------- */
@@ -304,15 +307,25 @@
       a.target = '_blank';
       a.rel = 'noopener';
       a.hidden = false;
-      var caja = a.closest('.wa-box');
-      if (caja) caja.hidden = false;
     });
+    document.documentElement.classList.add('has-wa');
   }
   // Los botones de demo y de packs dejan elegida esa opción en el formulario
+  // (sin desplegable: si es un pack, el formulario lo dice y el botón cambia)
   document.addEventListener('click', function (e) {
     var enlace = e.target.closest && e.target.closest('[data-interes]');
     var campo = document.getElementById('interes');
-    if (enlace && campo) campo.value = enlace.getAttribute('data-interes');
+    if (!enlace || !campo) return;
+    var elegido = enlace.getAttribute('data-interes');
+    campo.value = elegido;
+    var aviso = document.getElementById('form-interes');
+    var enviar = document.querySelector('#form-contacto button[type="submit"]');
+    var esDemo = elegido === 'Demo gratis';
+    if (aviso) {
+      aviso.hidden = esDemo;
+      aviso.textContent = esDemo ? '' : 'Nos pides información del ' + elegido + '. Te responderemos con un presupuesto cerrado.';
+    }
+    if (enviar) enviar.textContent = esDemo ? 'Pedir mi demo gratis' : 'Pedir el ' + elegido;
   });
 
   /* ---------- 1. Menú móvil ---------- */
@@ -432,6 +445,18 @@
     body.appendChild(top);
     if (v.categoria) body.appendChild(el('p', { 'class': 'video-category' }, v.categoria));
     body.appendChild(el('h3', {}, v.titulo));
+    if (v.resumen) body.appendChild(el('p', { 'class': 'video-resumen' }, v.resumen));
+
+    // Descripción, ficha y transcripción quedan plegadas en «Ver detalles» para acortar la sección
+    var mas = el('details', { 'class': 'video-more' });
+    var masSum = el('summary', {}, 'Ver detalles');
+    masSum.appendChild(el('span', { 'class': 'visually-hidden' }, ' de «' + v.titulo + '»'));
+    mas.appendChild(masSum);
+    var masBody = el('div', { 'class': 'video-more-body' });
+    mas.appendChild(masBody);
+    body.appendChild(mas);
+    var cuerpo = body;
+    body = masBody;
     if (v.descripcion) body.appendChild(el('p', {}, v.descripcion));
 
     // Ficha técnica como lista de definiciones (etiqueta → valor)
@@ -456,7 +481,7 @@
     }
 
     item.appendChild(media);
-    item.appendChild(body);
+    item.appendChild(cuerpo);
     return item;
   }
 
@@ -466,6 +491,49 @@
       list.appendChild(card);
       observeReveal(card);
     });
+
+    // Carrusel en móvil: los vídeos se pasan con el dedo o con las flechas
+    var nav = document.querySelector('.videos-nav');
+    var tarjetas = list.children;
+    if (nav && tarjetas.length > 1) {
+      var carrusel = window.matchMedia('(max-width: 55.99rem)');
+      var suave = window.matchMedia('(prefers-reduced-motion: no-preference)');
+      var ahora = nav.querySelector('.videos-now');
+      var botones = nav.querySelectorAll('.videos-btn');
+      var actual = 0;
+      nav.querySelector('.videos-total').textContent = tarjetas.length;
+      var indice = function () {
+        var paso = tarjetas[1].offsetLeft - tarjetas[0].offsetLeft;
+        return paso ? Math.max(0, Math.min(tarjetas.length - 1, Math.round(list.scrollLeft / paso))) : 0;
+      };
+      var pintar = function () {
+        var i = indice();
+        if (i !== actual) {
+          // El vídeo que sale de la pantalla se pausa
+          var v = tarjetas[actual].querySelector('video');
+          if (v && !v.paused) v.pause();
+          actual = i;
+        }
+        ahora.textContent = i + 1;
+        botones[0].disabled = i === 0;
+        botones[1].disabled = i === tarjetas.length - 1;
+      };
+      botones.forEach(function (b) {
+        b.addEventListener('click', function () {
+          var i = Math.max(0, Math.min(tarjetas.length - 1, indice() + Number(b.getAttribute('data-dir'))));
+          list.scrollTo({ left: tarjetas[i].offsetLeft - tarjetas[0].offsetLeft, behavior: suave.matches ? 'smooth' : 'auto' });
+        });
+      });
+      var esperando = false;
+      list.addEventListener('scroll', function () {
+        if (esperando) return;
+        esperando = true;
+        requestAnimationFrame(function () { esperando = false; pintar(); });
+      }, { passive: true });
+      var modo = function () { nav.hidden = !carrusel.matches; pintar(); };
+      if (carrusel.addEventListener) carrusel.addEventListener('change', modo);
+      modo();
+    }
   }
 
   /* ---------- 3. Formulario de contacto con validación accesible ---------- */
