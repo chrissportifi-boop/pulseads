@@ -17,7 +17,6 @@ Los dos trabajan con su propio Claude y no programan: responde en español, en l
 - Faltan el NIF y el domicilio en `aviso-legal.html` y `privacidad.html` (busca `[Sustituir]`). Nunca los inventes.
 - Los precios están en `index.html` (sección de precios y FAQ) y en `condiciones.html`: mantenlos iguales.
 - WhatsApp: los botones se activan rellenando `WHATSAPP_NUMERO` en `js/main.js`.
-- Estadísticas: GoatCounter, sin cookies, se activa rellenando `GOATCOUNTER_CODIGO` en `js/main.js` (envía una petición, no carga scripts externos). Si cambias qué se cuenta, revisa la sección de cookies de `privacidad.html`.
 - Los vídeos de muestra son de negocios inventados (Brasa 21, Café Alba, Navaja Barber Club, Hierro Gym): su descripción debe seguir diciendo que el nombre, los precios y la dirección son de ejemplo. No uses marcas reales.
 - Si cambia el vídeo destacado, actualiza también el bloque `<noscript>` de la sección de trabajos.
 
