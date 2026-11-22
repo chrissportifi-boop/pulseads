@@ -12,8 +12,9 @@ const P = {
  barber4: "barber shaping a man's beard with a straight razor, close-up profile, moody warm light, cinematic photography, ultra detailed",
  gym1: "athletic woman doing battle ropes workout in a dark industrial gym, motion, sweat, dramatic side light, sports commercial photography, ultra detailed",
  gym2: "close-up of hands with chalk gripping a loaded barbell, chalk dust in the air, dark gym, dramatic rim lighting, sports commercial photography",
- gym3: "modern spacious gym interior with squat racks, dumbbells and kettlebells, dark moody lighting with red neon accents, wide angle, no people, architectural photography",
- gym4: "muscular man doing a box jump in a crossfit gym, mid-air, dramatic rim light, dark background, cinematic sports photography"
+ gym3: "dark modern gym with long rows of black dumbbells on racks and a red neon light strip on the wall, moody, wide angle, no people, commercial photography",
+ gym4: "muscular man doing a box jump in a crossfit gym, mid-air, dramatic rim light, dark background, cinematic sports photography",
+ gym5: "close-up of red boxing gloves punching a black leather heavy bag, sweat spray frozen in the air, no face visible, dark gym, dramatic red and white rim light, cinematic sports commercial photography"
 };
 const only = process.argv.slice(2);
 const c = await Client.connect("black-forest-labs/FLUX.1-schnell", { hf_token: tok, token: tok });

@@ -10,6 +10,6 @@ y `build.mjs` graba cada fotograma con Chrome y lo junta todo en un MP4 de 720×
 - Después: copiar `out/<id>.mp4` a `videos/` y `out/<id>.webp` a `img/videos/` con su nombre, y repasar
   `data/videos.js` y el `.vtt` si cambian textos o tiempos.
 
-Fotos: hechas con FLUX.1-schnell (Hugging Face) salvo `burger3` y `barberfade` (Pollinations).
+Fotos: hechas con FLUX.1-schnell (Hugging Face) salvo `burger3`, `barberfade` y `gym2` a `gym5` (Pollinations, cuando se acabó el cupo de Hugging Face).
 `fotos.mjs` genera nuevas usando el token de Hugging Face guardado en Claude Code (cupo gratis limitado al día).
 Todos los negocios son inventados: no uséis marcas reales.

@@ -95,16 +95,16 @@ window.PULSEADS_VIDEOS = [
   {
     titulo: "Captación para un gimnasio",
     categoria: "Deporte · Gimnasio",
-    resumen: "Ritmo rápido, clases y horario, y una semana gratis como reclamo.",
+    resumen: "Ritmo rápido, fuerza, clases y horario, y una semana gratis como reclamo.",
     anio: "2026",
-    descripcion: "Ritmo rápido y tipografía grande para captar socios: un gancho que interpela, clases y horario en movimiento, y un cierre con la semana gratis como reclamo. Negocio inventado para enseñar el estilo: el nombre, los precios y la dirección son de ejemplo.",
+    descripcion: "Ritmo rápido y tipografía grande para captar socios: un gancho que interpela, fuerza, clases y horario en movimiento, y un cierre con la semana gratis como reclamo. Negocio inventado para enseñar el estilo: el nombre, los precios y la dirección son de ejemplo.",
     archivo: "videos/gimnasio-hierro.mp4",
     poster: "img/videos/gimnasio-hierro.webp",
     formato: "vertical",
     destacado: false,
     ficha: [
       ["Formato", "Vertical 9:16"],
-      ["Duración", "11 segundos"],
+      ["Duración", "14 segundos"],
       ["Producción", "Imágenes con IA, montaje y música propios"]
     ],
     subtitulos: "videos/gimnasio-hierro.vtt",
@@ -112,9 +112,11 @@ window.PULSEADS_VIDEOS = [
       "Vídeo sin voz, con música electrónica rápida y efectos de barrido en cada corte.\n" +
       "0–2 s · Fondo negro. Palabras que golpean al ritmo: «No esperes al lunes».\n" +
       "2–4 s · Una mujer entrena con cuerdas de batalla en un gimnasio oscuro. Textos: «Entrena» y «con entrenadores en sala».\n" +
-      "4–6 s · Fondo rojo con filas de texto en movimiento: «Fuerza · HIIT · Cross · Cardio» y «Boxeo · Yoga · Spinning». En el centro: «Clases todos los días».\n" +
-      "6–8 s · Otra vez la deportista, más cerca. Textos: «Abierto», «6:00», «23:00» y «De lunes a domingo».\n" +
-      "8–11 s · Cierre en negro con «Primera semana gratis», el logotipo «Hierro Gym», el botón «Apúntate hoy», «Avenida del Puerto, 40 · Ven con un amigo» y la nota «Negocio ficticio · Anuncio de muestra hecho por PulseAds». Golpe grave al aparecer la oferta."
+      "4–6 s · Primer plano de una mano agarrando una pesa. Textos: «Fuerza», «sin límites» y «Pesos libres · Máquinas · Rack».\n" +
+      "6–7,5 s · Fondo rojo con filas de texto en movimiento: «Fuerza · HIIT · Cross · Cardio» y «Boxeo · Yoga · Spinning». En el centro: «Clases todos los días».\n" +
+      "7,5–8,5 s · Corte rápido de unos guantes de boxeo rojos golpeando un saco. Texto: «Cero excusas».\n" +
+      "8,5–10 s · Un hombre salta a un cajón, a contraluz. Textos: «Abierto», «6:00», «23:00» y «De lunes a domingo».\n" +
+      "10–14 s · Cierre sobre una sala con luces rojas: «Primera semana gratis», el logotipo «Hierro Gym», el botón «Apúntate hoy», «Avenida del Puerto, 40 · Ven con un amigo» y la nota «Negocio ficticio · Anuncio de muestra hecho por PulseAds». Golpe grave al aparecer la oferta."
   }
 
   /* Plantilla para el siguiente vídeo: quita los símbolos de comentario,

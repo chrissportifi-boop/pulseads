@@ -38,7 +38,17 @@
     </div>
   </section>
 
-  <!-- 3 · clases (gráfico en movimiento) -->
+  <!-- 3 · fuerza -->
+  <section class="scene" data-beats="4" data-tr="left" data-flash data-img="../ai/c/gym2.jpg" data-kb="1.12,1.32,0,0,-2%,3%" data-pos="40% 50%">
+    <div class="shade top"></div>
+    <div class="layer" style="display:flex;flex-direction:column;justify-content:flex-start;padding:200px 46px 0">
+      <div class="bc" style="font-size:200px" data-fx="slam" data-at="0.2">Fuerza</div>
+      <div class="bc outline" style="font-size:120px;margin-top:6px" data-fx="slam" data-at="1">sin límites</div>
+      <div class="mask" style="margin-top:22px"><span style="font-size:34px;font-weight:800;text-transform:uppercase;letter-spacing:.06em" data-fx="rise" data-at="2">Pesos libres · Máquinas · Rack</span></div>
+    </div>
+  </section>
+
+  <!-- 4 · clases (gráfico en movimiento) -->
   <section class="scene" data-beats="4" data-tr="left" style="background:var(--red)">
     <div class="layer" style="display:flex;flex-direction:column;justify-content:center;gap:10px;transform:rotate(-8deg) scale(1.2)">
       <div class="bc row" data-loop="marquee" data-ldur="3.75">Fuerza · HIIT · Cross · Cardio · Fuerza · HIIT · Cross · Cardio · </div>
@@ -55,22 +65,31 @@
     </div>
   </section>
 
-  <!-- 4 · horario -->
-  <section class="scene" data-beats="4" data-tr="up" data-flash data-img="../ai/c/gym1.jpg" data-kb="1.5,1.32,3%,1%,9%,7%" data-pos="50% 10%">
+  <!-- 5 · corte rápido: guantes -->
+  <section class="scene" data-beats="2" data-tr="diag" data-flash data-img="../ai/c/gym5.jpg" data-kb="1.15,1.4,0,0,4%,-3%" data-pos="50% 40%">
+    <div class="shade bot"></div>
+    <div class="layer" style="display:flex;flex-direction:column;justify-content:flex-end;padding:0 46px 230px">
+      <div class="bc" style="font-size:210px" data-fx="slam" data-at="0">Cero</div>
+      <div class="bc" style="font-size:150px;color:var(--red);text-shadow:0 6px 30px rgba(0,0,0,.6)" data-fx="slam" data-at="0.6">excusas</div>
+    </div>
+  </section>
+
+  <!-- 6 · horario -->
+  <section class="scene" data-beats="4" data-tr="up" data-flash data-img="../ai/c/gym4.jpg" data-kb="1.1,1.28,0,0,0,-4%" data-pos="50% 30%">
     <div class="shade bot"></div>
     <div class="layer" style="display:flex;flex-direction:column;justify-content:flex-end;padding:0 46px 210px">
       <div class="mask"><span style="font-size:36px;font-weight:800;letter-spacing:.3em;color:var(--red)" data-fx="rise" data-at="0">ABIERTO</span></div>
-      <div style="display:flex;align-items:baseline;gap:22px;margin-top:10px">
-        <div class="bc" style="font-size:150px" data-fx="slam" data-at="0.5">6:00</div>
-        <div class="bc outline" style="font-size:150px" data-fx="slam" data-at="1.5">23:00</div>
+      <div style="display:flex;align-items:baseline;gap:18px;margin-top:10px">
+        <div class="bc" style="font-size:132px" data-fx="slam" data-at="0.5">6:00</div>
+        <div class="bc outline" style="font-size:132px" data-fx="slam" data-at="1.5">23:00</div>
       </div>
       <div class="mask" style="margin-top:20px"><span style="font-size:36px;font-weight:700" data-fx="rise" data-at="2.5">De lunes a domingo</span></div>
     </div>
   </section>
 
-  <!-- 5 · cierre -->
+  <!-- 7 · cierre -->
   <section class="scene endc" data-beats="8" data-tr="circle" data-flash style="background:var(--ink)">
-    <div class="layer" style="background:url(../ai/c/gym1.jpg) center 30%/cover;opacity:.2;filter:grayscale(1) contrast(1.2)"></div>
+    <div class="layer" style="background:url(../ai/c/gym3.jpg) center 40%/cover;opacity:.32;filter:contrast(1.1)"></div>
     <div class="layer" data-fx="shake" data-at="1" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 40px">
       <div class="bc" style="font-size:110px" data-fx="slam" data-at="0">Primera semana</div>
       <div data-fx="stamp" data-at="1" style="--r:-6deg;margin-top:20px;background:var(--red);padding:6px 40px 18px">
